@@ -1,5 +1,52 @@
-MainWidget:
+GridLayoutExample:
+<GridLayoutExample@GridLayout>:
+    Button:
+        text:"A"
+    # Button:
+    #     text:"B"
 
+
+<AnchorLayoutExample>:
+    #left,right,centre
+    anchor_x : "left"
+
+    #top,bottom,centre
+    anchor_y : "top"
+
+    BoxLayout:
+        size_hint : .2, .2
+
+        Button:
+            text: "A"
+            
+        Button:
+            text: "B"
+            
+
+
+<BoxLayoutExample>:
+    orientation: "horizontal"
+    Button:
+        text: "A"
+        size_hint : 0.8,0.7
+        pos_hint : {"top" : 0.98}
+
+    BoxLayout:
+        orientation:"vertical"
+        Button:
+            text: "B1"
+        Button:
+            text: "B2"
+        Button:
+            text: "B3"
+    
+    Label:
+        text: "c"
+
+    
+
+
+#Code for Main Widget 
 <MainWidget>:
     Button:
         text: "Hello"

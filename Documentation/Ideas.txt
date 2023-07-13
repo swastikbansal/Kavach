@@ -1,0 +1,16 @@
+LG/Apple Phone SOS System Reserch
+
+Mic Icon Hiding
+Custom Lock Screen for pattern/fingerprint
+Phone Jumping : Z - Wave Protocol for SMS
+ML Training of User for preventing accidental trigger
+Go button for triggering/disabling app
+30 sec Delay
+Location  Trigger
+Emergency / Genral Help
+
+Flowcharts / Visually
+Give example for google usage
+GUI Focus
+User can navigate in panic thorugh our GUI 
+On Screen Widget
