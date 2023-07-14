@@ -3,11 +3,20 @@ WidgetExample:
 
 <WidgetExample>:
     cols : 2
+
+    ToggleButton:
+        text : "Toggle"
+        on_state : root.on_state(self)
+
     Button:
         text: "Click Here"
         on_press : root.on_button_click()
+
     Label:
-        text : "Hello"
+        text : root.my_text
+        font_name : "fonts/Lcd.ttf"
+        font_size : "80dp"
+        color : 1,.5,1
 
 <PageLayoutExample@PageLayout>:
     MainWidget:
