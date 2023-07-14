@@ -1,9 +1,53 @@
-GridLayoutExample:
+#:kivy 2.2.1
+WidgetExample:
+
+<WidgetExample>:
+    cols : 2
+    Button:
+        text: "Click Here"
+        on_press : root.on_button_click()
+    Label:
+        text : "Hello"
+
+<PageLayoutExample@PageLayout>:
+    MainWidget:
+    BoxLayoutExample:
+    AnchorLayoutExample:
+    GridLayoutExample:
+    StackLayoutExample:
+
+<ScrollViewExample@ScrollView>:
+    StackLayoutExample:
+        size_hint : 1, None
+        height : self.minimum_height
+
+<StackLayoutExample>:
+    #left - right & top - bottom
+    # orientation : "lr-tb"
+    # padding : ("20dp","20dp","20dp","20dp")
+    # spacing : "20dp","20dp"
+
 <GridLayoutExample@GridLayout>:
+    rows : 3
+    cols : 2
     Button:
         text:"A"
-    # Button:
-    #     text:"B"
+        size_hint : None,1
+        width : "50dp"
+    BoxLayoutExample
+    Button:
+        text:"C"
+        size_hint : None,1
+        width : "50dp"
+    Button:
+        text:"D"
+        
+    Button:
+        text:"E"
+        size_hint : None,1
+        width : "50dp"
+    Button:
+        text:"F"
 
 
 <AnchorLayoutExample>:
