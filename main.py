@@ -1,82 +1,54 @@
-from kivy.app import App
-from kivy.metrics import dp
-from kivy.properties import StringProperty,BooleanProperty
-from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.anchorlayout import AnchorLayout
-from kivy.uix.gridlayout import GridLayout
-from kivy.uix.stacklayout import StackLayout
-from kivy.uix.button import Button
-from kivy.uix.widget import Widget
+import csv
 
-class WidgetExample(GridLayout):
-    counter = 0
-    # slider_text = StringProperty("20")
-    input_text = StringProperty("Swastik")
-    counter_status = BooleanProperty(False)
-    my_text = StringProperty(str(counter))
-    
-    def on_state(self,widget):
-        print("Toggle State : ",widget.state)
-        if widget.state == 'down':
-            widget.text = "On"
-            self.counter_status = True
+#CSV File Class
+class CSVFile:
+    def __init__(self):
+        #Creating a new empty CSV File and adding headers at first row
+        self.file = open("EmergencyContacts.csv","a+")
 
-        else :
-            widget.text = "Off"
-            self.counter_status = False
-    
-    def on_active(self,widget):
-        print('Active state :',widget.active)
-    
-    def on_button_click(self):
-        self.counter +=  1
-        self.my_text = str(self.counter)
-
-    # def on_scroll_value(self,widget):
-        # self.slider_text = str(int(widget.value))
-        # widget.text = self.slider_text 
-        # print("value :",int(widget.value))
-    
-    def on_text_validate(self,widget):
-        self.input_text = widget.text
+    #Function for reading data from file
+    def readFile(self):
+        self.readData = csv.reader(self.file)
+        self.data_list = []
         
+        for rows in self.readData:
+            self.data_list.append(rows)
         
+        print(self.data_list)
 
+        return self.data_list
+        
+    #Writing Data into CSV File
+    def writeFile(self,writeData):
+        writer = csv.writer(self.file)
+        writer.writerow(writeData)
 
-class StackLayoutExample(StackLayout):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+CSVFileObject = CSVFile()
 
-        self.orientation = "lr-tb"   
-        for i in range(100):
-            # size = dp(100 + i*10)
-            size = dp(100)
-            b = Button(text = str(i+1),size_hint = (None,None), size = (size,size))
-            self.add_widget(b)
+while True:
+    #Inputting emegency contacts data
+    name = input("Enter the name of the contact : ")
+    mobileNumber = input("Enter the Contact Number : ")
 
-class AnchorLayoutExample(AnchorLayout):
-    pass
+    contactsList = [name,mobileNumber]
+        
+    if mobileNumber.isnumeric():
+        #Writing to CSV file
+        with CSVFileObject.file: 
+            CSVFileObject.writeFile(contactsList)
+            print("Data Updated Successfully !")
 
-class BoxLayoutExample(BoxLayout):
-    pass
-    #Code for Box Layout genrated using python
-    """def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        # self.orientation = "vertical" 
+            print("Current Contacts in File\n",CSVFileObject.readFile())
 
-        b1 = Button(text = "A")
-        b2 = Button(text = "B")
-        b3 = Button(text = "C")
+            #Asking user if he wants to add more contacts or not 
+            choice  = input("Do you want to add more contacts(y/n) : ")
 
-        self.add_widget(b1)
-        self.add_widget(b2)
-        self.add_widget(b3)
-"""
+            if choice.lower() == "y":
+                continue
+
+            else :
+                break
+
+    else :
+        print('Invalid Mobile number')
     
-class MainWidget(Widget):
-    pass
-
-class KavachApp(App):
-    pass
-
-KavachApp().run()
