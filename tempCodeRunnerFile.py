@@ -1,4 +1,2 @@
-import os
-os.environ["KIVY_METRICS_DENSITY"] = "1"
-os.environ["KIVY_GRAPHICS"] = "sdl2"
-
+from kivy.app import App
+from kivy.uix.boxlayout import BoxLayout
