@@ -1,6 +1,5 @@
 import csv
 
-
 header = ["Contacts","Mobile Number"]
 
 #Creating a new empty CSV File and adding headers at first row

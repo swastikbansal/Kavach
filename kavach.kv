@@ -1,22 +1,76 @@
 #:kivy 2.2.1
-WidgetExample:
+ImageExample:
+
+<ImageExample@GridLayout>:
+    cols : 3
+    Image :
+        source : "images/cake.jpg"
+    Image :
+        source : "images/cake.jpg"
+        allow_stretch : True
+    Image :
+        source : "images/cake.jpg"
+        allow_stretch : True
+        keep_ratio : False 
 
 <WidgetExample>:
-    cols : 2
+    cols : 3
 
     ToggleButton:
         text : "Toggle"
         on_state : root.on_state(self)
+        size_hint : None ,1 
+        width: "100dp"
 
     Button:
         text: "Click Here"
         on_press : root.on_button_click()
+        disabled : not root.counter_status
 
     Label:
         text : root.my_text
         font_name : "fonts/Lcd.ttf"
         font_size : "80dp"
         color : 1,.5,1
+    
+    Switch:
+        id : slider_switch 
+        on_active : root.on_active(self)
+        active : True
+        size_hint : None ,1 
+        width: "100dp"
+    
+    Slider:
+        id : my_slider
+        orientation : "horizontal"
+        disabled : not slider_switch.active
+        min : 0
+        max :100
+        value : 20
+        # on_value : root.on_scroll_value(self)
+    
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            text : str(int(my_slider.value))
+        ProgressBar:
+            max : 100
+            value : my_slider.value
+    
+    TextInput:
+        id : my_text
+        size_hint : None ,1 
+        width: "100dp"
+        text : "Insert Text"
+        multiline : False
+        on_text_validate : root.on_text_validate(self)
+    
+    Label:
+        text : "Your name is : " + root.input_text
+
+
+
+
 
 <PageLayoutExample@PageLayout>:
     MainWidget:
@@ -92,11 +146,6 @@ WidgetExample:
             text: "B2"
         Button:
             text: "B3"
-    
-    Label:
-        text: "c"
-
-    
 
 
 #Code for Main Widget 
