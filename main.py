@@ -1,15 +1,29 @@
 import csv
 
+#CSV File Class
+class CSVFile:
+    def __init__(self):
+        #Creating a new empty CSV File and adding headers at first row
+        self.file = open("EmergencyContacts.csv","a+")
 
-
-def writeFile(writeData,file):
-        writer = csv.writer(file)
-        writer.writerow(writeData)
+    #Function for reading data from file
+    def readFile(self):
+        self.readData = csv.reader(self.file)
+        self.data_list = []
         
+        for rows in self.readData:
+            self.data_list.append(rows)
+        
+        return self.data_list
+        
+    #Writing Data into CSV File
+    def writeFile(self,writeData):
+        writer = csv.writer(self.file)
+        writer.writerow(writeData)
 
-#Creating a new empty CSV File and adding headers at first row
-file = open("EmergencyContacts.csv","a+")
-data = csv.reader(file) 
+CSVFileObject = CSVFile()
+
+CSVFileObject.readFile()
 
 while True:
     #Inputting emegency contacts data
@@ -20,8 +34,9 @@ while True:
         
     if mobileNumber.isnumeric():
         #Writing to CSV file
-        with file: 
-            writeFile(contactsList)
+        with CSVFileObject: 
+            CSVFileObject.writeFile(contactsList)
+            print("Data Updated Successfully !")
             
             #Asking user if he wants to add more contacts or not 
             choice  = input("Do you want to add more contacts(y/n) : ")
