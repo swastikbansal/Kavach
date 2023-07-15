@@ -13,11 +13,11 @@ class MainWidget(Widget):
     pass
 
 
-class LabApp(App):
+class KavachApp(App):
     pass
 
 
-LabApp().run()
+KavachApp().run()
 
 
 # CSV File Class
