@@ -28,6 +28,7 @@ class CSVFile:
 
     # Function for reading data from file
     def readFile(self):
+        self.file.seek(0)
         self.readData = csv.reader(self.file)
         self.data_list = []
 
