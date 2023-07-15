@@ -8,6 +8,7 @@ class CSVFile:
 
     #Function for reading data from file
     def readFile(self):
+        self.file.seek(0)
         self.readData = csv.reader(self.file)
         self.data_list = []
         
@@ -18,6 +19,7 @@ class CSVFile:
         
     #Writing Data into CSV File
     def writeFile(self,writeData):
+        self.file.seek(1)
         writer = csv.writer(self.file)
         writer.writerow(writeData)
 
@@ -30,20 +32,23 @@ while True:
 
     contactsList = [name,mobileNumber]
         
-    if mobileNumber.isnumeric():
+    if mobileNumber.isnumeric() and len(mobileNumber)==10:
+
         #Writing to CSV file
         with CSVFileObject.file: 
             CSVFileObject.writeFile(contactsList)
             print("Data Updated Successfully !")
 
-            print("Current Contacts in File\n",CSVFileObject.readFile())
+            #printing COntacts in Data
+            print("Current Contacts in File\n",)
+            for contact in CSVFileObject.readFile():
+                print(contact)
 
             #Asking user if he wants to add more contacts or not 
             choice  = input("Do you want to add more contacts(y/n) : ")
-
+            
             if choice.lower() == "y":
                 continue
-
             else :
                 break
 
