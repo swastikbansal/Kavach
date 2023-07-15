@@ -14,6 +14,8 @@ class CSVFile:
         for rows in self.readData:
             self.data_list.append(rows)
         
+        print(self.data_list)
+
         return self.data_list
         
     #Writing Data into CSV File
@@ -22,8 +24,6 @@ class CSVFile:
         writer.writerow(writeData)
 
 CSVFileObject = CSVFile()
-
-CSVFileObject.readFile()
 
 while True:
     #Inputting emegency contacts data
@@ -34,10 +34,12 @@ while True:
         
     if mobileNumber.isnumeric():
         #Writing to CSV file
-        with CSVFileObject: 
+        with CSVFileObject.file: 
             CSVFileObject.writeFile(contactsList)
             print("Data Updated Successfully !")
-            
+
+            print("Current Contacts in File\n",CSVFileObject.readFile())
+
             #Asking user if he wants to add more contacts or not 
             choice  = input("Do you want to add more contacts(y/n) : ")
 
