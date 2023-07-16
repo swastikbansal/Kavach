@@ -1,18 +1,17 @@
 import csv
 
 # CSV File Class
-class Conacts:
+class Contacts:
     def __init__(self):
         # Creating a new empty CSV File and adding headers at first row
         self.file = open("EmergencyContacts.csv", "a+")
 
     # Writing Data into CSV File
-    def writeFile(self,name,number):
-        
-        self.writeData = [name,number]  
+    def writeFile(self, name, number):
+        self.writeData = [name, number]
 
-        #Writing data
-        with self.file :
+        # Writing data
+        with self.file:
             writer = csv.writer(self.file)
             writer.writerow(self.writeData)
 
@@ -28,9 +27,6 @@ class Conacts:
         print(self.data_list)
 
         return self.data_list
-
-
-
 
 
 

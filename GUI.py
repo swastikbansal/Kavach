@@ -1,16 +1,19 @@
 from kivy.app import App
-from kivy.uix.screenmanager import Screen,ScreenManager
+from kivy.uix.screenmanager import Screen, ScreenManager
 
 import Contacts
 
-contacts = Contacts.Conacts()
+contacts = Contacts.Contacts()
 
-#---------------- GUI ---------------------
+
+# ---------------- GUI ---------------------
 class MainWin(Screen):
     pass
 
+
 class EmergencyContacts(Screen):
     pass
+
 
 class AddEmergencyContacts(Screen):
 
@@ -25,13 +28,19 @@ class AddEmergencyContacts(Screen):
         self.name = nameInput.text 
         self.number = numberInput.text
 
-        contacts.writeFile(self.name,self.number)
+        contacts.writeFile(self.name, self.number)
 
-class VeiwEmergencyContacts(Screen):
+
+class ViewEmergencyContacts(Screen):
+    def showCSVFile(self, Widget):
+        self.name = Widget.text
+
     pass
+
 
 class DeleteEmergencyContacts(Screen):
     pass
+
 
 class ScreenManager(ScreenManager):
     pass
@@ -42,5 +51,3 @@ class KavachApp(App):
 
 
 KavachApp().run()
-
-

@@ -4,7 +4,7 @@ ScreenManager :
     MainWin:
     EmergencyContacts:
     AddEmergencyContacts:
-    VeiwEmergencyContacts:
+    ViewEmergencyContacts:
     DeleteEmergencyContacts:
     
 #Main GUI Win
@@ -67,7 +67,8 @@ ScreenManager :
             # x, center-x, right
             # y, center-y, top
             pos_hint:{"x": 0} 
-
+        
+        #Adds a widget on the home screen to send SOS
         Button:
             text: "Home screen widget"
             size_hint: None , None
@@ -104,11 +105,15 @@ ScreenManager :
         
         Button : 
             text : "View"
+            on_release : 
+                app.root.current = "View_Contacts"
+                root.manager.transition.direction = "left"
+        
         
         Button : 
             text : "Delete"
 
-#Add Emergency Conatct Win 
+#Add Emergency Contacts Window
 <AddEmergencyContacts>:
     name : "Add_Contacts"
     BoxLayout:
@@ -123,7 +128,7 @@ ScreenManager :
                 on_release : 
                     app.root.current = "Contacts_Menu"
                     root.manager.transition.direction = "right"
-           
+
             Label :
                 text : "Kavach"
                 font_size : 40
@@ -169,8 +174,38 @@ ScreenManager :
                 app.root.current = "Contacts_Menu"
                 root.manager.transition.direction = "right"
 
+<ViewEmergencyContacts>:
+    name : "View_Contacts"
+    BoxLayout:
+        orientation: "vertical"
 
-        
+
+        #Top Frame
+        BoxLayout:
+            Button:
+                text: "Back"
+                size_hint : .2,1
+                on_release : 
+                    app.root.current = "Contacts_Menu"
+                    root.manager.transition.direction = "right"
+
+            Label :
+                text : "Kavach"
+                font_size : 40
+
+        Label :
+            text : "Contacts"
+            font_size : 30
+
+        BoxLayout:
+            TextInput :
+                id : Contact_Input
+                multiline : False
+                size_hint : .6,1   
+                on_text_validate : 
+                    root.numberTextValidate(self)
+
+
 
         
 
