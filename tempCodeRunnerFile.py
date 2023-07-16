@@ -1,2 +1,2 @@
-from kivy.app import App
-from kivy.uix.boxlayout import BoxLayout
+if deleteData in orgData:
+            orgData.remove(row)

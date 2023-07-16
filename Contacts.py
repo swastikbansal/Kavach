@@ -28,6 +28,31 @@ class Contacts:
 
         return self.data_list
 
+    #Function for deleting contacts from csv file
+        #Function for deleting contacts from csv file
+    def deleteFile(self,deleteData):
+        orgData = self.readFile()
+
+        for row in orgData:
+            if deleteData in orgData:
+                orgData.remove(deleteData)
+        
+        while True:
+            #Removing Contacts
+            if [] in orgData:
+                orgData.remove([])
+            
+            #Deleting empty Lists
+            if [] not in orgData:
+                break
+        
+        with open("EmergencyContacts.csv", "w") as file : 
+            writer = csv.writer(file)
+            writer.writerows(orgData)
+
+
+
+
 
 
     # if mobileNumber.isnumeric():
