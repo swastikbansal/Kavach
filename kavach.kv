@@ -165,7 +165,7 @@ ScreenManager :
         Button:
             text: "Add Contact"
             on_release : 
-                root.writeFile(Name_Input,Contact_Input)
+                root.writeCSVFile(Name_Input,Contact_Input)
                 app.root.current = "Contacts_Menu"
                 root.manager.transition.direction = "right"
 
