@@ -161,11 +161,11 @@ ScreenManager :
                     
 
 
-            
+        #Adding Contacts to CSV File
         Button:
             text: "Add Contact"
             on_release : 
-                root.writeFile()
+                root.writeFile(Name_Input,Contact_Input)
                 app.root.current = "Contacts_Menu"
                 root.manager.transition.direction = "right"
 

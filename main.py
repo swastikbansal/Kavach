@@ -19,8 +19,14 @@ class AddEmergencyContacts(Screen):
         self.number = Widget.text 
     
     # Writing Data into CSV File
-    def writeFile(self):
+    def writeFile(self,nameInput,numberInput):
+        #Reading Input from both the text Box 
+        self.name = nameInput.text 
+        self.number = numberInput.text 
+
         self.writeData = [self.name,self.number]
+
+        #Writing data
         writer = csv.writer(open("EmergencyContacts.csv", "a+"))
         writer.writerow(self.writeData)
 
