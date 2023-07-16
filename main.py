@@ -1,15 +1,36 @@
 from kivy.app import App
-from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.widget import Widget
+from kivy.uix.screenmanager import Screen,ScreenManager
 import csv
 
 
-# GUI devlopment class
-class BoxGUI(BoxLayout):
+#---------------- GUI ---------------------
+class MainWin(Screen):
     pass
 
+class EmergencyContacts(Screen):
+    pass
 
-class MainWidget(Widget):
+class AddEmergencyContacts(Screen):
+
+    def nameTextValidate(self,Widget):
+        self.name = Widget.text 
+    
+    def numberTextValidate(self,Widget):
+        self.number = Widget.text 
+    
+    # Writing Data into CSV File
+    def writeFile(self):
+        self.writeData = [self.name,self.number]
+        writer = csv.writer(open("EmergencyContacts.csv", "a+"))
+        writer.writerow(self.writeData)
+
+class VeiwEmergencyContacts(Screen):
+    pass
+
+class DeleteEmergencyContacts(Screen):
+    pass
+
+class ScreenManager(ScreenManager):
     pass
 
 
@@ -39,10 +60,7 @@ class CSVFile:
 
         return self.data_list
 
-    # Writing Data into CSV File
-    def writeFile(self, writeData):
-        writer = csv.writer(self.file)
-        writer.writerow(writeData)
+   
 
 
 CSVFileObject = CSVFile()

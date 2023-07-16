@@ -1,9 +1,19 @@
 #:kivy 2.2.1
-BoxGUI:
-<BoxGUI>:
+
+ScreenManager :
+    MainWin:
+    EmergencyContacts:
+    AddEmergencyContacts:
+    VeiwEmergencyContacts:
+    DeleteEmergencyContacts:
+    
+#Main GUI Win
+<MainWin>:
+    name : "Main_Menu"
     BoxLayout:
         orientation:"vertical"
 
+        #emergency Button
         Button:
             text: "KAVACH"
             # size: , 
@@ -13,6 +23,8 @@ BoxGUI:
             # x, center-x, right
             # y, center-y, top
             pos_hint:{"x": 0} 
+
+        #Emergency Contacts
         Button:
             text: "Emergency Contacts"
             # size: , 
@@ -22,7 +34,11 @@ BoxGUI:
             # x, center-x, right
             # y, center-y, top
             pos_hint:{"x": 0} 
+            on_release :  
+                app.root.current = "Contacts_Menu"
+                root.manager.transition.direction = "left"
 
+        #Voice Recognition
         Button:
             text: "Voice Recognition"
             size_hint: None , None
@@ -32,6 +48,7 @@ BoxGUI:
             # y, center-y, top
             pos_hint:{"x": 0} 
 
+        #Lock Screen Pattern
         Button:
             text: "Lock screen pattern"
             size_hint: None , None
@@ -40,6 +57,8 @@ BoxGUI:
             # x, center-x, right
             # y, center-y, top
             pos_hint:{"x": 0} 
+
+        #Lock Screen Pin
         Button:
             text: "Lock screen pin"
             size_hint: None , None
@@ -48,6 +67,7 @@ BoxGUI:
             # x, center-x, right
             # y, center-y, top
             pos_hint:{"x": 0} 
+
         Button:
             text: "Home screen widget"
             size_hint: None , None
@@ -57,3 +77,102 @@ BoxGUI:
             # y, center-y, top
             pos_hint:{"x": 0} 
 
+
+#Emergency Menu Win
+<EmergencyContacts>:
+    name : "Contacts_Menu"
+    BoxLayout:
+        orientation: "vertical"
+
+        BoxLayout:
+            Button:
+                text: "Back"
+                size_hint : .2,1
+                on_release : 
+                    app.root.current = "Main_Menu"
+                    root.manager.transition.direction = "right"
+            
+            Label :
+                text : "Kavach"
+                font_size : 40
+
+        Button : 
+            text : "Add"
+            on_release : 
+                app.root.current = "Add_Contacts"
+                root.manager.transition.direction = "left"
+        
+        Button : 
+            text : "View"
+        
+        Button : 
+            text : "Delete"
+
+#Add Emergency Conatct Win 
+<AddEmergencyContacts>:
+    name : "Add_Contacts"
+    BoxLayout:
+        orientation: "vertical"
+
+
+        #Top Frame
+        BoxLayout:
+            Button:
+                text: "Back"
+                size_hint : .2,1
+                on_release : 
+                    app.root.current = "Contacts_Menu"
+                    root.manager.transition.direction = "right"
+           
+            Label :
+                text : "Kavach"
+                font_size : 40
+
+        Label :
+            text : "Contact Info"
+            font_size : 30
+        
+        #Name
+        BoxLayout:
+            Label :
+                text : "Name"
+                font_size : 30
+                size_hint : .4,1
+            
+            TextInput :
+                id : Name_Input 
+                multiline : False
+                size_hint : .6,1
+                on_text_validate : root.nameTextValidate(self)        
+        
+        #Contact Number 
+        BoxLayout:
+            Label :
+                text : "Number"
+                font_size : 30
+                size_hint : .4,1
+            
+            TextInput :
+                id : Contact_Input
+                multiline : False
+                size_hint : .6,1   
+                on_text_validate : 
+                    root.numberTextValidate(self)
+                    
+
+
+            
+        Button:
+            text: "Add Contact"
+            on_release : 
+                root.writeFile()
+                app.root.current = "Contacts_Menu"
+                root.manager.transition.direction = "right"
+
+
+        
+
+        
+
+
+             
