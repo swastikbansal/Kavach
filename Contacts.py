@@ -7,12 +7,11 @@ class Contacts:
         self.file = open("EmergencyContacts.csv", "a+")
 
     # Writing Data into CSV File
-    def writeFile(self,name,number):
-        
-        self.writeData = [name,number]  
+    def writeFile(self, name, number):
+        self.writeData = [name, number]
 
-        #Writing data
-        with self.file :
+        # Writing data
+        with self.file:
             writer = csv.writer(self.file)
             writer.writerow(self.writeData)
 
@@ -28,9 +27,6 @@ class Contacts:
         print(self.data_list)
 
         return self.data_list
-
-
-
 
     # if mobileNumber.isnumeric():
     #     # Writing to CSV file
