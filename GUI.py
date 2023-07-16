@@ -20,7 +20,7 @@ class AddEmergencyContacts(Screen):
     def numberTextValidate(self,Widget):
         self.number = Widget.text 
     
-    def writeCSVFile(self,nameInput,numberInput):
+    def writeContact(self,nameInput,numberInput):
         #Reading Input from both the text Box 
         self.name = nameInput.text 
         self.number = numberInput.text

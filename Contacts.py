@@ -32,6 +32,8 @@ class Conacts:
 
 
 
+
+
     # if mobileNumber.isnumeric():
     #     # Writing to CSV file
     #     with CSVFileObject.file:
