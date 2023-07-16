@@ -1,8 +1,6 @@
 from kivy.app import App
 from kivy.uix.screenmanager import Screen,ScreenManager
 
-import csv
-
 import Contacts
 
 contacts = Contacts.Conacts()
