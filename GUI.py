@@ -3,7 +3,7 @@ from kivy.uix.screenmanager import Screen,ScreenManager
 
 import Contacts
 
-contacts = Contacts.Conacts()
+contacts = Contacts.Contacts()
 
 #---------------- GUI ---------------------
 class MainWin(Screen):

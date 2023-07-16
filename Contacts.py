@@ -1,7 +1,7 @@
 import csv
 
 # CSV File Class
-class Conacts:
+class Contacts:
     def __init__(self):
         # Creating a new empty CSV File and adding headers at first row
         self.file = open("EmergencyContacts.csv", "a+")
