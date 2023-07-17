@@ -1,10 +1,17 @@
 from kivy.app import App
+from kivy.properties import StringProperty
 from kivy.uix.screenmanager import Screen, ScreenManager
 
 import Contacts
 
-contacts = Contacts.Contacts()
+if __name__ == "__main__":
+    contacts = Contacts.Contacts()
 
+    #Global Variables
+    name = StringProperty("")
+    number = StringProperty("")
+    name_list = []
+    number_list = []
 
 # ---------------- GUI ---------------------
 class MainWin(Screen):
@@ -12,7 +19,15 @@ class MainWin(Screen):
 
 
 class EmergencyContacts(Screen):
-    pass
+    def veiwButton(self):
+        global name_list,number_list
+
+        data = contacts.readFile()
+
+        for row in data :
+            if row != []:
+                name_list.append(row[0])
+                number_list.append(row[1])
 
 
 class AddEmergencyContacts(Screen):
@@ -32,10 +47,14 @@ class AddEmergencyContacts(Screen):
 
 
 class ViewEmergencyContacts(Screen):
-    def showCSVFile(self, Widget):
-        self.name = Widget.text
+    global name_list,number_list 
+    global name,number
 
-    pass
+    for i,j in zip(name_list,number_list):
+        name = i
+        number = j
+
+
 
 
 class DeleteEmergencyContacts(Screen):

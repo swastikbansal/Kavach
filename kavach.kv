@@ -108,6 +108,7 @@ ScreenManager :
             on_release : 
                 app.root.current = "View_Contacts"
                 root.manager.transition.direction = "left"
+                root.veiwButton()
         
         
         Button : 
@@ -180,6 +181,55 @@ ScreenManager :
     BoxLayout:
         orientation: "vertical"
 
+        #Top Frame
+        BoxLayout:
+            Button:
+                text: "Back"
+                size_hint : .2,1
+                on_release : 
+                    app.root.current = "Contacts_Menu"
+                    root.manager.transition.direction = "right"
+
+            Label :
+                text : "Kavach"
+                font_size : 40
+
+        Label :
+            text : "Contacts"
+            font_size : 30
+
+        BoxLayout:
+            TextInput :
+                disabled : True
+                size_hint : .5,None
+                height : "40dp"
+                text : "Contact Name"
+                text_allignment : "centre"
+            
+            TextInput :
+                disabled : True
+                size_hint : .5,None
+                height : "40dp"
+                text : "Contact Number"
+                text_allignment : "centre"
+            
+        BoxLayout:
+            Label :
+                disabled : True
+                size_hint : .5,1
+                text : root.name
+
+            Label :
+                disabled : True
+                size_hint : .5,1   
+                text : root.number
+
+
+#GUI for Veiwing Contacts
+<DeleteEmergencyContacts>:
+    name : "Delete_Contacts"
+    BoxLayout:
+        orientation: "vertical"
 
         #Top Frame
         BoxLayout:

@@ -24,12 +24,9 @@ class Contacts:
         for rows in self.readData:
             self.data_list.append(rows)
 
-        print(self.data_list)
-
         return self.data_list
 
     #Function for deleting contacts from csv file
-        #Function for deleting contacts from csv file
     def deleteFile(self,deleteData):
         orgData = self.readFile()
 
