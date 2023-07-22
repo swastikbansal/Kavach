@@ -8,8 +8,8 @@ if __name__ == "__main__":
     contacts = Contacts.Contacts()
 
     #Global Variables
-    name = StringProperty("")
-    number = StringProperty("")
+    # globalName = StringProperty("")
+    # globalNumber = StringProperty("")
     name_list = []
     number_list = []
 
@@ -33,26 +33,42 @@ class EmergencyContacts(Screen):
 class AddEmergencyContacts(Screen):
 
     def nameTextValidate(self,Widget):
-        self.name = Widget.text 
+        self.addName = Widget.text 
     
     def numberTextValidate(self,Widget):
-        self.number = Widget.text 
+        self.addNumber = Widget.text 
     
     def writeContact(self,nameInput,numberInput):
         #Reading Input from both the text Box 
-        self.name = nameInput.text 
-        self.number = numberInput.text
+        self.addName = nameInput.text 
+        self.addNumber = numberInput.text
 
-        contacts.writeFile(self.name, self.number)
+        contacts.writeFile(self.addName, self.addNumber)
 
 
 class ViewEmergencyContacts(Screen):
-    global name_list,number_list 
-    global name,number
+    veiwName = StringProperty("") 
+    veiwNumber = StringProperty("") 
 
-    for i,j in zip(name_list,number_list):
-        name = i
-        number = j
+    def on_enter(self, *args):
+        global name_list, number_list 
+
+        tempName = ""
+        tempNumber = ""
+
+        # Loop for iterating both the lists at the same time and concatenating them
+        for i, j in zip(name_list, number_list):
+            if self.veiwName != "" and self.veiwNumber != "":
+                tempName += "\n" + i
+                tempNumber += "\n" + j
+            else:
+                self.veiwName = i
+                self.veiwNumber = j
+
+        self.veiwName += tempName    
+        self.veiwNumber += tempNumber
+        
+
 
 
 
