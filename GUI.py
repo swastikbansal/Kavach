@@ -1,11 +1,43 @@
 #Kivy Libraries
 from kivy.app import App
 from kivy.properties import StringProperty
+from kivy.uix.label import Label
+from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import Screen, ScreenManager
 
 #Local file imports
 import Contacts
 
+#-------------- Functions -----------------
+
+def viewContacts():
+    global name_list, number_list 
+
+    viewName = ""
+    viewNumber = ""
+
+    #Temp var for name and number as kivy StringProperty dosen't support concatenation
+    tempName = ""
+    tempNumber = ""
+
+    # Loop for iterating both the lists at the same time and concatenating them
+    for i, j in zip(name_list, number_list):
+        if viewName != "" and viewNumber != "":
+            tempName += "\n" + i
+            tempNumber += "\n" + j
+
+        else:
+            viewName = i
+            viewNumber = j
+
+    #Assigning final values to String Property
+    viewName += tempName    
+    viewNumber += tempNumber
+
+
+
+    return viewName,viewNumber
+    
 
 # ---------------- GUI ---------------------
 class MainWin(Screen):
@@ -15,8 +47,8 @@ class MainWin(Screen):
 #Emergency Window Menu Class 
 class EmergencyContacts(Screen):
 
-    #This function is executes on press of Veiw button to extract data from Contacts 
-    def veiwButton(self):
+    #This function is executes on press of view button to extract data from Contacts 
+    def view(self):
         global name_list,number_list
 
         data = contacts.readFile()
@@ -46,32 +78,25 @@ class AddEmergencyContacts(Screen):
         contacts.writeFile(self.addName, self.addNumber)
 
 
-#Veiw Contacts Screen Class and integration with backend
+#View Contacts Screen Class and integration with backend
 class ViewEmergencyContacts(Screen):
-    veiwName = StringProperty("") 
-    veiwNumber = StringProperty("") 
     
-    #Function executes as soon as Screen opens
     def on_enter(self, *args):
-        global name_list, number_list 
+        # Function to create and update the labels=
+        global name_list, number_list
 
-        #Temp var for name and number as kivy StringProperty dosen't support concatenation
-        tempName = ""
-        tempNumber = ""
-
-        # Loop for iterating both the lists at the same time and concatenating them
-        for i, j in zip(name_list, number_list):
-            if self.veiwName != "" and self.veiwNumber != "":
-                tempName += "\n" + i
-                tempNumber += "\n" + j
-            else:
-                self.veiwName = i
-                self.veiwNumber = j
-
-        #Assigning final values to String Property
-        self.veiwName += tempName    
-        self.veiwNumber += tempNumber
-    
+        # Loop through the name_list and number_list to create individual labels
+        for name, number in zip(name_list, number_list):
+            name_label_text = f"{name}"
+            number_label_text = f"{number}"
+            
+            set_BoxLayout = BoxLayout(size_hint_y=None, height="40dp")
+            name_label = Label(text=name_label_text, size_hint=(.5, None), height="40dp",font_size = 25)
+            number_label = Label(text=number_label_text, size_hint=(.5, None), height="40dp",font_size = 25)
+            
+            set_BoxLayout.add_widget(name_label)
+            set_BoxLayout.add_widget(number_label)
+            self.ids.set_BoxLayout.add_widget(set_BoxLayout)
 
 class DeleteEmergencyContacts(Screen):
     pass
@@ -90,8 +115,6 @@ if __name__ == "__main__":
     contacts = Contacts.Contacts()
 
     #Global Variables
-    # globalName = StringProperty("")
-    # globalNumber = StringProperty("")
     name_list = []
     number_list = []
 
