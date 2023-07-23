@@ -143,6 +143,7 @@ ScreenManager :
 #Add Emergency Contacts Window
 <AddEmergencyContacts>:
     name : "Add_Contacts"
+    id : addContacts
     BoxLayout:
         orientation: "vertical"
 
@@ -201,8 +202,7 @@ ScreenManager :
             text: "Add Contact"
             on_release : 
                 root.addContactButton(Name_Input,Contact_Input)
-                app.root.current = "Contacts_Menu"
-                root.manager.transition.direction = "right"
+                
 
 <ViewEmergencyContacts>:
     name: "View_Contacts"

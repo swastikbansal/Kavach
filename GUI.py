@@ -3,13 +3,31 @@ from kivy.app import App
 from kivy.properties import StringProperty
 from kivy.uix.label import Label
 from kivy.uix.checkbox import CheckBox
+from kivy.uix.button import Button
 from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.popup import Popup
 from kivy.uix.screenmanager import Screen, ScreenManager
 
 #Local file imports
 import Contacts
 
-#-------------- Functions -----------------
+def popupErrorMsg(msg):
+    # Create a BoxLayout to hold the error message and the button
+            box_layout = BoxLayout(orientation='vertical')
+            label = Label(text=f'{msg}')
+            ok_button = Button(text='OK', size_hint=(1, None), height='40dp')
+            box_layout.add_widget(label)
+            box_layout.add_widget(ok_button)
+
+            # Create and show the popup with the box_layout as the content
+            popup = Popup(title='Invalid Input',
+                          content=box_layout,
+                          size_hint=(None, None), size=(400, 200))
+
+            # Set the button's callback function to dismiss the popup when clicked
+            ok_button.bind(on_release=popup.dismiss)
+
+            popup.open()
     
 
 # ---------------- GUI ---------------------
@@ -46,10 +64,17 @@ class AddEmergencyContacts(Screen):
     def addContactButton(self,nameInput,numberInput):
         #Reading Input from both the text Box 
         self.addName = nameInput.text 
-        self.addNumber = numberInput.text
+        self.addNumber = numberInput.text 
 
-        contacts.writeFile(self.addName, self.addNumber)
-
+        #If number entered is not valid
+        if not self.addNumber.isdigit() or len(self.addNumber) != 10:
+            popupErrorMsg("Enter a valid number.")
+        
+        #If Data entered is correct
+        else:
+            contacts.writeFile(self.addName, self.addNumber)
+            self.manager.current = "Contacts_Menu"
+            self.manager.transition.direction = "right"
 
 #View Contacts Screen Class and integration with backend
 class ViewEmergencyContacts(Screen):
@@ -116,10 +141,10 @@ class DeleteEmergencyContacts(Screen):
 
 
 
-
 #Edit Window Class for 
 class EditEmergencyContacts(Screen):
     pass
+
 
 #Screen Manager class for managing multiple Classes
 class ScreenManager(ScreenManager):
