@@ -11,6 +11,7 @@ from kivy.uix.screenmanager import Screen, ScreenManager
 #Local file imports
 import Contacts
 
+#PopUp Box configuration Fucntion
 def popupErrorMsg(msg):
     # Create a BoxLayout to hold the error message and the button
             box_layout = BoxLayout(orientation='vertical')
@@ -82,6 +83,8 @@ class ViewEmergencyContacts(Screen):
     def on_enter(self, *args):
         global name_list, number_list
 
+
+
         # Clear any existing widgets from the set_BoxLayout
         self.ids.set_BoxLayout.clear_widgets()
 
@@ -97,6 +100,10 @@ class ViewEmergencyContacts(Screen):
             set_BoxLayout.add_widget(name_label)
             set_BoxLayout.add_widget(number_label)
             self.ids.set_BoxLayout.add_widget(set_BoxLayout)
+        
+        #Clearing Lists so that the same data dosen't repeat
+        name_list.clear()
+        number_list.clear()
 
 
 class DeleteEmergencyContacts(Screen):
@@ -134,12 +141,17 @@ class DeleteEmergencyContacts(Screen):
             set_BoxLayout.add_widget(number_label)
             
             self.ids.set_BoxLayout.add_widget(set_BoxLayout)
+        
+        #Clearing Lists so that the same data dosen't repeat
+        name_list.clear()
+        number_list.clear()
 
+    
     def deleteContacts(self):
         print(self.deleteList)
         contacts.deleteFile(self.deleteList)
 
-
+    
 
 #Edit Window Class for 
 class EditEmergencyContacts(Screen):
