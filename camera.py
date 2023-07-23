@@ -1,5 +1,5 @@
-import cv2
-import speech_recognition as sr
+import cv2 #pip install opencv-python
+import speech_recognition as sr #pip install SpeechRecognition
 
 # Function to recognize speech using Google Web Speech API
 def recognize_speech():
