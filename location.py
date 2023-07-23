@@ -1,34 +1,26 @@
+import android
 import csv
-from geopy.geocoders import Nominatim
-import datetime
+import time
 
-def get_location():
-    # Initialize the geolocator
-    geolocator = Nominatim(user_agent="phone_gps_app")
+def get_and_save_location():
+    droid = android.Android()
+    location = droid.getLastKnownLocation().result
 
-    # Get the latitude and longitude of the device
-    location = geolocator.geocode("")
-    if location is None:
-        raise ValueError("Unable to retrieve location information.")
-    
-    latitude = location.latitude
-    longitude = location.longitude
+    #Getting current location
+    if location:
+        latitude = location['gps']['latitude']
+        longitude = location['gps']['longitude']
+        timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
 
-    return latitude, longitude
+        # Save the location to a CSV file
+        with open('location_log.csv', 'w', newline='') as csvfile:
+            csv_writer = csv.writer(csvfile)
+            csv_writer.writerow([timestamp, latitude, longitude])
+        
+        print('Location saved successfully.')
+        
+    else:
+        print('Unable to get location.')
 
-def save_location_to_csv(latitude, longitude):
-    # Get current date and time
-    now = datetime.datetime.now()
-
-    # Open the CSV file in append mode and write the data
-    with open("phone_location.csv", "a", newline="") as file:
-        writer = csv.writer(file)
-        writer.writerow([now, latitude, longitude])
-
-if __name__ == "__main__":
-    try:
-        latitude, longitude = get_location()
-        save_location_to_csv(latitude, longitude)
-        print("Location saved to CSV successfully.")
-    except Exception as e:
-        print("Error occurred while getting or saving location:", e)
+if __name__ == '__main__':
+    get_and_save_location()
