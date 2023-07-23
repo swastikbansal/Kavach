@@ -254,11 +254,27 @@ ScreenManager :
 
         BoxLayout:
             TextInput :
-                id : Contact_Input
-                multiline : False
-                size_hint : .6,1   
-                on_text_validate : 
-                    root.numberTextValidate(self)
+                disabled : True
+                size_hint : .5,None
+                height : "40dp"
+                text : "Contact Name"
+                text_allignment : "centre"
+            
+            TextInput :
+                disabled : True
+                size_hint : .5,None
+                height : "40dp"
+                text : "Contact Number"
+                text_allignment : "centre"
+            
+        BoxLayout:
+            Label :
+                size_hint : .5,1
+                text : root.veiwName
+
+            Label :
+                size_hint : .5,1   
+                text : root.veiwNumber
 
 
 
