@@ -57,6 +57,9 @@ class ViewEmergencyContacts(Screen):
     def on_enter(self, *args):
         global name_list, number_list
 
+        # Clear any existing widgets from the set_BoxLayout
+        self.ids.set_BoxLayout.clear_widgets()
+
         # Loop through the name_list and number_list to create individual labels
         for name, number in zip(name_list, number_list):
             name_label_text = f"{name}"
@@ -70,21 +73,36 @@ class ViewEmergencyContacts(Screen):
             set_BoxLayout.add_widget(number_label)
             self.ids.set_BoxLayout.add_widget(set_BoxLayout)
 
+
 class DeleteEmergencyContacts(Screen):
+    def onActiveCheckbox(self, checkbox, value, name, number):
+        if value:
+            # If the checkbox is checked, add the name and number to the deleteList
+            self.deleteList.append([name, number])
+        else:
+            # If the checkbox is unchecked, remove the name and number from the deleteList
+            self.deleteList.remove([name, number])
+
     def on_enter(self, *args):
         global name_list, number_list
 
+        # Initialize deleteList as an empty list
+        self.deleteList = []
+
+        # Clear any existing widgets from the set_BoxLayout
+        self.ids.set_BoxLayout.clear_widgets()
+
         # Loop through the name_list and number_list to create individual labels
         for name, number in zip(name_list, number_list):
-            deleteList = []
-            
             name_label_text = f"{name}"
             number_label_text = f"{number}"
             
             set_BoxLayout = BoxLayout(size_hint_y=None, height="40dp")
-            name_label = Label(text=name_label_text, size_hint=(.5, None), height="40dp",font_size = 25)
-            number_label = Label(text=number_label_text, size_hint=(.5, None), height="40dp",font_size = 25)
-            checkbox = CheckBox(on_active = deleteList.append([name,number]))
+            name_label = Label(text=name_label_text, size_hint=(.45, None), height="40dp", font_size=25)
+            number_label = Label(text=number_label_text, size_hint=(.45, None), height="40dp", font_size=25)
+
+            checkbox = CheckBox(size_hint=(.1, None), height="40dp")
+            checkbox.bind(active=lambda checkbox, value, name=name, number=number: self.onActiveCheckbox(checkbox, value, name, number))
 
             set_BoxLayout.add_widget(checkbox)
             set_BoxLayout.add_widget(name_label)
@@ -92,7 +110,15 @@ class DeleteEmergencyContacts(Screen):
             
             self.ids.set_BoxLayout.add_widget(set_BoxLayout)
 
-class EditEmergencyContacts():
+    def deleteContacts(self):
+        print(self.deleteList)
+        contacts.deleteFile(self.deleteList)
+
+
+
+
+#Edit Window Class for 
+class EditEmergencyContacts(Screen):
     pass
 
 #Screen Manager class for managing multiple Classes

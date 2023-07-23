@@ -284,7 +284,7 @@ ScreenManager :
     BoxLayout:
         orientation: "vertical"
 
-       # Top Frame
+        # Top Frame
         BoxLayout:
             size_hint : 1,.2
     
@@ -329,3 +329,9 @@ ScreenManager :
                 size_hint_y: None
                 height: self.minimum_height
 
+        Button:
+            text: "Delete"
+            on_release :
+                root.deleteContacts()
+                app.root.current = "Contacts_Menu"
+                root.manager.transition.direction = "right"

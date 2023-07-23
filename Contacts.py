@@ -1,4 +1,5 @@
 import csv
+from itertools import cycle
 
 # CSV File Class
 class Contacts:
@@ -30,9 +31,13 @@ class Contacts:
     def deleteFile(self,deleteData):
         orgData = self.readFile()
 
+        #Using cycle function to iterate through objects
+        data = cycle(deleteData)
+
         for row in orgData:
-            if deleteData in orgData:
-                orgData.remove(deleteData)
+            nextData = next(data) 
+            if nextData in orgData:
+                orgData.remove(nextData)
         
         while True:
             #Removing Contacts
