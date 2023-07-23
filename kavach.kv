@@ -13,7 +13,7 @@ ScreenManager :
     BoxLayout:
         orientation:"vertical"
 
-        #emergency Button
+        #Emergency Button
         Button:
             text: "KAVACH"
             # size: , 
@@ -86,6 +86,7 @@ ScreenManager :
         orientation: "vertical"
 
         BoxLayout:
+            #Back Button
             Button:
                 text: "Back"
                 size_hint : .2,1
@@ -97,12 +98,14 @@ ScreenManager :
                 text : "Kavach"
                 font_size : 40
 
+        #Add Button
         Button : 
             text : "Add"
             on_release : 
                 app.root.current = "Add_Contacts"
                 root.manager.transition.direction = "left"
         
+        #Veiw button 
         Button : 
             text : "View"
             on_release : 
@@ -110,7 +113,7 @@ ScreenManager :
                 root.manager.transition.direction = "left"
                 root.veiwButton()
         
-        
+        #Delete Button
         Button : 
             text : "Delete"
 
@@ -123,6 +126,7 @@ ScreenManager :
 
         #Top Frame
         BoxLayout:
+            #Back Button
             Button:
                 text: "Back"
                 size_hint : .2,1
@@ -167,11 +171,11 @@ ScreenManager :
                     
 
 
-        #Adding Contacts to CSV File
+        #Add Button for adding Contacts to CSV File
         Button:
             text: "Add Contact"
             on_release : 
-                root.writeContact(Name_Input,Contact_Input)
+                root.addContactButton(Name_Input,Contact_Input)
                 app.root.current = "Contacts_Menu"
                 root.manager.transition.direction = "right"
 
@@ -183,6 +187,7 @@ ScreenManager :
 
         #Top Frame
         BoxLayout:
+            #Back Button
             Button:
                 text: "Back"
                 size_hint : .2,1
@@ -231,6 +236,7 @@ ScreenManager :
 
         #Top Frame
         BoxLayout:
+            #Back Button
             Button:
                 text: "Back"
                 size_hint : .2,1
