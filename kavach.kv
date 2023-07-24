@@ -6,6 +6,7 @@ ScreenManager :
     AddEmergencyContacts:
     ViewEmergencyContacts:
     EditEmergencyContacts:
+    UpdateContactsData:
     DeleteEmergencyContacts:
     
 #Main GUI Win
@@ -129,7 +130,6 @@ ScreenManager :
                 root.manager.transition.direction = "left"
                 root.view()
         
-        
 
         #Delete Button
         Button : 
@@ -143,6 +143,7 @@ ScreenManager :
 #Add Emergency Contacts Window
 <AddEmergencyContacts>:
     name : "Add_Contacts"
+    id : addContacts
     BoxLayout:
         orientation: "vertical"
 
@@ -201,8 +202,7 @@ ScreenManager :
             text: "Add Contact"
             on_release : 
                 root.addContactButton(Name_Input,Contact_Input)
-                app.root.current = "Contacts_Menu"
-                root.manager.transition.direction = "right"
+                
 
 <ViewEmergencyContacts>:
     name: "View_Contacts"
@@ -261,11 +261,10 @@ ScreenManager :
     BoxLayout:
         orientation: "vertical"
 
-       # Top Frame
+        # Top Frame
         BoxLayout:
             size_hint : 1,.2
-             
-
+    
             Button:
                 text: "Back"
                 size_hint: .2, 1
@@ -277,6 +276,104 @@ ScreenManager :
                 size_hint: .8, 1
                 text: "Kavach"
                 font_size: 40
+
+        Label:
+            size_hint : 1,.2
+            # height : "130dp"
+            text: "Contacts"
+            font_size: 30
+
+        BoxLayout:
+            size_hint : 1,.6 
+            Label:
+                size_hint: .5, None
+                height: "40dp"
+                font_size : 32
+                text: "Contact Name"
+                text_allignment: "center"
+
+            Label:
+                size_hint: .5, None
+                height: "40dp"
+                font_size : 32
+                text: "Contact Number"
+                text_allignment: "center"
+
+        ScrollView:
+            BoxLayout:
+                id: set_BoxLayout
+                orientation: "vertical"
+                size_hint_y: None
+                height: self.minimum_height
+
+        Button:
+            text: "Next"
+            size_hint_y : .3
+            on_release :
+                root.updateContacts()
+                app.root.current = "Edit_Update_Contacts"
+                root.manager.transition.direction = "right"
+
+#GUI for procedding the update gui to next input taking
+<UpdateContactsData>:
+    name : "Edit_Update_Contacts"
+    BoxLayout:
+        orientation: "vertical"
+
+        # Top Frame
+        BoxLayout:
+            size_hint : 1,.2
+             
+
+            Button:
+                text: "Back"
+                size_hint: .2, 1
+                on_release: 
+                    app.root.current = "Edit_Contacts"
+                    root.manager.transition.direction = "right"
+
+            Label:
+                size_hint: .8, 1
+                text: "Kavach"
+                font_size: 40
+
+        Label :
+            text : "Update Contact Info"
+            font_size : 30
+        
+        #Name
+        BoxLayout:
+            Label :
+                text : "Name"
+                font_size : 30
+                size_hint : .4,1
+            
+            TextInput :
+                id : Name_Input 
+                multiline : False
+                size_hint : .6,1
+                on_text_validate : root.nameTextValidate(self)        
+        
+        #Contact Number 
+        BoxLayout:
+            Label :
+                text : "Number"
+                font_size : 30
+                size_hint : .4,1
+            
+            TextInput :
+                id : Contact_Input
+                multiline : False
+                size_hint : .6,1   
+                on_text_validate : 
+                    root.numberTextValidate(self)
+
+        #Add Button for adding Contacts to CSV File
+        Button:
+            text: "Upadate Contact"
+            on_release : 
+                root.updateContactButton(Name_Input,Contact_Input)
+
 
 #GUI for deleting Contacts
 <DeleteEmergencyContacts>:
@@ -333,5 +430,4 @@ ScreenManager :
             text: "Delete"
             on_release :
                 root.deleteContacts()
-                app.root.current = "Contacts_Menu"
-                root.manager.transition.direction = "right"
+                

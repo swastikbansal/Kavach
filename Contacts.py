@@ -51,28 +51,38 @@ class Contacts:
         with open("EmergencyContacts.csv", "w") as file : 
             writer = csv.writer(file)
             writer.writerows(orgData)
+        
+        #Function for updating contacts from csv file
+    def updateFile(self,oldData,updatedData):
+        orgData = self.readFile()
+
+        print(orgData)
+
+        #Using cycle function to iterate through objects
+        iterOldData = cycle(oldData)
+        iterUpdateData = cycle(updatedData)
 
 
+        for row in orgData:
+            nextOldData = next(iterOldData) 
+            nextUpdateData = next(iterUpdateData)
 
+            if nextOldData in orgData:
+                orgData.remove(nextOldData)
+                orgData.append(nextUpdateData)
 
+        
+        while True:
+            #Removing Contacts
+            if [] in orgData:
+                orgData.remove([])
+            
+            #Deleting empty Lists
+            if [] not in orgData:
+                break
+        
+        print(orgData)
 
-
-    # if mobileNumber.isnumeric():
-    #     # Writing to CSV file
-    #     with CSVFileObject.file:
-    #         CSVFileObject.writeFile(contactsList)
-    #         print("Data Updated Successfully !")
-
-    #         print("Current Contacts in File\n", CSVFileObject.readFile())
-
-    #         # Asking user if he wants to add more contacts or not
-    #         choice = input("Do you want to add more contacts(y/n) : ")
-
-    #         if choice.lower() == "y":
-    #             continue
-
-    #         else:
-    #             break
-
-    # else:
-    #     print("Invalid Mobile number")
+        with open("EmergencyContacts.csv", "w") as file : 
+            writer = csv.writer(file)
+            writer.writerows(orgData)
