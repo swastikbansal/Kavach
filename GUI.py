@@ -7,7 +7,6 @@ from kivy.uix.checkbox import CheckBox
 from kivy.uix.togglebutton import ToggleButton
 from kivy.uix.button import Button
 from kivy.uix.boxlayout import BoxLayout
-
 from kivy.uix.popup import Popup
 from kivy.uix.screenmanager import Screen, ScreenManager
 
@@ -15,7 +14,7 @@ from kivy.uix.screenmanager import Screen, ScreenManager
 import Contacts
 
 #PopUp Box configuration Fucntion
-def popupErrorMsg(msg):
+def popupMsg(msg):
     # Create a BoxLayout to hold the error message and the button
         box_layout = BoxLayout(orientation='vertical')
         label = Label(text=f'{msg}')
@@ -56,7 +55,6 @@ class EmergencyContacts(Screen):
 
 #Add Contacts Class for GUI
 class AddEmergencyContacts(Screen):
-
     #Functions for Updating Data on Text Validation
     def nameTextValidate(self,Widget):
         self.addName = Widget.text 
@@ -72,10 +70,11 @@ class AddEmergencyContacts(Screen):
 
         #If number entered is not valid
         if not self.addNumber.isdigit() or len(self.addNumber) != 10:
-            popupErrorMsg("Enter a valid number.")
+            popupMsg("Enter a valid number.")
         
         #If Data entered is correct
         else:
+            popupMsg("Contact added Successfully.")
             contacts.writeFile(self.addName, self.addNumber)
             self.manager.current = "Contacts_Menu"
             self.manager.transition.direction = "right"
@@ -85,8 +84,6 @@ class ViewEmergencyContacts(Screen):
     
     def on_enter(self, *args):
         global name_list, number_list
-
-
 
         # Clear any existing widgets from the set_BoxLayout
         self.ids.set_BoxLayout.clear_widgets()
@@ -155,13 +152,16 @@ class ViewEmergencyContacts(Screen):
     #     print(self.deleteList)
     #     contacts.deleteFile(self.deleteList)
 
-class EditEmergencyContacts(Screen):
-    def onActiveToggleButton(self, togglebutton,value, name, number):
-        if value == "down":
-            # If the toggle button is activated (selected), enable the text input boxes and update the editContact with the selected optio
-            self.editContact = [name, number]
 
-        print(self.editContact)
+       
+class EditEmergencyContacts(Screen):
+    def onActiveToggleButton(self, togglebutton, value, name, number):
+        global edit_contact
+        if value == "down":
+            # If the toggle button is activated (selected), enable the text input boxes and update the editContact with the selected option
+            self.editContact = [[name, number]]
+        edit_contact = self.editContact
+        
 
     def on_enter(self, *args):
         global name_list, number_list
@@ -196,13 +196,29 @@ class EditEmergencyContacts(Screen):
         number_list.clear()
     
     def updateContacts(self):
-        # Clear any existing widgets from the set_BoxLayout
-        self.ids.set_BoxLayout.clear_widgets()
-        contacts.editContacts(self.editContact)
+       if self.editContact:
+           self.manager.current = "Edit_Update_Contacts"  # Change this to the appropriate name for the AddUpdateEmergencyContacts screen
+           self.manager.transition.direction = "right"
+           
+class UpdateContactsData(Screen):
+    global edit_contact
+    #Updating data on pressing of Button
+    def updateContactButton(self,nameInput,numberInput):
+        #Reading Input from both the text Box 
+        self.addName = nameInput.text 
+        self.addNumber = numberInput.text 
 
-
-
-
+        #If number entered is not valid
+        if not self.addNumber.isdigit() or len(self.addNumber) != 10:
+            popupMsg("Enter a valid number.")
+        
+        #If Data entered is correct
+        else:
+            updateData = [[self.addName,self.addNumber]] 
+            popupMsg("Contact updated Successfully.")
+            contacts.updateFile(edit_contact, updateData)
+            self.manager.current = "Contacts_Menu"
+            self.manager.transition.direction = "right"
 
 class DeleteEmergencyContacts(Screen):
     def onActiveCheckbox(self, checkbox, value, name, number):
@@ -250,9 +266,6 @@ class DeleteEmergencyContacts(Screen):
         contacts.deleteFile(self.deleteList)
 
     
-
-
-
 #Screen Manager class for managing multiple Classes
 class ScreenManager(ScreenManager):
     pass
@@ -269,5 +282,6 @@ if __name__ == "__main__":
     #Global Variables
     name_list = []
     number_list = []
+    edit_contact = []
 
     KavachApp().run()

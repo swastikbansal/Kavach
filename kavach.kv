@@ -6,6 +6,7 @@ ScreenManager :
     AddEmergencyContacts:
     ViewEmergencyContacts:
     EditEmergencyContacts:
+    UpdateContactsData:
     DeleteEmergencyContacts:
     
 #Main GUI Win
@@ -128,7 +129,6 @@ ScreenManager :
                 app.root.current = "Edit_Contacts"
                 root.manager.transition.direction = "left"
                 root.view()
-        
         
 
         #Delete Button
@@ -307,12 +307,73 @@ ScreenManager :
                 height: self.minimum_height
 
         Button:
-            text: "Update"
+            text: "Next"
             size_hint_y : .3
             on_release :
                 root.updateContacts()
-                app.root.current = "Contacts_Menu"
+                app.root.current = "Edit_Update_Contacts"
                 root.manager.transition.direction = "right"
+
+#GUI for procedding the update gui to next input taking
+<UpdateContactsData>:
+    name : "Edit_Update_Contacts"
+    BoxLayout:
+        orientation: "vertical"
+
+        # Top Frame
+        BoxLayout:
+            size_hint : 1,.2
+             
+
+            Button:
+                text: "Back"
+                size_hint: .2, 1
+                on_release: 
+                    app.root.current = "Edit_Contacts"
+                    root.manager.transition.direction = "right"
+
+            Label:
+                size_hint: .8, 1
+                text: "Kavach"
+                font_size: 40
+
+        Label :
+            text : "Update Contact Info"
+            font_size : 30
+        
+        #Name
+        BoxLayout:
+            Label :
+                text : "Name"
+                font_size : 30
+                size_hint : .4,1
+            
+            TextInput :
+                id : Name_Input 
+                multiline : False
+                size_hint : .6,1
+                on_text_validate : root.nameTextValidate(self)        
+        
+        #Contact Number 
+        BoxLayout:
+            Label :
+                text : "Number"
+                font_size : 30
+                size_hint : .4,1
+            
+            TextInput :
+                id : Contact_Input
+                multiline : False
+                size_hint : .6,1   
+                on_text_validate : 
+                    root.numberTextValidate(self)
+
+        #Add Button for adding Contacts to CSV File
+        Button:
+            text: "Upadate Contact"
+            on_release : 
+                root.updateContactButton(Name_Input,Contact_Input)
+
 
 #GUI for deleting Contacts
 <DeleteEmergencyContacts>:
