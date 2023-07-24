@@ -2,9 +2,12 @@
 from kivy.app import App
 from kivy.properties import StringProperty
 from kivy.uix.label import Label
+from kivy.uix.textinput import TextInput
 from kivy.uix.checkbox import CheckBox
+from kivy.uix.togglebutton import ToggleButton
 from kivy.uix.button import Button
 from kivy.uix.boxlayout import BoxLayout
+
 from kivy.uix.popup import Popup
 from kivy.uix.screenmanager import Screen, ScreenManager
 
@@ -14,21 +17,21 @@ import Contacts
 #PopUp Box configuration Fucntion
 def popupErrorMsg(msg):
     # Create a BoxLayout to hold the error message and the button
-            box_layout = BoxLayout(orientation='vertical')
-            label = Label(text=f'{msg}')
-            ok_button = Button(text='OK', size_hint=(1, None), height='40dp')
-            box_layout.add_widget(label)
-            box_layout.add_widget(ok_button)
+        box_layout = BoxLayout(orientation='vertical')
+        label = Label(text=f'{msg}')
+        ok_button = Button(text='OK', size_hint=(1, None), height='40dp')
+        box_layout.add_widget(label)
+        box_layout.add_widget(ok_button)
 
-            # Create and show the popup with the box_layout as the content
-            popup = Popup(title='Invalid Input',
-                          content=box_layout,
-                          size_hint=(None, None), size=(400, 200))
+        # Create and show the popup with the box_layout as the content
+        popup = Popup(title='Invalid Input',
+                        content=box_layout,
+                        size_hint=(None, None), size=(400, 200))
 
-            # Set the button's callback function to dismiss the popup when clicked
-            ok_button.bind(on_release=popup.dismiss)
+        # Set the button's callback function to dismiss the popup when clicked
+        ok_button.bind(on_release=popup.dismiss)
 
-            popup.open()
+        popup.open()
     
 
 # ---------------- GUI ---------------------
@@ -105,6 +108,101 @@ class ViewEmergencyContacts(Screen):
         name_list.clear()
         number_list.clear()
 
+#Edit Window Class for 
+# class EditEmergencyContacts(Screen):
+    # def onActiveCheckbox(self, checkbox, nameTextInput, numberTextInput, value, name, number):
+    #     if value:
+    #         # If the checkbox is checked, add the name and number to the deleteList
+    #         nameTextInput.disabled = False
+    #         self.deleteList.append([name, number])
+    #     else:
+    #         # If the checkbox is unchecked, remove the name and number from the deleteList
+    #         numberTextInput.disabled = False
+    #         self.deleteList.remove([name, number])
+
+    # def on_enter(self, *args):
+    #     global name_list, number_list
+
+    #     # Initialize deleteList as an empty list
+    #     self.deleteList = []
+
+    #     # Clear any existing widgets from the set_BoxLayout
+    #     self.ids.set_BoxLayout.clear_widgets()
+
+    #     # Loop through the name_list and number_list to create individual labels
+    #     for name, number in zip(name_list, number_list):
+    #         name_label_text = f"{name}"
+    #         number_label_text = f"{number}"
+            
+    #         set_BoxLayout = BoxLayout(size_hint_y=None, height="40dp")
+    #         self.name_textInput = TextInput(text=name_label_text, size_hint=(.45, None), height="40dp", font_size=25,disabled = True)
+    #         self.number_textInput = TextInput(text=number_label_text, size_hint=(.45, None), height="40dp", font_size=25,disabled = True)
+
+    #         checkbox = CheckBox(size_hint=(.1, None), height="40dp")
+    #         checkbox.bind(active=lambda checkbox, value, name=name, number=number: self.onActiveCheckbox(checkbox,self.name_textInput,self.number_textInput, value, name, number))
+
+    #         set_BoxLayout.add_widget(checkbox)
+    #         set_BoxLayout.add_widget(self.name_textInput)
+    #         set_BoxLayout.add_widget(self.number_textInput)
+            
+    #         self.ids.set_BoxLayout.add_widget(set_BoxLayout)
+        
+    #     #Clearing Lists so that the same data dosen't repeat
+    #     name_list.clear()
+    #     number_list.clear()
+    
+    # def updateContacts(self):
+    #     print(self.deleteList)
+    #     contacts.deleteFile(self.deleteList)
+
+class EditEmergencyContacts(Screen):
+    def onActiveToggleButton(self, togglebutton,value, name, number):
+        if value == "down":
+            # If the toggle button is activated (selected), enable the text input boxes and update the editContact with the selected optio
+            self.editContact = [name, number]
+
+        print(self.editContact)
+
+    def on_enter(self, *args):
+        global name_list, number_list
+
+        # Initialize editContact as None when no toggle button is selected
+        self.editContact = None
+
+        # Clear any existing widgets from the set_BoxLayout
+        self.ids.set_BoxLayout.clear_widgets()
+
+        # Loop through the name_list and number_list to create individual labels and toggle buttons
+        for name, number in zip(name_list, number_list):
+            name_label_text = f"{name}"
+            number_label_text = f"{number}"
+            
+            set_BoxLayout = BoxLayout(size_hint_y=None, height="40dp")
+            self.name_textInput = TextInput(text=name_label_text, size_hint=(.45, None), height="40dp", font_size=25, disabled=True)
+            self.number_textInput = TextInput(text=number_label_text, size_hint=(.45, None), height="40dp", font_size=25, disabled=True)
+
+            # Create toggle buttons with group name "contact_option" for mutually exclusive behavior
+            togglebutton = ToggleButton(group="contact_option", size_hint=(.1, None), height="40dp")
+            togglebutton.bind(state=lambda togglebutton, value, name=name, number=number: self.onActiveToggleButton(togglebutton, value, name, number))
+
+            set_BoxLayout.add_widget(togglebutton)
+            set_BoxLayout.add_widget(self.name_textInput)
+            set_BoxLayout.add_widget(self.number_textInput)
+            
+            self.ids.set_BoxLayout.add_widget(set_BoxLayout)
+        
+        # Clearing Lists so that the same data doesn't repeat
+        name_list.clear()
+        number_list.clear()
+    
+    def updateContacts(self):
+        # Clear any existing widgets from the set_BoxLayout
+        self.ids.set_BoxLayout.clear_widgets()
+        contacts.editContacts(self.editContact)
+
+
+
+
 
 class DeleteEmergencyContacts(Screen):
     def onActiveCheckbox(self, checkbox, value, name, number):
@@ -153,9 +251,6 @@ class DeleteEmergencyContacts(Screen):
 
     
 
-#Edit Window Class for 
-class EditEmergencyContacts(Screen):
-    pass
 
 
 #Screen Manager class for managing multiple Classes

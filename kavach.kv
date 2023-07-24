@@ -261,11 +261,10 @@ ScreenManager :
     BoxLayout:
         orientation: "vertical"
 
-       # Top Frame
+        # Top Frame
         BoxLayout:
             size_hint : 1,.2
-             
-
+    
             Button:
                 text: "Back"
                 size_hint: .2, 1
@@ -277,6 +276,43 @@ ScreenManager :
                 size_hint: .8, 1
                 text: "Kavach"
                 font_size: 40
+
+        Label:
+            size_hint : 1,.2
+            # height : "130dp"
+            text: "Contacts"
+            font_size: 30
+
+        BoxLayout:
+            size_hint : 1,.6 
+            Label:
+                size_hint: .5, None
+                height: "40dp"
+                font_size : 32
+                text: "Contact Name"
+                text_allignment: "center"
+
+            Label:
+                size_hint: .5, None
+                height: "40dp"
+                font_size : 32
+                text: "Contact Number"
+                text_allignment: "center"
+
+        ScrollView:
+            BoxLayout:
+                id: set_BoxLayout
+                orientation: "vertical"
+                size_hint_y: None
+                height: self.minimum_height
+
+        Button:
+            text: "Update"
+            size_hint_y : .3
+            on_release :
+                root.updateContacts()
+                app.root.current = "Contacts_Menu"
+                root.manager.transition.direction = "right"
 
 #GUI for deleting Contacts
 <DeleteEmergencyContacts>:
