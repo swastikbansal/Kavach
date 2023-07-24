@@ -15,6 +15,7 @@ class Contacts:
         with self.file:
             writer = csv.writer(self.file)
             writer.writerow(self.writeData)
+            self.file.close()
 
     # Function for reading data from file
     def readFile(self):
@@ -51,6 +52,7 @@ class Contacts:
         with open("EmergencyContacts.csv", "w") as file : 
             writer = csv.writer(file)
             writer.writerows(orgData)
+            self.file.close()
         
         #Function for updating contacts from csv file
     def updateFile(self,oldData,updatedData):
@@ -86,3 +88,4 @@ class Contacts:
         with open("EmergencyContacts.csv", "w") as file : 
             writer = csv.writer(file)
             writer.writerows(orgData)
+            self.file.close()
