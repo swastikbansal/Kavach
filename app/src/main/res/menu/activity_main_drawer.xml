@@ -16,5 +16,24 @@
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/menu_slideshow" />
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/baseline_settings_24"
+            android:title="@string/menu_home" />
+
+        <item
+            android:id="@+id/nav_tutorial"
+            android:icon="@drawable/baseline_accessibility_24"
+            android:title="@string/menu_tutorial" />
+
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/baseline_info_24"
+            android:title="@string/menu_about" />
+
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/baseline_logout_24"
+            android:title="@string/menu_logout" />
     </group>
 </menu>
