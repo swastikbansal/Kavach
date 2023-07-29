@@ -87,11 +87,10 @@ ScreenManager :
     BoxLayout:
         orientation: "vertical"
 
-        # Top Frame
+        #Top Frame
         BoxLayout:
             size_hint : 1,.2
              
-
             Button:
                 text: "Back"
                 size_hint: .2, 1
@@ -112,7 +111,7 @@ ScreenManager :
                 app.root.current = "Add_Contacts"
                 root.manager.transition.direction = "left"
         
-        #view button 
+        #View button 
         Button : 
             size_hint : 1,.2
             text : "View"
@@ -129,7 +128,6 @@ ScreenManager :
                 app.root.current = "Edit_Contacts"
                 root.manager.transition.direction = "left"
                 root.view()
-        
 
         #Delete Button
         Button : 
