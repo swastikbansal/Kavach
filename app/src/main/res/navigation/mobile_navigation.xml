@@ -22,4 +22,23 @@
         android:name="com.example.kavach.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.example.kavach.ui.settings.SettingsFragment"
+        android:label="@string/menu_settings"
+        tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/nav_tutorial"
+        android:name="com.example.kavach.ui.tutotrial.TutorialFragment"
+        android:label="@string/menu_tutorial"
+        tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/nav_about"
+        android:name="com.example.kavach.ui.about.AboutFragment"
+        android:label="@string/menu_about"
+        tools:layout="@layout/fragment_slideshow" />
+
 </navigation>
