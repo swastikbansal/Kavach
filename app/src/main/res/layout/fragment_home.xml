@@ -6,6 +6,54 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
+    <ImageButton
+        android:id="@+id/SOSButton"
+        android:layout_width="242dp"
+        android:layout_height="208dp"
+        android:layout_marginTop="60dp"
+        android:contentDescription="@string/sos_image"
+        android:src="@drawable/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/EmergencyContactButton"
+        android:layout_width="363dp"
+        android:layout_height="79dp"
+        android:layout_marginStart="24dp"
+        android:text="@string/emergency_contacts"
+        app:layout_constraintBottom_toTopOf="@+id/VoiceRecognitionButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SOSButton"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <Button
+        android:id="@+id/VoiceRecognitionButton"
+        android:layout_width="351dp"
+        android:layout_height="81dp"
+        android:text="@string/voice_recognition"
+        app:layout_constraintBottom_toTopOf="@+id/LockScreenButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EmergencyContactButton"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <Button
+        android:id="@+id/LockScreenButton"
+        android:layout_width="358dp"
+        android:layout_height="85dp"
+        android:text="@string/lock_screen"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/VoiceRecognitionButton"
+        app:layout_constraintVertical_bias="0.5" />
+
     <TextView
         android:id="@+id/text_home"
         android:layout_width="match_parent"
@@ -17,6 +65,8 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.494" />
 </androidx.constraintlayout.widget.ConstraintLayout>

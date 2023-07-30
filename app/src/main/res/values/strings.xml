@@ -15,4 +15,9 @@
     <string name="menu_about">About</string>
     <string name="menu_logout">Log Out</string>
 
+    <string name = "emregency_contacts">Emergency Contacts </string>
+    <string name="sos_image">SOS Image</string>
+    <string name="emergency_contacts">Emergency Contacts</string>
+    <string name="voice_recognition">Voice Recognition</string>
+    <string name="lock_screen">Lock Screen</string>
 </resources>
