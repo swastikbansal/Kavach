@@ -13,6 +13,21 @@
         android:theme="@style/Theme.Kavach"
         tools:targetApi="31">
         <activity
+            android:name=".LockScreen"
+            android:label="Lock Screen"
+            android:parentActivityName=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".VoiceRecognition"
+            android:label="Voice Recognition"
+            android:parentActivityName=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EmergencyContacts"
+            android:label="Emergency Contacts"
+            android:parentActivityName=".MainActivity"
+            android:exported="false"/>
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"

@@ -1,8 +1,11 @@
 package com.example.kavach;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
+import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -21,9 +24,21 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
 
+    //Button Variables
+    private ImageButton SOSButton;
+    private Button EmergencyContactsButton;
+    private Button VoiceRecognitionButton;
+    private Button LockScreenButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Finding Button by ID
+        SOSButton = findViewById(R.id.SOSButton);
+        EmergencyContactsButton = findViewById(R.id.EmergencyContactButton);
+        VoiceRecognitionButton = findViewById(R.id.VoiceRecognitionButton);
+        LockScreenButton = findViewById(R.id.LockScreenButton);
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -48,6 +63,21 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
     }
+
+    //Function For Opening Activities
+    public void EmergencyContactsActivity(View view){
+        Intent contactIntent = new Intent(this,EmergencyContacts.class);
+        startActivity(contactIntent);
+    }
+    public void VoiceRecogntionActivity(View view){
+        Intent contactIntent = new Intent(this,VoiceRecognition.class);
+        startActivity(contactIntent);
+    }
+    public void LockScreenActivity(View view){
+        Intent contactIntent = new Intent(this,LockScreen.class);
+        startActivity(contactIntent);
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
