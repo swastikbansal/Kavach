@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#1f2328"
     tools:context=".MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -30,7 +31,7 @@
         android:id="@+id/toolbar"
         android:layout_width="414dp"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
+        android:background="#282c34"
         app:layout_anchor="@+id/appBarLayout"
         app:layout_anchorGravity="center" />
 

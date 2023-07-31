@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#282c34"
     tools:context=".EmergencyContacts">
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#282c34"
         android:minHeight="48dp"
         android:text="Emergency Contacts"
         app:layout_constraintBottom_toBottomOf="parent"

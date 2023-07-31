@@ -4,17 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#1f2328"
     tools:context=".ui.home.HomeFragment">
 
     <ImageButton
         android:id="@+id/SOSButton"
-        android:layout_width="242dp"
-        android:layout_height="208dp"
-        android:layout_marginTop="60dp"
+        android:layout_width="303dp"
+        android:layout_height="294dp"
+        android:layout_marginTop="48dp"
         android:contentDescription="@string/sos_image"
-        android:src="@drawable/logo"
+        android:src="@drawable/logo6"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -65,7 +65,8 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:textAlignment="center"
-        android:textSize="20sp"
+        android:textColor="#282C34"
+        android:textSize="8sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
