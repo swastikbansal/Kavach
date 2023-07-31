@@ -12,33 +12,21 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.kavach.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
-
-    <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.kavach.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
-
-    <fragment
         android:id="@+id/nav_settings"
         android:name="com.example.kavach.ui.settings.SettingsFragment"
         android:label="@string/menu_settings"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_settings" />
 
     <fragment
         android:id="@+id/nav_tutorial"
         android:name="com.example.kavach.ui.tutotrial.TutorialFragment"
         android:label="@string/menu_tutorial"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_tutorial" />
 
     <fragment
         android:id="@+id/nav_about"
         android:name="com.example.kavach.ui.about.AboutFragment"
         android:label="@string/menu_about"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_about" />
 
 </navigation>
