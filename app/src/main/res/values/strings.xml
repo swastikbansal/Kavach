@@ -20,4 +20,5 @@
     <string name="emergency_contacts">Emergency Contacts</string>
     <string name="voice_recognition">Voice Recognition</string>
     <string name="lock_screen">Lock Screen</string>
+    <string name="todo">TODO</string>
 </resources>
