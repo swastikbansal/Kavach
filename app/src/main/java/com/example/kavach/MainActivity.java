@@ -1,15 +1,24 @@
 package com.example.kavach;
 
+import android.Manifest;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -18,6 +27,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.kavach.databinding.ActivityMainBinding;
+
+import java.security.Permission;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,17 +42,18 @@ public class MainActivity extends AppCompatActivity {
     private Button EmergencyContactsButton;
     private Button VoiceRecognitionButton;
     private Button LockScreenButton;
+    private static final int PERMISSION_REQUEST_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         //Finding Button by ID
         SOSButton = findViewById(R.id.SOSButton);
         EmergencyContactsButton = findViewById(R.id.EmergencyContactButton);
         VoiceRecognitionButton = findViewById(R.id.VoiceRecognitionButton);
         LockScreenButton = findViewById(R.id.LockScreenButton);
 
+        //Navigation Layout Code
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -56,26 +70,110 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_settings,R.id.nav_tutorial,R.id.nav_about)
+                R.id.nav_home, R.id.nav_settings, R.id.nav_tutorial, R.id.nav_about)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        // ---------------------------------- Permissions ------------------------------------
+        // Define the list of permissions to be requested
+        String[] permissions = {
+                Manifest.permission.READ_CONTACTS,
+                Manifest.permission.WRITE_CONTACTS,
+                Manifest.permission.RECORD_AUDIO,
+                Manifest.permission.SEND_SMS,
+                Manifest.permission.CAMERA,
+                Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_BACKGROUND_LOCATION
+        };
+
+        // Check if all permissions are granted
+        if (checkPermissions(permissions)) {
+
+        } else {
+            // Some permissions are not granted, request them
+            requestPermissions(permissions);
+        }
     }
 
-    //Function For Opening Activities
+    //Checking for permissions
+    private boolean checkPermissions(String[] permissions) {
+        for (String permission : permissions) {
+            if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    //Requesting Permissions
+    private void requestPermissions(String[] permissions) {
+        List<String> permissionsToRequest = new ArrayList<>();
+
+        for (String permission : permissions) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, permission)) {
+                // Add explanation here if needed before requesting permission
+            } else {
+                permissionsToRequest.add(permission);
+            }
+        }
+
+        if (!permissionsToRequest.isEmpty()) {
+            ActivityCompat.requestPermissions(this, permissionsToRequest.toArray(new String[0]), PERMISSION_REQUEST_CODE);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            boolean allPermissionsGranted = true;
+
+            // Check if all permissions are granted
+            for (int grantResult : grantResults) {
+                if (grantResult != PackageManager.PERMISSION_GRANTED) {
+                    allPermissionsGranted = false;
+                    break;
+                }
+            }
+
+            if (allPermissionsGranted) {
+                Toast.makeText(this, "Permission Granted", Toast.LENGTH_SHORT).show();
+
+            } else {
+//                Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        else {
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+
+    }
+
+    //------------------------------------- Function For Opening Activities -------------------------------------------
+
+    //Emeregency Contacts Activity
     public void EmergencyContactsActivity(View view){
+        //Checking for contact permission
         Intent contactIntent = new Intent(this,EmergencyContacts.class);
         startActivity(contactIntent);
     }
+
     public void VoiceRecogntionActivity(View view){
         Intent contactIntent = new Intent(this,VoiceRecognition.class);
         startActivity(contactIntent);
     }
+
     public void LockScreenActivity(View view){
         Intent contactIntent = new Intent(this,LockScreen.class);
         startActivity(contactIntent);
+    }
+
+    public void SOS(View view){
+        Toast.makeText(this, "SOS", Toast.LENGTH_SHORT).show();
     }
 
 
@@ -92,4 +190,6 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+    // Creates a button that mimics a crash when pressed
+
 }
