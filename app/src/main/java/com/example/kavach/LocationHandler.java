@@ -68,6 +68,7 @@ public class LocationHandler {
                                         locationListener.onLocationChanged(latitude, longitude);
                                         userLocation +=  latitude+","+longitude;
                                         Log.d("Location", userLocation);
+
                                     }
                                 }
                             }, Looper.getMainLooper());
