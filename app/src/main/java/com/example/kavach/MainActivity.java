@@ -12,6 +12,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import android.location.Location;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -28,7 +29,7 @@ import com.google.android.material.snackbar.Snackbar;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements LocationHandler.LocationListener {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
@@ -39,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
     private Button VoiceRecognitionButton;
     private Button LockScreenButton;
     private static final int PERMISSION_REQUEST_CODE = 1;
+    private SmsHandler smsHandler;
 
-    SmsHandler smsHandler = new SmsHandler(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +75,8 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+
 
         // ---------------------------------- Permissions ------------------------------------
         // Define the list of permissions to be requested
@@ -172,10 +175,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void SOS(View view){
+        LocationHandler locationHandler = new LocationHandler(this, this);
         Toast.makeText(this, "SOS", Toast.LENGTH_SHORT).show();
-        String phoneNumber = "";
+        //SmsHandler smsHandler = new SmsHandler(this);
+        String phoneNumber = "7024069004";
         String message = "Hello, this is a test SMS!";
-        smsHandler.sendSms(phoneNumber, message);
+        //smsHandler.sendSms(phoneNumber, message);
+        // Request current location when SOS button is pressed
+        locationHandler.getCurrentLocation();
     }
 
 
@@ -192,6 +199,18 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-    // Creates a button that mimics a crash when pressed
+
+    @Override
+    public void onLocationChanged(double latitude, double longitude) {
+
+    }
+
+    // Implement LocationListener interface method to get the current location
+    @Override
+    public void onLocationChanged(Location location) {
+        double latitude = location.getLatitude();
+        double longitude = location.getLongitude();
+
+    }
 
 }

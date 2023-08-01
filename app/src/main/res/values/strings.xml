@@ -21,4 +21,12 @@
     <string name="voice_recognition">Voice Recognition</string>
     <string name="lock_screen">Lock Screen</string>
     <string name="todo">TODO</string>
+
+    <string-array name="spinner_items">
+        <item>milf</item>
+        <item>asian</item>
+        <item>threesome</item>
+        <item>"redhead"</item>
+    </string-array>
+
 </resources>

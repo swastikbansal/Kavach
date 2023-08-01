@@ -13,6 +13,7 @@
         android:layout_height="294dp"
         android:layout_marginTop="48dp"
         android:contentDescription="@string/sos_image"
+        android:onClick="SOS"
         android:src="@drawable/logo6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
