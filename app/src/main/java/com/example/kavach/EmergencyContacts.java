@@ -9,8 +9,11 @@ import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,16 +24,40 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import pl.droidsonroids.gif.GifImageView;
+
 public class EmergencyContacts extends AppCompatActivity {
 
     private static final int REQUEST_SELECT_CONTACT = 1;
     private ContactAdapter contactAdapter;
     private ContactDatabaseHelper databaseHelper;
 
+    //Hooks
+    TextView head;
+    ImageView icon;
+    GifImageView gifimg;
+
+    //Animations
+    Animation titleAnimation , gifAnimation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emergency_contacts);
+
+        //Assigning animation variable
+        titleAnimation = AnimationUtils.loadAnimation(this ,R.anim.title_animation);
+        gifAnimation = AnimationUtils.loadAnimation(this ,R.anim.gif_animation);
+
+        //Hooks
+        icon = findViewById(R.id.imageView4);
+        head = findViewById(R.id.textView5);
+        gifimg = findViewById(R.id.gifImageView);
+
+        //Setting Animation
+        icon.setAnimation(titleAnimation);
+        head.setAnimation(titleAnimation);
+        gifimg.setAnimation(gifAnimation);
 
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

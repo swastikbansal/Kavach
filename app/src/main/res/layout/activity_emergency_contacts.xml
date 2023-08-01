@@ -7,23 +7,11 @@
     android:background="#282c34"
     tools:context=".EmergencyContacts">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
-        android:layout_width="306dp"
-        android:layout_height="532dp"
-        android:layout_marginTop="40dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_select_contacts"
-        app:layout_constraintVertical_bias="0.5" />
-
     <Button
         android:id="@+id/btn_select_contacts"
         android:layout_width="300dp"
         android:layout_height="60dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="450dp"
         android:background="@drawable/custom_button"
         android:onClick="onSelectContactsClick"
         android:text="Select Contacts"
@@ -35,5 +23,63 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="88dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="241dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.049"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.097"
+        app:srcCompat="@drawable/coimg" />
+
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="346dp"
+        android:layout_height="60dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="Emergency Contacts"
+        android:textAlignment="center"
+        android:textColor="#F8F5F5"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.877"
+        app:layout_constraintStart_toStartOf="@+id/imageView4"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.088" />
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/gifImageView"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginTop="240dp"
+        android:layout_marginBottom="12dp"
+        android:src="@drawable/contacts1"
+        app:layout_constraintBottom_toTopOf="@+id/btn_select_contacts"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.848" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="400dp"
+        android:layout_height="532dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_select_contacts"
+        app:layout_constraintVertical_bias="0.5" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
