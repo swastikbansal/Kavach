@@ -67,9 +67,12 @@ public class LocationHandler {
                                         double longitude = locationResult.getLocations().get(index).getLongitude();
                                         locationListener.onLocationChanged(latitude, longitude);
                                         userLocation = userLocation +  latitude+","+longitude;
-                                        Log.d("Location", userLocation);
+                                        Log.d("SMS", userLocation);
 
+                                        // Create an instance of SmsHandler and call sendSMS() on that instance
+                                        SmsHandler.handleLocationData(context, latitude, longitude);
                                     }
+
                                 }
                             }, Looper.getMainLooper());
                 } else {
@@ -117,4 +120,3 @@ public class LocationHandler {
         return locationManager != null && locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
     }
 }
-
