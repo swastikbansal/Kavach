@@ -1,5 +1,7 @@
 package com.example.kavach;
 
+import android.util.Log;
+
 public class ContactInfo {
     private int id; // Unique ID for each contact
     private String name;
@@ -8,12 +10,14 @@ public class ContactInfo {
     public ContactInfo(String name, String number) {
         this.name = name;
         this.number = number;
+        Log.d("SMS", "ContactInfo: \n" + "Name : " + this.name + "\nNumber : " + this.number);
     }
 
     public ContactInfo(int id, String name, String number) {
         this.id = id;
         this.name = name;
         this.number = number;
+
     }
 
     // Add getters and setters

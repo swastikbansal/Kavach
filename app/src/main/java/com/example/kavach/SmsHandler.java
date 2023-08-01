@@ -17,7 +17,7 @@ public class SmsHandler {
         try {
           //  String phoneNumber = getSavedEmergencyContactNumber(); // Retrieve the saved emergency contact number
             SmsManager smsManager = SmsManager.getDefault();
-            smsManager.sendTextMessage("7024069004", null, "Emergency SMS LOCATION : https://www.google.com/maps?q="+userLocation, null, null);
+            smsManager.sendTextMessage("7024084997", null, "Emergency SMS LOCATION : https://www.google.com/maps?q="+userLocation, null, null);
             Toast.makeText(context, "Emergency SMS sent!", Toast.LENGTH_SHORT).show();
         } catch (Exception ex) {
             // Handle SMS sending failure
