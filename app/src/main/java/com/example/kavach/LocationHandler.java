@@ -66,7 +66,7 @@ public class LocationHandler {
                                         double latitude = locationResult.getLocations().get(index).getLatitude();
                                         double longitude = locationResult.getLocations().get(index).getLongitude();
                                         locationListener.onLocationChanged(latitude, longitude);
-                                        userLocation +=  latitude+","+longitude;
+                                        userLocation = userLocation +  latitude+","+longitude;
                                         Log.d("Location", userLocation);
                                     }
                                 }
