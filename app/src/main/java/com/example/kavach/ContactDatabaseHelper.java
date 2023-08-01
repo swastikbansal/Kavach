@@ -6,6 +6,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,7 +66,14 @@ public class ContactDatabaseHelper extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
             cursor.close();
         }
+        for (ContactInfo contact : contacts) {
+            Log.d("SMS", "ID: " + contact.getId());
+            Log.d("SMS", "Name: " + contact.getName());
+            Log.d("SMS", "Number: " + contact.getNumber());
+        }
         db.close();
+
+
         return contacts;
     }
 

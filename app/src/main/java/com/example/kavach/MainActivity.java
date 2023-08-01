@@ -178,8 +178,6 @@ public class MainActivity extends AppCompatActivity implements LocationHandler.L
         LocationHandler locationHandler = new LocationHandler(this, this);
         Toast.makeText(this, "SOS", Toast.LENGTH_SHORT).show();
         //SmsHandler smsHandler = new SmsHandler(this);
-        String phoneNumber = "7024069004";
-        String message = "Hello, this is a test SMS!";
         //smsHandler.sendSms(phoneNumber, message);
         // Request current location when SOS button is pressed
         locationHandler.getCurrentLocation();
