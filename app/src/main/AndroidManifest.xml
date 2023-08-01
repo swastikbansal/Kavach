@@ -1,32 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
     <!-- ______________________ Requesting for Permissions ______________________________ -->
-    <!-- MIC  -->
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-
-    <!--  SMS  -->
-    <uses-permission android:name="android.permission.SEND_SMS" />
-
-    <!-- Contacts -->
-    <uses-permission android:name="android.permission.READ_CONTACTS"/>
-    <!--    <uses-permission android:name="android.permission.WRITE_CONTACTS" />-->
-
+    <!-- MIC -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" /> <!-- SMS -->
+    <uses-permission android:name="android.permission.SEND_SMS" /> <!-- Contacts -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" /> <!-- <uses-permission android:name="android.permission.WRITE_CONTACTS" /> -->
     <!-- Camera -->
-    <uses-permission android:name="android.permission.CAMERA"/>
-
-    <!-- Location Permission -->
+    <uses-permission android:name="android.permission.CAMERA" /> <!-- Location Permission -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
-    <uses-permission android:name="android.permission.INTERNET"/>
-
-    <!-- _______________________ Adding uses-feature tag for hardware _______________________ -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- _______________________ Adding uses-feature tag for hardware _______________________ -->
     <uses-feature
         android:name="android.hardware.telephony"
         android:required="false" />
-    <uses-feature android:name="android.hardware.camera"
+    <uses-feature
+        android:name="android.hardware.camera"
         android:required="false" />
 
     <application
@@ -39,23 +29,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Kavach"
         tools:targetApi="31">
-
+        <activity
+            android:name=".item_contact"
+            android:exported="false" />
         <activity
             android:name=".LockScreen"
+            android:exported="false"
             android:label="Lock Screen"
-            android:parentActivityName=".MainActivity"
-            android:exported="false" />
-
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".VoiceRecognition"
+            android:exported="false"
             android:label="Voice Recognition"
-            android:parentActivityName=".MainActivity"
-            android:exported="false" />
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".EmergencyContacts"
+            android:exported="false"
             android:label="Emergency Contacts"
-            android:parentActivityName=".MainActivity"
-            android:exported="false"/>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
