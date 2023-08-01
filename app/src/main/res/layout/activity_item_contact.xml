@@ -3,29 +3,39 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="8dp">
+    android:background="#282c34"
+    android:padding="10dp">
+
 
     <TextView
         android:id="@+id/contact_name"
-        android:layout_width="284dp"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
+        android:padding="2dp"
+        android:textAllCaps="false"
+        android:textSize="24sp"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/contact_number"
-        android:layout_width="284dp"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
-        android:textSize="14sp" />
+        android:padding="2dp"
+        android:textAllCaps="false"
+        android:textSize="24sp" />
 
     <Button
         android:id="@+id/btn_remove_contact"
-        android:layout_width="78dp"
-        android:layout_height="32dp"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
         android:layout_gravity="end"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/custom_button"
         android:onClick="onRemoveContactClick"
         android:text="Remove"
-        android:textSize="8sp" />
+        android:textAllCaps="false"
+        android:textColor="#F9F8F5"
+        android:textSize="16sp" />
+
 
 </LinearLayout>
