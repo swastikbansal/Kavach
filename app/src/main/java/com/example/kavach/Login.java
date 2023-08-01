@@ -32,7 +32,7 @@ public class Login extends AppCompatActivity {
                 startActivity(intent);
                 finish();
                 }
-        }, 2000 );
+        }, 1500 );
 
         //Animations
         topAnim = AnimationUtils.loadAnimation(this, R.anim.top_animation);
