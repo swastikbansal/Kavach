@@ -36,7 +36,7 @@ public class LocationHandler {
         void onLocationChanged(Location location);
     }
 
-    String userLocation;
+    String userLocation = "https://www.google.com/maps?q=";
     private LocationRequest locationRequest;
     private Context context;
     private LocationListener locationListener;
@@ -66,8 +66,8 @@ public class LocationHandler {
                                         double latitude = locationResult.getLocations().get(index).getLatitude();
                                         double longitude = locationResult.getLocations().get(index).getLongitude();
                                         locationListener.onLocationChanged(latitude, longitude);
-                                        userLocation = "";
-                                        Log.d("Location", latitude + " "+ longitude);
+                                        userLocation += latitude+","+longitude;
+                                        Log.d("Location", userLocation);
                                     }
                                 }
                             }, Looper.getMainLooper());
