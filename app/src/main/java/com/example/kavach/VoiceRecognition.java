@@ -93,8 +93,6 @@ public class VoiceRecognition extends AppCompatActivity {
             if (result != null && result.size() > 0) {
                 // Process the recognized speech result
                 String recognizedText = result.get(0);
-
-
             }
         }
     }
