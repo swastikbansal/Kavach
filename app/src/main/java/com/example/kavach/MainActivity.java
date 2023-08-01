@@ -1,34 +1,30 @@
 package com.example.kavach;
 
+
 import android.Manifest;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.view.Menu;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.navigation.NavigationView;
-
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.kavach.databinding.ActivityMainBinding;
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 
-import java.security.Permission;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
     private Button VoiceRecognitionButton;
     private Button LockScreenButton;
     private static final int PERMISSION_REQUEST_CODE = 1;
+
+    SmsHandler smsHandler = new SmsHandler(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,7 +91,8 @@ public class MainActivity extends AppCompatActivity {
         // Check if all permissions are granted
         if (checkPermissions(permissions)) {
 
-        } else {
+        }
+        else {
             // Some permissions are not granted, request them
             requestPermissions(permissions);
         }
@@ -174,6 +173,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void SOS(View view){
         Toast.makeText(this, "SOS", Toast.LENGTH_SHORT).show();
+        String phoneNumber = "";
+        String message = "Hello, this is a test SMS!";
+        smsHandler.sendSms(phoneNumber, message);
     }
 
 
