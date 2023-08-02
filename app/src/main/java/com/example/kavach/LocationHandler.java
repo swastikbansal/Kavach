@@ -36,11 +36,13 @@ public class LocationHandler {
         void onLocationChanged(Location location);
     }
 
-    String userLocation = "https://www.google.com/maps?q=";
+
+    String userLocationMsg = "Location : https://www.google.com/maps?q=";
     private LocationRequest locationRequest;
     private Context context;
     private LocationListener locationListener;
 
+    //Function for Handling Location
     public LocationHandler(Context context, LocationListener listener) {
         this.context = context;
         this.locationListener = listener;
@@ -50,40 +52,57 @@ public class LocationHandler {
         locationRequest.setFastestInterval(2000);
     }
 
+    //Function for getting Current Location
     public void getCurrentLocation() {
+
+        //Checking for Location Permission
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+
+                //Checking if GPS is enabled
                 if (isGPSEnabled()) {
                     LocationServices.getFusedLocationProviderClient(context)
-                            .requestLocationUpdates(locationRequest, new LocationCallback() {
-                                @Override
-                                public void onLocationResult(@NonNull LocationResult locationResult) {
-                                    super.onLocationResult(locationResult);
-                                    LocationServices.getFusedLocationProviderClient(context)
-                                            .removeLocationUpdates(this);
-                                    if (locationResult != null && locationResult.getLocations().size() > 0) {
-                                        int index = locationResult.getLocations().size() - 1;
-                                        double latitude = locationResult.getLocations().get(index).getLatitude();
-                                        double longitude = locationResult.getLocations().get(index).getLongitude();
-                                        locationListener.onLocationChanged(latitude, longitude);
-                                        userLocation = userLocation +  latitude+","+longitude;
-                                        Log.d("SMS", userLocation);
+                        .requestLocationUpdates(locationRequest, new LocationCallback() {
 
-                                        // Create an instance of SmsHandler and call sendSMS() on that instance
-                                        SmsHandler.handleLocationData(context, latitude, longitude);
-                                    }
+                            @Override
+                            public void onLocationResult(@NonNull LocationResult locationResult) {
+                                super.onLocationResult(locationResult);
+                                LocationServices.getFusedLocationProviderClient(context)
+                                        .removeLocationUpdates(this);
 
+                                //Getting Current Location
+                                if (locationResult != null && locationResult.getLocations().size() > 0) {
+                                    int index = locationResult.getLocations().size() - 1;
+                                    double latitude = locationResult.getLocations().get(index).getLatitude();
+                                    double longitude = locationResult.getLocations().get(index).getLongitude();
+
+                                    locationListener.onLocationChanged(latitude, longitude);
+                                    userLocationMsg = userLocationMsg +  latitude+","+longitude;
+
+                                    Log.d("SMS", userLocationMsg);
+
+                                    // Create an instance of SmsHandler and call sendSMS() on that instance
+                                    SmsHandler.sendSMS(context, userLocationMsg);
                                 }
-                            }, Looper.getMainLooper());
-                } else {
+                            }
+                        }, Looper.getMainLooper());
+                    }
+
+                //If GPS is turned Off
+                else {
                     turnOnGPS();
                 }
-            } else {
+            }
+
+            //Id permission is not given
+            else {
                 ActivityCompat.requestPermissions((Activity) context, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
             }
         }
     }
 
+
+    //Function for turning on GPS
     private void turnOnGPS() {
         LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder()
                 .addLocationRequest(locationRequest);
@@ -115,6 +134,7 @@ public class LocationHandler {
         });
     }
 
+    //Function for getting current status
     private boolean isGPSEnabled() {
         LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
         return locationManager != null && locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);

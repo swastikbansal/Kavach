@@ -23,7 +23,6 @@ public class VoiceRecognition extends AppCompatActivity {
 
     private static final int REQUEST_CODE_SPEECH_INPUT = 100;
     private static final String TRIGGER_WORD = "redhead"; // Default trigger word
-
     private Switch switchStatus;
 
     @Override
@@ -121,7 +120,7 @@ public class VoiceRecognition extends AppCompatActivity {
                     double longitude = 67.890; // Replace with actual longitude
 
                     // Call the handleLocationData() method from SmsHandler to send the SMS
-                    SmsHandler.handleLocationData(this, latitude, longitude);
+//                    SmsHandler.handleLocationData(this, latitude, longitude);
                 } else {
                     // Trigger word is not recognized, set the Switch to "deactivated" state
                     switchStatus.setChecked(false);

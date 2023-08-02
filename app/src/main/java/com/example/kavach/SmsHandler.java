@@ -8,38 +8,31 @@ import android.widget.Toast;
 
 import java.util.List;
 
-
+//This class will be Used for sending SMS to all the emergency contacts
 public class SmsHandler {
-    public static void sendSMS(Context context, String userLocation){
 
+    //Function to send SMS
+    public static void sendSMS(Context context, String message){
+
+        //Extracting Contracts from Local Database
         ContactDatabaseHelper dbHelper = new ContactDatabaseHelper(context);
         List<ContactInfo> allContacts = dbHelper.getAllContacts();
 
+        //Loop for sending SMS to all the emergency contacts
         for (ContactInfo contact : allContacts) {
 
-            // Method to send SMS
+            // Try Exception Block for sending SMS
             try {
                 SmsManager smsManager = SmsManager.getDefault();
-                smsManager.sendTextMessage(contact.getNumber(), null, "Emergency SMS LOCATION : https://www.google.com/maps?q="+userLocation, null, null);
+                smsManager.sendTextMessage(contact.getNumber(), null, message, null, null);
                 Toast.makeText(context, "Emergency SMS sent!", Toast.LENGTH_SHORT).show();
             }
+
+            // Handle SMS sending failure
             catch (Exception ex) {
-                // Handle SMS sending failure
                 Toast.makeText(context, "Failed to send SMS", Toast.LENGTH_SHORT).show();
                 ex.printStackTrace();
             }
         }
-
-        }
-
-
-
-
-    public static void handleLocationData(Context context, double latitude, double longitude) {
-        String userLocation =  latitude + "," + longitude;
-
-        // Call the sendSMS() method to send the location data via SMS
-        sendSMS(context, userLocation);
     }
-
 }
