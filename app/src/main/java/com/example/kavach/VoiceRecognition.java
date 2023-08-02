@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -18,8 +20,16 @@ import java.util.ArrayList;
 import java.util.Locale;
 import android.content.SharedPreferences;
 
+import pl.droidsonroids.gif.GifImageView;
+
 
 public class VoiceRecognition extends AppCompatActivity {
+
+    //Hooks
+    GifImageView voice;
+
+    //Animations
+    Animation speechAnimation;
 
     private static final int REQUEST_CODE_SPEECH_INPUT = 100;
     private static final String TRIGGER_WORD = "redhead"; // Default trigger word
@@ -29,6 +39,13 @@ public class VoiceRecognition extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_voice_recognition);
+
+        speechAnimation = AnimationUtils.loadAnimation(this,R.anim.speech_animation);
+
+        //Hooks
+        voice = findViewById(R.id.gifsr);
+
+        voice.setAnimation(speechAnimation);
 
         // Initialize the Switch widget
         switchStatus = findViewById(R.id.switch1);

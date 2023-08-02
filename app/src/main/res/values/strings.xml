@@ -22,6 +22,8 @@
     <string name="voice_recognition">Speech Recognition</string>
     <string name="lock_screen">Custom Lock Screen</string>
     <string name="todo">TODO</string>
+    <string name="switch_on">ON</string>
+    <string name="switch_off">OFF</string>
 
     <string-array name="spinner_items">
         <item>milf</item>
