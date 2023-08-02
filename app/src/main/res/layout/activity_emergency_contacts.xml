@@ -13,6 +13,8 @@
         android:layout_height="60dp"
         android:layout_marginTop="450dp"
         android:background="@drawable/custom_button"
+        android:drawableLeft="@drawable/baseline_person_add_alt_24"
+        android:paddingStart="30dp"
         android:onClick="onSelectContactsClick"
         android:text="Select Contacts"
         android:textAllCaps="false"
@@ -49,8 +51,8 @@
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.877"
-        app:layout_constraintStart_toStartOf="@+id/imageView4"
+        app:layout_constraintHorizontal_bias="0.641"
+        app:layout_constraintStart_toEndOf="@+id/imageView4"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.088" />
 
@@ -66,7 +68,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.848" />
+        app:layout_constraintVertical_bias="0.784" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
