@@ -37,7 +37,7 @@ public class LocationHandler {
     }
 
 
-    String userLocationMsg = "Location : https://www.google.com/maps?q=";
+    String userLocationMsg = "I am in an Emergency Situation. I need Help.\nHere is my location :\nhttps://www.google.com/maps?q=";
     private LocationRequest locationRequest;
     private Context context;
     private LocationListener locationListener;

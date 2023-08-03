@@ -36,7 +36,7 @@ public class SmsHandler {
                         // Try Exception Block for sending SMS
                         try {
                             SmsManager smsManager = SmsManager.getDefault();
-                            smsManager.sendTextMessage(contact.getNumber(), null, "I am in an Emergency Situation. I need Help.\nHere is my location :\n" +message, null, null);
+                            smsManager.sendTextMessage(contact.getNumber(), null, message, null, null);
                             Toast.makeText(context, "Emergency SMS sent!", Toast.LENGTH_SHORT).show();
                         }
 
