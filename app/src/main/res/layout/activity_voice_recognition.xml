@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#282c34"
     android:layout_height="match_parent"
+    android:background="#282c34"
     tools:context=".VoiceRecognition">
 
     <TextView
@@ -37,21 +37,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.2" />
 
+
     <Spinner
         android:id="@+id/spinnerDropdown"
         android:layout_width="236dp"
         android:layout_height="40dp"
-        android:layout_marginTop="32dp"
         android:entries="@array/spinner_items"
         android:spinnerMode="dropdown"
         android:textColor="#a6a6a6"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btnSpeechRecognition"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.577"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/trigger"
-        app:layout_constraintVertical_bias="0.0" />
-
+        app:layout_constraintVertical_bias="0.178" />
 
     <TextView
         android:id="@+id/trigger"
@@ -63,10 +62,10 @@
         android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.543"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.364" />
+        app:layout_constraintVertical_bias="0.602" />
 
     <Button
         android:id="@+id/btnSpeechRecognition"
@@ -83,51 +82,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.627" />
-
-    <Switch
-        android:id="@+id/switch1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="180dp"
-        android:showText="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.758"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/gifImageView"
-        app:layout_constraintVertical_bias="0.7" />
+        app:layout_constraintTop_toBottomOf="@+id/trigger"
+        app:layout_constraintVertical_bias="0.666" />
 
     <androidx.appcompat.widget.SwitchCompat
-        android:id="@+id/switchsr"
+        android:id="@+id/switch1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:thumb="@drawable/thumb"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.797"
+        app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.867"
+        app:layout_constraintVertical_bias="0.4"
         app:showText="true"
         app:track="@drawable/track" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="48dp"
-        android:fontFamily="@font/alata"
-        android:text="Enable :"
-        android:textColor="#a6a6a6"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/switchsr"
-        app:layout_constraintHorizontal_bias="0.739"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.853" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
