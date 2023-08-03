@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/av_about"
@@ -7,17 +7,129 @@
     android:layout_height="match_parent"
     android:background="#1f2328">
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="About"
-        android:textColor="#F7F2F2"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:paddingTop="20dp"
+            android:id="@+id/textHead"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:fontFamily="@font/adamina"
+            android:text="About KAVACH"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp" />
+
+        <ImageView
+            android:id="@+id/imageLogo"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/logo6" />
+
+
+        <TextView
+            android:id="@+id/textIntro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome to Kavach, your personal safety companion designed to provide you with peace of mind in any emergency situation. Our mission is to keep you safe and connected at all times."
+            android:textColor="#F7F2F2"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textFeatures"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:fontFamily="@font/alata"
+            android:text="Key Features :"
+            android:textColor="#F7F2F2"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/textQM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1) Quick SOS Messages :"
+            android:textColor="#F7F2F2"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textQMD"
+            android:layout_width="wrap_content"
+            android:layout_height="90dp"
+            android:text="With a single press of a button, instantly send SOS messages to your designated emergency contacts. Your loved ones will be alerted of your distress and your location, ensuring swift assistance."
+            android:textColor="#F7F2F2"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textSR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2) Voice Recognition (Upcoming) :"
+            android:textColor="#F7F2F2"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textSRD"
+            android:layout_width="wrap_content"
+            android:layout_height="110dp"
+            android:text="We are actively working to integrate advanced voice recognition technology into our app. Soon, you'll be able to activate the SOS feature using just your voice, making it even easier to reach out for help when your hands are occupied."
+            android:textColor="#F7F2F2"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textCLS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3) Customizable Lock Screen (Upcoming) :"
+            android:textColor="#F7F2F2"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textCLSD"
+            android:layout_width="wrap_content"
+            android:layout_height="130dp"
+            android:text="Our team is currently developing a customizable lock screen feature. This will help you to set custom pin and pattern in your lock screen, allowing you to send SOS Message and current location from lock screen itself, making it faster and easier to send SOS Message and current location."
+            android:textColor="#F7F2F2"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textOC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/alata"
+            android:text="Our Commitment :"
+            android:textColor="#F7F2F2"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textOCD"
+            android:layout_width="wrap_content"
+            android:layout_height="140dp"
+            android:text="Your safety is our top priority. We are dedicated to continuously enhancing and updating Kavach to provide you with the most effective and reliable safety tool. We value your feedback and encourage you to share your thoughts and suggestions as we strive to make your experience better every day."
+            android:textColor="#F7F2F2"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textSC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/alata"
+            android:text="Stay Connected :"
+            android:textColor="#F7F2F2"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textSCD"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:text="If you have any questions or concerns, feel free to reach out to our support team at support_kavach@gmail.com.Download Kavach today and take control of your personal safety."
+            android:textColor="#F7F2F2"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+</ScrollView>

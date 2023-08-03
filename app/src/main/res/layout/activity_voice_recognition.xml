@@ -14,7 +14,7 @@
         android:fontFamily="sans-serif-condensed-medium"
         android:text="Speech Recognition"
         android:textColor="#FFFFFF"
-        android:textSize="42sp"
+        android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
