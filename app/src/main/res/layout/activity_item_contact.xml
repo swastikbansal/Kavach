@@ -9,7 +9,7 @@
 
 
     <LinearLayout
-        android:layout_width="260dp"
+        android:layout_width="263dp"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
@@ -43,18 +43,5 @@
         android:background="@drawable/custom_button"
         android:onClick="onRemoveContactClick"
         app:srcCompat="@drawable/baseline_delete_forever_24" />
-
-    <!--    <Button-->
-<!--        android:id="@+id/btn_remove_contact"-->
-<!--        android:layout_width="109dp"-->
-<!--        android:layout_height="50dp"-->
-<!--        android:layout_gravity="end"-->
-<!--        android:layout_marginTop="2dp"-->
-<!--        android:background="@drawable/custom_button"-->
-<!--        android:onClick="onRemoveContactClick"-->
-<!--        android:text="Remove"-->
-<!--        android:textAllCaps="false"-->
-<!--        android:textColor="#F9F8F5"-->
-<!--        android:textSize="16sp" />-->
 
 </LinearLayout>

@@ -1,9 +1,13 @@
 package com.example.kavach;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.LayoutInflater;
@@ -19,6 +23,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -67,9 +72,18 @@ public class EmergencyContacts extends AppCompatActivity {
     }
 
     public void onSelectContactsClick(View view) {
-        // Open the contact list when the button is clicked
-        Intent intent = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
-        startActivityForResult(intent, REQUEST_SELECT_CONTACT);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            //If Permission is Given
+            if (ActivityCompat.checkSelfPermission(EmergencyContacts.this, Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
+                // Open the contact list when the button is clicked
+                Intent intent = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
+                startActivityForResult(intent, REQUEST_SELECT_CONTACT);
+            }
+            //If permission is not given
+            else {
+                ActivityCompat.requestPermissions((Activity) EmergencyContacts.this, new String[]{Manifest.permission.READ_CONTACTS}, 1);
+            }
+        }
     }
 
     @SuppressLint("Range")
@@ -147,6 +161,7 @@ public class EmergencyContacts extends AppCompatActivity {
             return contacts.size();
         }
 
+        //This class adds the Contacts Widget upon adding Contacts
         class ContactViewHolder extends RecyclerView.ViewHolder {
             TextView contactName;
             TextView contactNumber;
@@ -160,11 +175,13 @@ public class EmergencyContacts extends AppCompatActivity {
             }
         }
 
+        //Function for updating Contacts
         void updateContacts(List<ContactInfo> newContacts) {
             contacts.clear();
             contacts.addAll(newContacts);
         }
 
+        //Function to remove contacts
         private void removeContact(int position) {
             if (position >= 0 && position < contacts.size()) {
                 ContactInfo removedContact = contacts.remove(position);

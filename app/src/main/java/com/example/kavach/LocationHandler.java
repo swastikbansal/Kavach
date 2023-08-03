@@ -94,7 +94,7 @@ public class LocationHandler {
                 }
             }
 
-            //Id permission is not given
+            //If permission is not given
             else {
                 ActivityCompat.requestPermissions((Activity) context, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
             }

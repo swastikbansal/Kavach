@@ -2,6 +2,7 @@ package com.example.kavach;
 
 
 import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.AlertDialog;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -66,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements LocationHandler.L
         });
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
@@ -88,12 +91,14 @@ public class MainActivity extends AppCompatActivity implements LocationHandler.L
                 Manifest.permission.CAMERA,
                 Manifest.permission.ACCESS_COARSE_LOCATION,
                 Manifest.permission.ACCESS_FINE_LOCATION,
-                Manifest.permission.ACCESS_BACKGROUND_LOCATION
+                Manifest.permission.ACCESS_BACKGROUND_LOCATION,
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
         };
 
-        // Check if all permissions are granted
+        // Checking if all permissions are granted
         if (checkPermissions(permissions)) {
-
+            assert true;
         }
         else {
             // Some permissions are not granted, request them
@@ -117,7 +122,24 @@ public class MainActivity extends AppCompatActivity implements LocationHandler.L
 
         for (String permission : permissions) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, permission)) {
-                // Add explanation here if needed before requesting permission
+                // Explained the need of our permission
+                new AlertDialog.Builder(this)
+                        .setTitle("Permission needed")
+                        .setMessage("Please grant all the permission so that the app can run properly")
+                        .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                ActivityCompat.requestPermissions(MainActivity.this,
+                                        new String[] {permission}, PERMISSION_REQUEST_CODE);
+                            }
+                        })
+                        .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        })
+                        .create().show();
             } else {
                 permissionsToRequest.add(permission);
             }
@@ -128,6 +150,7 @@ public class MainActivity extends AppCompatActivity implements LocationHandler.L
         }
     }
 
+    //Function for computing Permission Result
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode == PERMISSION_REQUEST_CODE) {
@@ -145,7 +168,7 @@ public class MainActivity extends AppCompatActivity implements LocationHandler.L
                 Toast.makeText(this, "Permission Granted", Toast.LENGTH_SHORT).show();
 
             } else {
-//                Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show();
+               Toast.makeText(this, "Permission Denied. App won't work properly.", Toast.LENGTH_SHORT).show();
             }
         }
 
@@ -157,28 +180,29 @@ public class MainActivity extends AppCompatActivity implements LocationHandler.L
 
     //------------------------------------- Function For Opening Activities -------------------------------------------
 
-    //Emeregency Contacts Activity
+    //Emergency Contacts Activity
     public void EmergencyContactsActivity(View view){
         //Checking for contact permission
         Intent contactIntent = new Intent(this,EmergencyContacts.class);
         startActivity(contactIntent);
     }
 
+    //Voice Recognition Activity
     public void VoiceRecogntionActivity(View view){
         Intent contactIntent = new Intent(this,VoiceRecognition.class);
         startActivity(contactIntent);
     }
 
+    //Lock Screen Activity
     public void LockScreenActivity(View view){
         Intent contactIntent = new Intent(this,LockScreen.class);
         startActivity(contactIntent);
     }
 
+    //This Function will be executed when the button is pressed to send the SOS to selected emergency contacts
     public void SOS(View view){
         LocationHandler locationHandler = new LocationHandler(this, this);
         Toast.makeText(this, "SOS", Toast.LENGTH_SHORT).show();
-        //SmsHandler smsHandler = new SmsHandler(this);
-        //smsHandler.sendSms(phoneNumber, message);
         // Request current location when SOS button is pressed
         locationHandler.getCurrentLocation();
     }
@@ -203,7 +227,7 @@ public class MainActivity extends AppCompatActivity implements LocationHandler.L
 
     }
 
-    // Implement LocationListener interface method to get the current location
+    // Implementing LocationListener interface method to get the current location
     @Override
     public void onLocationChanged(Location location) {
         double latitude = location.getLatitude();

@@ -14,6 +14,7 @@ import android.widget.TextView;
 import java.util.concurrent.RunnableFuture;
 
 public class Login extends AppCompatActivity {
+    //This File handle the Intro Screen Animation of our application
 
     //Variables
     Animation topAnim, bottomAnim;
