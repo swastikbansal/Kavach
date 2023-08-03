@@ -1,6 +1,4 @@
 package com.example.kavach;
-
-
 import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import android.location.Location;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,11 +20,9 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-
 import com.example.kavach.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
-
 import java.util.ArrayList;
 import java.util.List;
 

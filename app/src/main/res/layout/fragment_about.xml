@@ -126,7 +126,7 @@
             android:id="@+id/textSCD"
             android:layout_width="wrap_content"
             android:layout_height="100dp"
-            android:text="If you have any questions or concerns, feel free to reach out to our support team at support_kavach@gmail.com.Download Kavach today and take control of your personal safety."
+            android:text="If you have any questions or concerns, feel free to reach out to our support team. Download Kavach today and take control of your personal safety."
             android:textColor="#F7F2F2"
             android:textSize="16sp" />
 

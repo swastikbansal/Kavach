@@ -83,7 +83,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/trigger"
-        app:layout_constraintVertical_bias="0.666" />
+        app:layout_constraintVertical_bias="0.526" />
 
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/switch1"
