@@ -48,6 +48,9 @@ public class MainActivity extends AppCompatActivity implements LocationHandler.L
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Toast.makeText(this, "App is Still Work in Progress.", Toast.LENGTH_SHORT).show();
+        
         //Finding Button by ID
         SOSButton = findViewById(R.id.SOSButton);
         EmergencyContactsButton = findViewById(R.id.EmergencyContactButton);
@@ -93,7 +96,8 @@ public class MainActivity extends AppCompatActivity implements LocationHandler.L
                 Manifest.permission.ACCESS_FINE_LOCATION,
                 Manifest.permission.ACCESS_BACKGROUND_LOCATION,
                 Manifest.permission.READ_EXTERNAL_STORAGE,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_MEDIA_IMAGES
         };
 
         // Checking if all permissions are granted
