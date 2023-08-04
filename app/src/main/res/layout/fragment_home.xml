@@ -78,7 +78,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:fontFamily="@font/adamina"
+        android:fontFamily="@font/alata"
         android:textAlignment="center"
         android:textColor="#EF0707"
         android:textColorHighlight="#AD1457"
