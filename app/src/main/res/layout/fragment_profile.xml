@@ -122,6 +122,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="100dp"
                 android:textSize="18sp"
+                android:textAllCaps="false"
                 android:layout_marginTop="40dp"
                 android:background="@drawable/custom_button"
                 android:drawableLeft="@drawable/baseline_update_24"

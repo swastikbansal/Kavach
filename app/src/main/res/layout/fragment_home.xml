@@ -9,16 +9,19 @@
 
     <ImageButton
         android:id="@+id/SOSButton"
-        android:layout_width="303dp"
-        android:layout_height="294dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:layout_marginTop="60dp"
         android:contentDescription="@string/sos_image"
         android:onClick="SOS"
-        android:src="@drawable/logo6"
-        android:scaleType="fitCenter"
+        android:padding="16dp"
+        android:src="@drawable/button_ring"
+        android:background="@android:color/transparent"
+        android:scaleType="centerInside"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <Button
         android:id="@+id/EmergencyContactButton"
