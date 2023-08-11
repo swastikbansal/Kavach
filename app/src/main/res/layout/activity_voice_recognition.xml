@@ -42,15 +42,14 @@
         android:id="@+id/spinnerDropdown"
         android:layout_width="236dp"
         android:layout_height="40dp"
+        android:layout_marginTop="16dp"
         android:entries="@array/spinner_items"
         android:spinnerMode="dropdown"
         android:textColor="#a6a6a6"
-        app:layout_constraintBottom_toTopOf="@+id/btnSpeechRecognition"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/trigger"
-        app:layout_constraintVertical_bias="0.178" />
+        app:layout_constraintTop_toBottomOf="@+id/trigger" />
 
     <TextView
         android:id="@+id/trigger"
@@ -65,38 +64,30 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.602" />
+        app:layout_constraintVertical_bias="0.475" />
 
     <Button
-        android:id="@+id/btnSpeechRecognition"
-        android:layout_width="220dp"
-        android:layout_height="60dp"
-        android:layout_centerInParent="true"
-        android:background="@drawable/custom_button"
-        android:drawableLeft="@drawable/baseline_record_voice_over_24"
-        android:fontFamily="@font/alata"
-        android:text="Tap and Speak!"
-        android:textAllCaps="false"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/trigger"
-        app:layout_constraintVertical_bias="0.526" />
-
-    <androidx.appcompat.widget.SwitchCompat
-        android:id="@+id/switch1"
+        android:id="@+id/startButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:thumb="@drawable/thumb"
+        android:text="Start Wake Word Detection"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.4"
-        app:showText="true"
-        app:track="@drawable/track" />
+        app:layout_constraintVertical_bias="0.775" />
+
+    <Button
+        android:id="@+id/stopButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Stop Wake Word Detection"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/startButton"
+        app:layout_constraintVertical_bias="0.211" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

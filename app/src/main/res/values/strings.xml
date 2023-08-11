@@ -26,10 +26,20 @@
     <string name="switch_off">OFF</string>
 
     <string-array name="spinner_items">
-        <item>apple</item>
-        <item>banana</item>
-        <item>papaya</item>
-        <item>kiwi</item>
+        <item>Alexa</item>
+        <item>Americano</item>
+        <item>Blueberry</item>
+        <item>Bumblebee</item>
+        <item>Computer</item>
+        <item>Grapefruit</item>
+        <item>Grasshopper</item>
+        <item>Hey_Google</item>
+        <item>Hey_Siri</item>
+        <item>Jarvis</item>
+        <item>Ok_Google</item>
+        <item>PicoVoice</item>
+        <item>Porcupine</item>
+        <item>Terminator</item>
     </string-array>
 
 </resources>
