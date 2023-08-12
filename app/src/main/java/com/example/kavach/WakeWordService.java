@@ -8,8 +8,11 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.location.Location;
 import android.os.Build;
 import android.os.IBinder;
+import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
@@ -29,12 +32,24 @@ public class WakeWordService extends Service {
     String triggerWordKey = Constants.TRIGGER_WORD_KEY;
     String defaultTriggerWord = Constants.DEFAULT_TRIGGER_WORD;
 
+    private LocationHandler locationHandler;
 
 
     @Override
     public void onCreate() {
         super.onCreate();
-        startForeground(NOTIFICATION_ID, createNotification());
+        startForeground(2, createNotification());
+
+        locationHandler = new LocationHandler(this, new LocationHandler.LocationListener() {
+            @Override
+            public void onLocationChanged(double latitude, double longitude) {
+
+            }
+
+            @Override
+            public void onLocationChanged(Location location) {
+            }
+        });
 
     }
 
@@ -113,13 +128,23 @@ public class WakeWordService extends Service {
             SharedPreferences sharedPreferences = getSharedPreferences("my_prefs", MODE_PRIVATE);
             String selectedWakeWord = sharedPreferences.getString(Constants.TRIGGER_WORD_KEY, Constants.DEFAULT_TRIGGER_WORD);
 
-            Intent intent = new Intent("WAKE_WORD_DETECTED");
-            intent.putExtra("keywordIndex", keywordIndex);
-            intent.putExtra("selectedWakeWord", selectedWakeWord);
-            sendBroadcast(intent);
+
+            if (keywordIndex == 0) {
+                showToast("Wake word detected: " + selectedWakeWord);
+                locationHandler.getCurrentLocation();
+                Log.d("tag","msg");
+
+            } else {
+                showToast("Detected wake word does not match selected wake word");
+            }
+
 
         }
     };
+
+    private void showToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
 
 
 }

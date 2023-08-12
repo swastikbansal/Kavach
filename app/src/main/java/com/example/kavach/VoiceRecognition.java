@@ -8,6 +8,7 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.location.Location;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -39,27 +40,15 @@ public class VoiceRecognition extends AppCompatActivity {
     private LocationHandler locationHandler;
 
 
-    private BroadcastReceiver wakeWordReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if ("WAKE_WORD_DETECTED".equals(intent.getAction())) {
-                int keywordIndex = intent.getIntExtra("keywordIndex", -1);
-                String selectedWakeWord = intent.getStringExtra("selectedWakeWord");
-
-                if (keywordIndex == 0) {
-                    showToast("Wake word detected: " + selectedWakeWord);
-                    locationHandler.getCurrentLocation();
-                } else {
-                    showToast("Detected wake word does not match selected wake word");
-                }
-            }
-        }
-    };
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+        Log.d("2345", "qwerty");
+
         setContentView(R.layout.activity_voice_recognition);
 
         speechAnimation = AnimationUtils.loadAnimation(this, R.anim.speech_animation);
@@ -67,7 +56,6 @@ public class VoiceRecognition extends AppCompatActivity {
         // Hooks
         voice = findViewById(R.id.gifsr);
         voice.setAnimation(speechAnimation);
-
 
 
         Spinner spinnerDropdown = findViewById(R.id.spinnerDropdown);
@@ -126,28 +114,13 @@ public class VoiceRecognition extends AppCompatActivity {
                 }
             }
         });
-
-        // Register the BroadcastReceiver
-        IntentFilter filter = new IntentFilter("WAKE_WORD_DETECTED");
-        registerReceiver(wakeWordReceiver, filter);
-
-        locationHandler = new LocationHandler(this, new LocationHandler.LocationListener() {
-            @Override
-            public void onLocationChanged(double latitude, double longitude) {}
-
-            @Override
-            public void onLocationChanged(Location location) {
-                // Implement this if needed
-            }
-        });
-
     }
+
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        // Unregister the BroadcastReceiver
-        unregisterReceiver(wakeWordReceiver);
+
     }
 
     private void startWakeWordService() {

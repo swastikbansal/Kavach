@@ -36,13 +36,12 @@ public class LocationHandler {
         void onLocationChanged(Location location);
     }
 
-
     String userLocationMsg = "I am in an Emergency Situation. I need Help.\nHere is my location :\nhttps://www.google.com/maps?q=";
     private LocationRequest locationRequest;
     private Context context;
     private LocationListener locationListener;
 
-    //Function for Handling Location
+    // Function for Handling Location
     public LocationHandler(Context context, LocationListener listener) {
         this.context = context;
         this.locationListener = listener;
@@ -52,54 +51,43 @@ public class LocationHandler {
         locationRequest.setFastestInterval(2000);
     }
 
-    //Function for getting Current Location
+    // Function for getting Current Location
     public void getCurrentLocation() {
-
-        //Checking for Location Permission
+        // Checking for Location Permission
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-
-                //Checking if GPS is enabled
+                // Checking if GPS is enabled
                 if (isGPSEnabled()) {
-                    LocationServices.getFusedLocationProviderClient(context)
-                        .requestLocationUpdates(locationRequest, new LocationCallback() {
-
-                            @Override
-                            public void onLocationResult(@NonNull LocationResult locationResult) {
-                                super.onLocationResult(locationResult);
-                                LocationServices.getFusedLocationProviderClient(context)
-                                        .removeLocationUpdates(this);
-
-                                //Getting Current Location
-                                if (locationResult != null && locationResult.getLocations().size() > 0) {
-                                    int index = locationResult.getLocations().size() - 1;
-                                    double latitude = locationResult.getLocations().get(index).getLatitude();
-                                    double longitude = locationResult.getLocations().get(index).getLongitude();
-
-                                    locationListener.onLocationChanged(latitude, longitude);
-                                    userLocationMsg = userLocationMsg +  latitude+","+longitude;
-
-                                    Log.d("SMS", userLocationMsg);
-
-                                    // Create an instance of SmsHandler and call sendSMS() on that instance
-                                    SmsHandler.sendSMS(context, userLocationMsg);
+                    // Using the application context for Google Play Services API calls
+                    LocationServices.getFusedLocationProviderClient(context.getApplicationContext())
+                            .requestLocationUpdates(locationRequest, new LocationCallback() {
+                                @Override
+                                public void onLocationResult(@NonNull LocationResult locationResult) {
+                                    super.onLocationResult(locationResult);
+                                    LocationServices.getFusedLocationProviderClient(context.getApplicationContext())
+                                            .removeLocationUpdates(this);
+                                    // Getting Current Location
+                                    if (locationResult != null && locationResult.getLocations().size() > 0) {
+                                        int index = locationResult.getLocations().size() - 1;
+                                        double latitude = locationResult.getLocations().get(index).getLatitude();
+                                        double longitude = locationResult.getLocations().get(index).getLongitude();
+                                        locationListener.onLocationChanged(latitude, longitude);
+                                        userLocationMsg = userLocationMsg + latitude + "," + longitude;
+                                        Log.d("SMS", userLocationMsg);
+                                        // Create an instance of SmsHandler and call sendSMS() on that instance
+                                        SmsHandler.sendSMS(context, userLocationMsg ,Manifest.permission.SEND_SMS);
+                                    }
                                 }
-                            }
-                        }, Looper.getMainLooper());
-                    }
-
-                //If GPS is turned Off
-                else {
+                            }, Looper.getMainLooper());
+                } else {
                     turnOnGPS();
                 }
-            }
-
-            //If permission is not given
-            else {
+            } else {
                 ActivityCompat.requestPermissions((Activity) context, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
             }
         }
     }
+
 
 
     //Function for turning on GPS
