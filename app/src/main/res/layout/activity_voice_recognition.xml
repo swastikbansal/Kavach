@@ -39,6 +39,53 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.27" />
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/spinnerDropdown1"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="260dp"
+        android:hint="@string/DropDown_Hint"
+        app:boxBackgroundColor="@color/spinnerBar_color"
+        app:hintTextColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gifsr"
+        app:layout_constraintVertical_bias="0.329"
+        app:startIconDrawable="@drawable/baseline_triggerword">
+
+        <!-- This is the AutoCompleteTextView with the dropdown items -->
+        <AutoCompleteTextView
+            android:id="@+id/autoCompleteTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:dropDownVerticalOffset="666dp"
+            android:inputType="none"
+            android:textColor="@color/white"
+            tools:layout_editor_absoluteX="58dp"
+            tools:layout_editor_absoluteY="353dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/descriptionText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/vrHeading"
+        android:textColor="@color/srDescription"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerDropdown1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.672"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gifsr" />
+
     <Button
         android:id="@+id/startButton"
         android:layout_width="120dp"
@@ -81,37 +128,32 @@
         app:layout_constraintStart_toEndOf="@+id/startButton"
         app:layout_constraintTop_toBottomOf="@+id/spinnerDropdown1" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/spinnerDropdown1"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-        android:layout_width="300dp"
+    <TextView
+        android:id="@+id/descriptionText2"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="260dp"
-        android:hint="@string/DropDown_Hint"
-        app:boxBackgroundColor="@color/statusBar_color"
-        app:hintTextColor="@color/white"
+        android:layout_marginTop="10dp"
+        android:text="@string/vrDescription"
+        android:textAlignment="center"
+        android:textColor="@color/srDescription"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gifsr"
-        app:layout_constraintVertical_bias="0.329"
-        app:startIconDrawable="@drawable/baseline_triggerword">
+        app:layout_constraintTop_toBottomOf="@+id/spinnerDropdown1"
+        app:layout_constraintVertical_bias="0.07" />
 
-        <!-- This is the AutoCompleteTextView with the dropdown items -->
-        <AutoCompleteTextView
-            android:id="@+id/autoCompleteTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:dropDownVerticalOffset="666dp"
-            android:inputType="none"
-            android:textColor="@color/white"
-            tools:layout_editor_absoluteX="58dp"
-            tools:layout_editor_absoluteY="353dp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
+    <TextView
+        android:id="@+id/descriptionText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/vrFooter"
+        android:textColor="@color/srDescription"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionText2"
+        app:layout_constraintVertical_bias="0.824" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -9,6 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="statusBar_color">#282c34</color>
     <color name="spinnerBar_color">#33373e</color>
+    <color name="srDescription">#b2b2b2</color>
     <color name="spinnerElements">#FF7300</color>
     <color name="enable_startbutton">#1dee1d</color>
     <color name="enable_endbutton">#00dae9</color>

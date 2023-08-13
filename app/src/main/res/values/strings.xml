@@ -25,6 +25,9 @@
     <string name="switch_on">ON</string>
     <string name="switch_off">OFF</string>
     <string name="DropDown_Hint">Select Trigger Word</string>
+    <string name="vrHeading">Detects a trigger word and sends SOS Message</string>
+    <string name="vrDescription">Easily trigger an SOS message by setting a trigger word. Once detected, your app will automatically send an SOS message to selected contacts with your live location, even when the app is running in the background or the phone is locked</string>
+    <string name="vrFooter">Stay safe 24/7 with this powerful feature</string>
 
     <string-array name="trigger_words">
         <item>Alexa</item>
