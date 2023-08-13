@@ -14,6 +14,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -23,6 +24,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import pl.droidsonroids.gif.GifImageView;
 
 public class VoiceRecognition extends AppCompatActivity {
+
+    AutoCompleteTextView autoCompleteTextView;
+    ArrayAdapter<String> arrayAdapter;
 
     //Hooks
     GifImageView voice;
@@ -39,17 +43,13 @@ public class VoiceRecognition extends AppCompatActivity {
 
     private LocationHandler locationHandler;
 
-
-
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.activity_voice_recognition);
 
         Log.d("2345", "qwerty");
-
-        setContentView(R.layout.activity_voice_recognition);
 
         speechAnimation = AnimationUtils.loadAnimation(this, R.anim.speech_animation);
 
@@ -57,25 +57,26 @@ public class VoiceRecognition extends AppCompatActivity {
         voice = findViewById(R.id.gifsr);
         voice.setAnimation(speechAnimation);
 
+        // Initialize the triggerWords array from resources
+        String[] triggerWords = getResources().getStringArray(R.array.trigger_words);
 
-        Spinner spinnerDropdown = findViewById(R.id.spinnerDropdown);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-                this,
-                R.array.spinner_items,
-                android.R.layout.simple_spinner_item
-        );
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerDropdown.setAdapter(adapter);
+        // Initialize the ArrayAdapter for the AutoCompleteTextView
+        ArrayAdapter<String> adapterItems = new ArrayAdapter<>(this, R.layout.trigger_word, triggerWords);
 
-        spinnerDropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        //Drop Down Menu Usage
+        autoCompleteTextView= findViewById(R.id.autoCompleteTextView);
+
+        autoCompleteTextView.setAdapter(adapterItems);
+
+        autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
-                String selectedItem = adapterView.getItemAtPosition(position).toString();
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String selectedTriggerWord = adapterItems.getItem(position);
 
-                // Save the selected item to SharedPreferences as lowercase
+                // Save the selected trigger word to SharedPreferences as lowercase
                 SharedPreferences sharedPreferences = getSharedPreferences("my_prefs", MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString(Constants.TRIGGER_WORD_KEY, selectedItem.toLowerCase());
+                editor.putString(Constants.TRIGGER_WORD_KEY, selectedTriggerWord.toLowerCase());
                 editor.apply();
 
                 // Stop the current wake word service if running
@@ -84,13 +85,7 @@ public class VoiceRecognition extends AppCompatActivity {
                     startWakeWordService();
                 }
             }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-                // Handle the case when nothing is selected (if needed)
-            }
         });
-
 
         // Initialize buttons
         startButton = findViewById(R.id.startButton);
@@ -116,11 +111,9 @@ public class VoiceRecognition extends AppCompatActivity {
         });
     }
 
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
     }
 
     private void startWakeWordService() {
@@ -147,13 +140,9 @@ public class VoiceRecognition extends AppCompatActivity {
         isWakeWordServiceRunning = false;
     }
 
-
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-
     }
 
     private void showToast(String message) {

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="oval">
+
+    <stroke
+        android:width="2dp"
+        android:color="@color/white"/>
+
+    <gradient android:startColor="@color/disable_startbuttton"
+        android:endColor="@color/disable_endbuttton" android:type="linear"/>
+
+    <corners android:radius="100dp"/>
+
+</shape>

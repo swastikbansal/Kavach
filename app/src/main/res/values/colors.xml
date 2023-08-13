@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#842ABB</color>
-    <color name="purple_700">#282C34</color>
+    <color name="purple_200">#cc35d4</color>
+    <color name="purple_500">#9f1ad4</color>
+    <color name="purple_700">#1f2328</color>
     <color name="teal_200">#ff9d00</color>
     <color name="teal_700">#2E7D32</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="switch_text_color">#030D4D</color>
-
+    <color name="statusBar_color">#282c34</color>
+    <color name="spinnerBar_color">#33373e</color>
+    <color name="spinnerElements">#FF7300</color>
+    <color name="enable_startbutton">#1dee1d</color>
+    <color name="enable_endbutton">#00dae9</color>
+    <color name="disable_startbuttton">#e81123</color>
+    <color name="disable_endbuttton">#e74856</color>
 </resources>

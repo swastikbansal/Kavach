@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1f2328">
+    android:background="@color/purple_700">
 
     <TextView
         android:id="@+id/textView2"
@@ -13,7 +13,7 @@
         android:gravity="center"
         android:text="This feature is still  under development."
         android:fontFamily="@font/adamina"
-        android:textColor="#FCFBFB"
+        android:textColor="@color/white"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

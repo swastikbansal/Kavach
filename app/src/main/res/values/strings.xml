@@ -24,8 +24,9 @@
     <string name="todo">TODO</string>
     <string name="switch_on">ON</string>
     <string name="switch_off">OFF</string>
+    <string name="DropDown_Hint">Select Trigger Word</string>
 
-    <string-array name="spinner_items">
+    <string-array name="trigger_words">
         <item>Alexa</item>
         <item>Americano</item>
         <item>Blueberry</item>
