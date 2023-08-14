@@ -39,12 +39,16 @@ public class LocationHandler {
     String userLocationMsg = "I am in an Emergency Situation. I need Help.\nHere is my location :\nhttps://www.google.com/maps?q=";
     private LocationRequest locationRequest;
     private Context context;
+
+    private CameraHandler cameraHandler;
+
     private LocationListener locationListener;
 
     // Function for Handling Location
     public LocationHandler(Context context, LocationListener listener) {
         this.context = context;
         this.locationListener = listener;
+
         locationRequest = LocationRequest.create();
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
         locationRequest.setInterval(5000);
@@ -72,7 +76,7 @@ public class LocationHandler {
                                         double latitude = locationResult.getLocations().get(index).getLatitude();
                                         double longitude = locationResult.getLocations().get(index).getLongitude();
                                         locationListener.onLocationChanged(latitude, longitude);
-                                        userLocationMsg = userLocationMsg + latitude + "," + longitude;
+                                        userLocationMsg += latitude + "," + longitude;
                                         Log.d("SMS", userLocationMsg);
                                         // Create an instance of SmsHandler and call sendSMS() on that instance
                                         SmsHandler.sendSMS(context, userLocationMsg ,Manifest.permission.SEND_SMS);

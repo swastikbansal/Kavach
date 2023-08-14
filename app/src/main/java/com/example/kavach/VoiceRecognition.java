@@ -1,14 +1,9 @@
 package com.example.kavach;
 
 import android.annotation.SuppressLint;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
-import android.location.Location;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -16,7 +11,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,6 +32,8 @@ public class VoiceRecognition extends AppCompatActivity {
     private Button stopButton;
     private boolean isWakeWordServiceRunning = false;
 
+    String selectedTriggerWord;
+
     String triggerWordKey = Constants.TRIGGER_WORD_KEY;
     String defaultTriggerWord = Constants.DEFAULT_TRIGGER_WORD;
 
@@ -48,8 +44,6 @@ public class VoiceRecognition extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_voice_recognition);
-
-        Log.d("2345", "qwerty");
 
         speechAnimation = AnimationUtils.loadAnimation(this, R.anim.speech_animation);
 
@@ -71,13 +65,8 @@ public class VoiceRecognition extends AppCompatActivity {
         autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String selectedTriggerWord = adapterItems.getItem(position);
+                selectedTriggerWord = adapterItems.getItem(position);
 
-                // Save the selected trigger word to SharedPreferences as lowercase
-                SharedPreferences sharedPreferences = getSharedPreferences("my_prefs", MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString(Constants.TRIGGER_WORD_KEY, selectedTriggerWord.toLowerCase());
-                editor.apply();
 
                 // Stop the current wake word service if running
                 if (isWakeWordServiceRunning) {
@@ -96,6 +85,7 @@ public class VoiceRecognition extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (!isWakeWordServiceRunning) {
+                    uploadKeyword();
                     startWakeWordService();
                 }
             }
@@ -105,6 +95,7 @@ public class VoiceRecognition extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (isWakeWordServiceRunning) {
+                    uploadKeyword();
                     stopWakeWordService();
                 }
             }
@@ -130,6 +121,14 @@ public class VoiceRecognition extends AppCompatActivity {
         }
     }
 
+    private void uploadKeyword(){
+        // Save the selected trigger word to SharedPreferences as lowercase
+        SharedPreferences sharedPreferences = getSharedPreferences("my_prefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(Constants.TRIGGER_WORD_KEY, selectedTriggerWord.toLowerCase());
+        editor.apply();
+    }
+
     private void stopWakeWordService() {
         Intent serviceIntent = new Intent(this, WakeWordService.class);
         stopService(serviceIntent);
@@ -149,6 +148,3 @@ public class VoiceRecognition extends AppCompatActivity {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }
-
-
-

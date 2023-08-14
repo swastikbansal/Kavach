@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements LocationHandler.L
     private static final int PERMISSION_REQUEST_CODE = 1;
     private SmsHandler smsHandler;
 
+    private CameraHandler cameraHandler;
 
     @RequiresApi(api = Build.VERSION_CODES.TIRAMISU)
     @Override
@@ -55,6 +56,8 @@ public class MainActivity extends AppCompatActivity implements LocationHandler.L
         EmergencyContactsButton = findViewById(R.id.EmergencyContactButton);
         VoiceRecognitionButton = findViewById(R.id.VoiceRecognitionButton);
         LockScreenButton = findViewById(R.id.LockScreenButton);
+
+        cameraHandler = new CameraHandler(this,this);
 
         //Navigation Layout Code
         binding = ActivityMainBinding.inflate(getLayoutInflater());
@@ -206,6 +209,7 @@ public class MainActivity extends AppCompatActivity implements LocationHandler.L
         Toast.makeText(this, "SOS", Toast.LENGTH_SHORT).show();
         // Request current location when SOS button is pressed
         locationHandler.getCurrentLocation();
+        cameraHandler.capturePhoto(MainActivity.this);
     }
 
 

@@ -34,10 +34,13 @@ public class WakeWordService extends Service {
 
     private LocationHandler locationHandler;
 
+    private CameraHandler cameraHandler;
+
 
     @Override
     public void onCreate() {
         super.onCreate();
+
         startForeground(2, createNotification());
 
         locationHandler = new LocationHandler(this, new LocationHandler.LocationListener() {
@@ -120,8 +123,6 @@ public class WakeWordService extends Service {
         }
     }
 
-
-
     private PorcupineManagerCallback wakeWordCallback = new PorcupineManagerCallback() {
         @Override
         public void invoke(int keywordIndex) {
@@ -132,7 +133,7 @@ public class WakeWordService extends Service {
             if (keywordIndex == 0) {
                 showToast("Wake word detected: " + selectedWakeWord);
                 locationHandler.getCurrentLocation();
-                Log.d("tag","msg");
+                Log.d("SOS","Msg sent through voice.");
 
             } else {
                 showToast("Detected wake word does not match selected wake word");
@@ -148,5 +149,3 @@ public class WakeWordService extends Service {
 
 
 }
-
-
