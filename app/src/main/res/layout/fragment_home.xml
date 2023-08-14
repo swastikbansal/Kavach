@@ -54,7 +54,7 @@
         android:background="@drawable/custom_button"
         android:drawableRight="@drawable/baseline_keyboard_double_arrow_right_24"
         android:paddingStart="20dp"
-        android:text="@string/voice_recognition"
+        android:text="@string/speech_recognition"
         app:layout_constraintBottom_toTopOf="@+id/LockScreenButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

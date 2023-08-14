@@ -9,17 +9,18 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <TextView
             android:paddingTop="20dp"
             android:id="@+id/textHead"
             android:layout_width="wrap_content"
-            android:layout_height="60dp"
+            android:layout_height="80dp"
             android:fontFamily="@font/adamina"
-            android:text="About KAVACH"
+            android:text="@string/aboutHead"
             android:textAlignment="center"
+            android:paddingLeft="120dp"
             android:textColor="#FFFFFF"
             android:textSize="24sp" />
 
@@ -27,7 +28,6 @@
             android:id="@+id/imageLogo"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:layout_weight="1"
             app:srcCompat="@drawable/logo6" />
 
 
@@ -35,7 +35,7 @@
             android:id="@+id/textIntro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Welcome to Kavach, your personal safety companion designed to provide you with peace of mind in any emergency situation. Our mission is to keep you safe and connected at all times."
+            android:text="@string/aboutHead1"
             android:textColor="#F7F2F2"
             android:textSize="16sp" />
 
@@ -44,7 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:fontFamily="@font/alata"
-            android:text="Key Features :"
+            android:text="@string/aboutHead2"
             android:textColor="#F7F2F2"
             android:textSize="22sp" />
 
@@ -52,15 +52,16 @@
             android:id="@+id/textQM"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1) Quick SOS Messages :"
+            android:text="@string/aboutHead3"
             android:textColor="#F7F2F2"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textQMD"
             android:layout_width="wrap_content"
             android:layout_height="90dp"
-            android:text="With a single press of a button, instantly send SOS messages to your designated emergency contacts. Your loved ones will be alerted of your distress and your location, ensuring swift assistance."
+            android:text="@string/aboutHead4"
             android:textColor="#F7F2F2"
             android:textSize="16sp" />
 
@@ -68,7 +69,8 @@
             android:id="@+id/textSR"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2) Voice Recognition (Upcoming) :"
+            android:text="@string/aboutHead5"
+            android:textStyle="bold"
             android:textColor="#F7F2F2"
             android:textSize="18sp" />
 
@@ -76,7 +78,7 @@
             android:id="@+id/textSRD"
             android:layout_width="wrap_content"
             android:layout_height="110dp"
-            android:text="We are actively working to integrate advanced voice recognition technology into our app. Soon, you'll be able to activate the SOS feature using just your voice, making it even easier to reach out for help when your hands are occupied."
+            android:text="@string/aboutHead6"
             android:textColor="#F7F2F2"
             android:textSize="16sp" />
 
@@ -84,7 +86,8 @@
             android:id="@+id/textCLS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="3) Customizable Lock Screen (Upcoming) :"
+            android:text="@string/aboutHead7"
+            android:textStyle="bold"
             android:textColor="#F7F2F2"
             android:textSize="18sp" />
 
@@ -92,7 +95,7 @@
             android:id="@+id/textCLSD"
             android:layout_width="wrap_content"
             android:layout_height="130dp"
-            android:text="Our team is currently developing a customizable lock screen feature. This will help you to set custom pin and pattern in your lock screen, allowing you to send SOS Message and current location from lock screen itself, making it faster and easier to send SOS Message and current location."
+            android:text="@string/aboutHead8"
             android:textColor="#F7F2F2"
             android:textSize="16sp" />
 
@@ -101,7 +104,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/alata"
-            android:text="Our Commitment :"
+            android:text="@string/aboutHead9"
             android:textColor="#F7F2F2"
             android:textSize="20sp" />
 
@@ -109,7 +112,7 @@
             android:id="@+id/textOCD"
             android:layout_width="wrap_content"
             android:layout_height="140dp"
-            android:text="Your safety is our top priority. We are dedicated to continuously enhancing and updating Kavach to provide you with the most effective and reliable safety tool. We value your feedback and encourage you to share your thoughts and suggestions as we strive to make your experience better every day."
+            android:text="@string/aboutHead10"
             android:textColor="#F7F2F2"
             android:textSize="16sp" />
 
@@ -118,7 +121,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/alata"
-            android:text="Stay Connected :"
+            android:text="@string/aboutHead11"
             android:textColor="#F7F2F2"
             android:textSize="20sp" />
 
@@ -126,7 +129,7 @@
             android:id="@+id/textSCD"
             android:layout_width="wrap_content"
             android:layout_height="100dp"
-            android:text="If you have any questions or concerns, feel free to reach out to our support team. Download Kavach today and take control of your personal safety."
+            android:text="@string/aboutHead12"
             android:textColor="#F7F2F2"
             android:textSize="16sp" />
 

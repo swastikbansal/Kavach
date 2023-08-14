@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:fontFamily="sans-serif-condensed-medium"
-        android:text="Speech Recognition"
+        android:text="@string/speech_recognition"
         android:textColor="@color/white"
         android:textSize="40sp"
         android:textStyle="bold"
@@ -46,7 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:layout_marginTop="40dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginEnd="50dp"
         android:layout_marginBottom="260dp"
         android:hint="@string/DropDown_Hint"
         app:boxBackgroundColor="@color/spinnerBar_color"
@@ -64,12 +64,11 @@
             android:id="@+id/autoCompleteTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:dropDownVerticalOffset="666dp"
+            android:layout_gravity="end"
             android:inputType="none"
             android:textColor="@color/white"
-            tools:layout_editor_absoluteX="58dp"
-            tools:layout_editor_absoluteY="353dp" />
-
+            tools:layout_editor_absoluteX="60dp"
+            tools:layout_editor_absoluteY="350dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -97,7 +96,7 @@
         android:drawableBottom="@drawable/baseline_done_outline_24"
         android:paddingTop="18dp"
         android:paddingBottom="10dp"
-        android:text="Enable"
+        android:text="@string/speech_enable"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="20sp"
@@ -119,7 +118,7 @@
         android:drawableBottom="@drawable/baseline_close_24"
         android:paddingTop="18dp"
         android:paddingBottom="10dp"
-        android:text="Disable"
+        android:text = "@string/speech_disable"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="20sp"

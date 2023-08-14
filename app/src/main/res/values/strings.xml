@@ -16,10 +16,11 @@
     <string name="menu_about">About</string>
     <string name="menu_logout">Log Out</string>
 
-    <string name="emregency_contacts"> Add Emergency Contacts </string>
     <string name="sos_image">SOS Image</string>
     <string name="emergency_contacts">Add Emergency Contacts</string>
-    <string name="voice_recognition">Speech Recognition</string>
+    <string name="speech_recognition">Speech Recognition</string>
+    <string name="speech_enable">Enable</string>
+    <string name="speech_disable">Disable</string>
     <string name="lock_screen">Custom Lock Screen</string>
     <string name="todo">TODO</string>
     <string name="switch_on">ON</string>
@@ -28,6 +29,20 @@
     <string name="vrHeading">Detects a trigger word and sends SOS Message</string>
     <string name="vrDescription">Easily trigger an SOS message by setting a trigger word. Once detected, your app will automatically send an SOS message to selected contacts with your live location, even when the app is running in the background or the phone is locked</string>
     <string name="vrFooter">Stay safe 24/7 with this powerful feature</string>
+    <string name="aboutHead">About Kavach</string>
+    <string name="aboutHead2">Key Features :</string>
+    <string name="aboutHead3">1) Quick SOS Messages :</string>
+    <string name="aboutHead5">2) Speech Recognition :</string>
+    <string name="aboutHead7">3) Customizable Lock Screen (Upcoming) :</string>
+    <string name="aboutHead8">Our team is currently developing a customizable lock screen feature. This will help you to set custom pin and pattern in your lock screen, allowing you to send SOS Message and current location from lock screen itself, making it faster and easier to send SOS Message and current location.</string>
+    <string name="aboutHead9">Our Commitment :</string>
+    <string name="aboutHead11">Stay Connected :</string>
+    <string name="aboutHead12">If you have any questions or concerns, feel free to reach out to our support team. Download Kavach today and take control of your personal safety.</string>
+    <string name="aboutHead10">Your safety is our top priority. We are dedicated to continuously enhancing and updating Kavach to provide you with the most effective and reliable safety tool. We value your feedback and encourage you to share your thoughts and suggestions as we strive to make your experience better every day.</string>
+    <string name="aboutHead6">We have integrated advanced speech recognition technology into our app. Now, you will be able to activate the SOS feature just by speaking a trigger word, making it even easier to reach out for help when your hands are occupied.</string>
+    <string name="aboutHead4">With a single press of a button, instantly send SOS messages to your designated emergency contacts. Your loved ones will be alerted of your distress and your live  location, ensuring swift assistance.</string>
+    <string name="aboutHead1">Welcome to Kavach, your personal safety companion designed to provide you with peace of mind in any emergency situation. Our mission is to keep you safe and connected at all times.</string>
+
 
     <string-array name="trigger_words">
         <item>Alexa</item>
