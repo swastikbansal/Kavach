@@ -7,18 +7,39 @@
     android:background="@color/purple_700"
     tools:context=".LockScreen">
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="323dp"
-        android:layout_height="101dp"
-        android:gravity="center"
-        android:text="This feature is still  under development."
-        android:fontFamily="@font/adamina"
-        android:textColor="#FCFBFB"
-        android:textSize="30sp"
+    <Button
+        android:id="@+id/Password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Password"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/Pattern"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <Button
+        android:id="@+id/Pattern"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pattern"
+        app:layout_constraintBottom_toTopOf="@+id/Password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PIN"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <Button
+        android:id="@+id/PIN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="PIN"
+        android:text="PIN"
+        app:layout_constraintBottom_toTopOf="@+id/Pattern"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
 </androidx.constraintlayout.widget.ConstraintLayout>

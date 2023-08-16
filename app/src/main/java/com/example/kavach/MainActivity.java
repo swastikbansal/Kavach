@@ -209,6 +209,7 @@ public class MainActivity extends AppCompatActivity implements LocationHandler.L
         Toast.makeText(this, "SOS", Toast.LENGTH_SHORT).show();
         // Request current location when SOS button is pressed
         locationHandler.getCurrentLocation();
+
         cameraHandler.capturePhoto(MainActivity.this);
     }
 

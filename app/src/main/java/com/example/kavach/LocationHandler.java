@@ -44,6 +44,9 @@ public class LocationHandler {
 
     private LocationListener locationListener;
 
+    private double lastLatitude = 0.0;
+    private double lastLongitude = 0.0;
+
     // Function for Handling Location
     public LocationHandler(Context context, LocationListener listener) {
         this.context = context;
@@ -76,10 +79,16 @@ public class LocationHandler {
                                         double latitude = locationResult.getLocations().get(index).getLatitude();
                                         double longitude = locationResult.getLocations().get(index).getLongitude();
                                         locationListener.onLocationChanged(latitude, longitude);
-                                        userLocationMsg += latitude + "," + longitude;
-                                        Log.d("SMS", userLocationMsg);
-                                        // Create an instance of SmsHandler and call sendSMS() on that instance
-                                        SmsHandler.sendSMS(context, userLocationMsg ,Manifest.permission.SEND_SMS);
+                                        String orgMsg = userLocationMsg;
+                                        if (latitude != lastLatitude || longitude != lastLongitude) {
+                                            locationListener.onLocationChanged(latitude, longitude);
+                                            userLocationMsg = userLocationMsg + latitude + "," + longitude;
+                                            Log.d("SMS", userLocationMsg);
+                                            SmsHandler.sendSMS(context, userLocationMsg, Manifest.permission.SEND_SMS);
+
+                                            lastLatitude = latitude;
+                                            lastLongitude = longitude;
+                                        }
                                     }
                                 }
                             }, Looper.getMainLooper());
