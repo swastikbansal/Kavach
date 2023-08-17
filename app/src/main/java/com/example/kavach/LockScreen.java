@@ -17,10 +17,5 @@ public class LockScreen extends AppCompatActivity {
         setContentView(R.layout.activity_lock_screen);
     }
 
-    public void PIN(View view){
-        Intent PinIntent = new Intent(this,LockScreen_PIN.class);
-        startActivity(PinIntent);
-    }
-
     }
 
