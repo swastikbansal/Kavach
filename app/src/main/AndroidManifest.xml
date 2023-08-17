@@ -55,6 +55,7 @@
             android:name=".LockScreen"
             android:exported="false"
             android:label="Lock Screen"
+            android:windowSoftInputMode="stateVisible|adjustPan"
             android:parentActivityName=".MainActivity" />
 
         <activity

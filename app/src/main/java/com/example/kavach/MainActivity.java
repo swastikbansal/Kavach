@@ -217,7 +217,7 @@ public class MainActivity extends AppCompatActivity implements LocationHandler.L
     }
 
 
-    //Function for popping up Dialog box if Emregency COntacts are not added
+    //Function for popping up Dialog box if Emergency COntacts are not added
     public void dailogBoxEmptyContacts(){
         //If user has no contacts added
         ContactDatabaseHelper dbHelper = new ContactDatabaseHelper(MainActivity.this);

@@ -4,42 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purple_700"
+    android:background="@drawable/lock_wallpaper"
     tools:context=".LockScreen">
 
-    <Button
-        android:id="@+id/Password"
+
+    <TextClock
+        android:id="@+id/textClock"
+        android:layout_width="183dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="36dp"
+        android:gravity="center"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextNumberPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Password"
+        android:ems="10"
+        android:inputType="numberPassword"
+        app:layout_constraintBottom_toTopOf="@+id/UnlockButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textClock"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <ImageButton
+        android:id="@+id/UnlockButton"
+        android:layout_width="119dp"
+        android:layout_height="104dp"
+        android:onClick="unlock"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Pattern"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextNumberPassword"
+        app:layout_constraintVertical_bias="0.5"
+        app:srcCompat="@drawable/baseline_lock_24" />
 
-    <Button
-        android:id="@+id/Pattern"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pattern"
-        app:layout_constraintBottom_toTopOf="@+id/Password"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PIN"
-        app:layout_constraintVertical_bias="0.5" />
-
-    <Button
-        android:id="@+id/PIN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="PIN"
-        android:text="PIN"
-        app:layout_constraintBottom_toTopOf="@+id/Pattern"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
 </androidx.constraintlayout.widget.ConstraintLayout>
