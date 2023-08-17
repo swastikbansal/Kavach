@@ -12,7 +12,7 @@
         <item name="colorOnSecondary">@color/purple_700</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@color/statusBar_color</item>
-         Customize your theme here.
+        Customize your theme here.
     </style>
 
     <style name="Theme.Kavach.NoActionBar">
@@ -23,5 +23,20 @@
     <style name="Theme.Kavach.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.Kavach.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Theme.Kavach.AppWidgetContainerParent" parent="@android:style/Theme.DeviceDefault">
+        <!-- Radius of the outer bound of widgets to make the rounded corners -->
+        <item name="appWidgetRadius">16dp</item>
+        <!--
+        Radius of the inner view's bound of widgets to make the rounded corners.
+        It needs to be 8dp or less than the value of appWidgetRadius
+        -->
+        <item name="appWidgetInnerRadius">8dp</item>
+    </style>
+
+    <style name="Theme.Kavach.AppWidgetContainer" parent="Theme.Kavach.AppWidgetContainerParent">
+        <!-- Apply padding to avoid the content of the widget colliding with the rounded corners -->
+        <item name="appWidgetPadding">16dp</item>
+    </style>
 
 </resources>

@@ -78,4 +78,10 @@
         <item>Terminator</item>
     </string-array>
 
+<!--    App widget strings.-->
+    <string name="appwidget_text">Kavach</string>
+    <string name="configure">Configure</string>
+    <string name="add_widget">Add widget</string>
+    <string name="app_widget_description">Tap the widget icon to send SOS.</string>
+
 </resources>

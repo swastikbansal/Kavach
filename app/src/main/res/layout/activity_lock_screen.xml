@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/lock_wallpaper"
+    android:background="@drawable/lockwallpaper"
     tools:context=".LockScreen">
 
 
@@ -33,9 +33,10 @@
 
     <ImageButton
         android:id="@+id/UnlockButton"
-        android:layout_width="119dp"
-        android:layout_height="104dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:onClick="unlock"
+        android:background="@drawable/custom_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
