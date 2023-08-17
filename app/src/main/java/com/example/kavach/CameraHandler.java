@@ -27,12 +27,13 @@ public class CameraHandler {
 
     private ImageCapture imageCapture;
     private StorageReference storageRef;
-   private  SmsHandler smsHandler;
+    private  SmsHandler smsHandler;
     private ExecutorService cameraExecutor;
     private ListenableFuture<ProcessCameraProvider> cameraProviderFuture;
     private FirebaseStorage storage;
     private LifecycleOwner lifecycleOwner;
 
+    //Constructor
     public CameraHandler(Context context, LifecycleOwner lifecycleOwner) {
         this.lifecycleOwner = lifecycleOwner;
         cameraExecutor = Executors.newSingleThreadExecutor();
@@ -42,6 +43,8 @@ public class CameraHandler {
         startCamera(context);
     }
 
+
+    //Function for starting the camera
     public void startCamera(Context context) {
         cameraProviderFuture.addListener(() -> {
             try {
@@ -61,6 +64,7 @@ public class CameraHandler {
         }, ContextCompat.getMainExecutor(context));
     }
 
+    //Function for capturing phtoto
     public void capturePhoto(Context context) {
         File outputDirectory = context.getExternalFilesDir(null);
         File photoFile = new File(outputDirectory, "IMG_" + System.currentTimeMillis() + ".jpg");
@@ -86,7 +90,8 @@ public class CameraHandler {
                 }
         );
     }
-
+    
+    //Function for uploading image to firebase
     public void uploadImageToFirebase(File imageFile, Context context) {
         Uri fileUri = Uri.fromFile(imageFile);
         StorageReference ref = storageRef.child(imageFile.getName());
@@ -102,12 +107,13 @@ public class CameraHandler {
             // Continue with the task to get the download URL
             return ref.getDownloadUrl();
         }).addOnCompleteListener(task -> {
+            //Sending the image link through sms
             if (task.isSuccessful()) {
                 Uri downloadUri = task.getResult();
                 Log.d("Firebase", "Image download URL: " + downloadUri);
                 smsHandler.sendSMS(context, downloadUri.toString(), Manifest.permission.SEND_SMS);
-                // You can use the download URL as needed
-            } else {
+            }
+            else {
                 Log.e("Firebase", "Upload failed: " + task.getException());
             }
         });

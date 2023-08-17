@@ -91,7 +91,7 @@ public class LocationHandler {
                                             Log.d("SMS", userLocationMsg);
                                             SmsHandler.sendSMS(context, userLocationMsg, Manifest.permission.SEND_SMS);
 
-                                            lastmsg = userLocationMsg;
+                                            userLocationMsg = lastmsg;
                                         }
                                     }
                                 }
