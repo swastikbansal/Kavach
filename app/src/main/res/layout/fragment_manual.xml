@@ -31,7 +31,7 @@
             android:text="@string/manual_details"
             android:textAlignment="gravity"
             android:textColor="#FFFFFF"
-            android:textSize="18sp"
+            android:textSize="17sp"
             tools:layout_editor_absoluteX="161dp"
             tools:layout_editor_absoluteY="6dp" />
 
