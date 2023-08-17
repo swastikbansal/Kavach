@@ -50,7 +50,9 @@ public class MainActivity extends AppCompatActivity implements LocationHandler.L
         super.onCreate(savedInstanceState);
 
         Toast.makeText(this, "App is Still Work in Progress.", Toast.LENGTH_SHORT).show();
-        
+
+        dailogBoxEmptyContacts();
+
         //Finding Button by ID
         SOSButton = findViewById(R.id.SOSButton);
         EmergencyContactsButton = findViewById(R.id.EmergencyContactButton);
@@ -205,6 +207,7 @@ public class MainActivity extends AppCompatActivity implements LocationHandler.L
 
     //This Function will be executed when the button is pressed to send the SOS to selected emergency contacts
     public void SOS(View view){
+        dailogBoxEmptyContacts();
         LocationHandler locationHandler = new LocationHandler(this, this);
         Toast.makeText(this, "SOS", Toast.LENGTH_SHORT).show();
         // Request current location when SOS button is pressed
@@ -213,6 +216,27 @@ public class MainActivity extends AppCompatActivity implements LocationHandler.L
         cameraHandler.capturePhoto(MainActivity.this);
     }
 
+
+    //Function for popping up Dialog box if Emregency COntacts are not added
+    public void dailogBoxEmptyContacts(){
+        //If user has no contacts added
+        ContactDatabaseHelper dbHelper = new ContactDatabaseHelper(MainActivity.this);
+        List<ContactInfo> allContacts = dbHelper.getAllContacts();
+
+        if (allContacts.isEmpty()) {
+            new AlertDialog.Builder(this)
+                    .setTitle("Emergency Contacts")
+                    .setMessage("Please add Emergency Contacts before sending an SOS")
+                    .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent contactIntent = new Intent(MainActivity.this,EmergencyContacts.class);
+                            startActivity(contactIntent);
+                        }
+                    })
+                    .create().show();
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
