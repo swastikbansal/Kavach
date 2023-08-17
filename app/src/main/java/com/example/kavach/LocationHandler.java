@@ -78,16 +78,20 @@ public class LocationHandler {
                                         int index = locationResult.getLocations().size() - 1;
                                         double latitude = locationResult.getLocations().get(index).getLatitude();
                                         double longitude = locationResult.getLocations().get(index).getLongitude();
+
                                         locationListener.onLocationChanged(latitude, longitude);
-                                        String orgMsg = userLocationMsg;
-                                        if (latitude != lastLatitude || longitude != lastLongitude) {
-                                            locationListener.onLocationChanged(latitude, longitude);
-                                            userLocationMsg = userLocationMsg + latitude + "," + longitude;
+
+                                        String lastmsg = userLocationMsg;
+
+                                        locationListener.onLocationChanged(latitude, longitude);
+                                        userLocationMsg = userLocationMsg + latitude + "," + longitude;
+
+                                        if (!lastmsg.equals(userLocationMsg)) {
+
                                             Log.d("SMS", userLocationMsg);
                                             SmsHandler.sendSMS(context, userLocationMsg, Manifest.permission.SEND_SMS);
 
-                                            lastLatitude = latitude;
-                                            lastLongitude = longitude;
+                                            lastmsg = userLocationMsg;
                                         }
                                     }
                                 }

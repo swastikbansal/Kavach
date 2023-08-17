@@ -35,27 +35,33 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Kavach"
         tools:targetApi="31">
+
         <activity
             android:name=".LockScreen_PIN"
             android:exported="false" />
+
         <activity
             android:name=".item_contact"
             android:exported="false" />
+
         <activity
             android:name=".LockScreen"
             android:exported="false"
             android:label="Lock Screen"
             android:parentActivityName=".MainActivity" />
+
         <activity
             android:name=".VoiceRecognition"
             android:exported="false"
             android:label="Voice Recognition"
             android:parentActivityName=".MainActivity" />
+
         <activity
             android:name=".EmergencyContacts"
             android:exported="false"
             android:label="Emergency Contacts"
             android:parentActivityName=".MainActivity" />
+
         <activity
             android:name=".MainActivity"
             android:exported="false" />
