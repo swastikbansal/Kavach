@@ -1,31 +1,32 @@
 package com.example.kavach;
+
 import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.Toast;
-import androidx.annotation.NonNull;
-import android.location.Location;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.AlertDialog;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+
 import com.example.kavach.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,13 +35,7 @@ public class MainActivity extends AppCompatActivity implements LocationHandler.L
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
 
-    //Button Variables
-    private ImageButton SOSButton;
-    private Button EmergencyContactsButton;
-    private Button VoiceRecognitionButton;
-    private Button LockScreenButton;
     private static final int PERMISSION_REQUEST_CODE = 1;
-    private SmsHandler smsHandler;
 
     private CameraHandler cameraHandler;
 
@@ -52,12 +47,6 @@ public class MainActivity extends AppCompatActivity implements LocationHandler.L
         Toast.makeText(this, "App is Still Work in Progress.", Toast.LENGTH_SHORT).show();
 
         dailogBoxEmptyContacts();
-
-        //Finding Button by ID
-        SOSButton = findViewById(R.id.SOSButton);
-        EmergencyContactsButton = findViewById(R.id.EmergencyContactButton);
-        VoiceRecognitionButton = findViewById(R.id.VoiceRecognitionButton);
-        LockScreenButton = findViewById(R.id.LockScreenButton);
 
         cameraHandler = new CameraHandler(this,this);
 
@@ -139,12 +128,7 @@ public class MainActivity extends AppCompatActivity implements LocationHandler.L
                                         new String[] {permission}, PERMISSION_REQUEST_CODE);
                             }
                         })
-                        .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        })
+                        .setNegativeButton("cancel", (dialog, which) -> dialog.dismiss())
                         .create().show();
             } else {
                 permissionsToRequest.add(permission);
@@ -227,12 +211,9 @@ public class MainActivity extends AppCompatActivity implements LocationHandler.L
             new AlertDialog.Builder(this)
                     .setTitle("Emergency Contacts")
                     .setMessage("Please add Emergency Contacts before sending an SOS")
-                    .setPositiveButton("ok", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            Intent contactIntent = new Intent(MainActivity.this,EmergencyContacts.class);
-                            startActivity(contactIntent);
-                        }
+                    .setPositiveButton("ok", (dialog, which) -> {
+                        Intent contactIntent = new Intent(MainActivity.this,EmergencyContacts.class);
+                        startActivity(contactIntent);
                     })
                     .create().show();
         }

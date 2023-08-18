@@ -29,6 +29,7 @@ import com.google.android.gms.tasks.Task;
 
 public class LocationHandler {
 
+    //Making Custom interface for Location Handler
     public interface LocationListener {
         void onLocationChanged(double latitude, double longitude);
 
@@ -47,7 +48,7 @@ public class LocationHandler {
     private double lastLatitude = 0.0;
     private double lastLongitude = 0.0;
 
-    // Function for Handling Location
+    // Constructor
     public LocationHandler(Context context, LocationListener listener) {
         this.context = context;
         this.locationListener = listener;
@@ -73,6 +74,7 @@ public class LocationHandler {
                                     super.onLocationResult(locationResult);
                                     LocationServices.getFusedLocationProviderClient(context.getApplicationContext())
                                             .removeLocationUpdates(this);
+
                                     // Getting Current Location
                                     if (locationResult != null && locationResult.getLocations().size() > 0) {
                                         int index = locationResult.getLocations().size() - 1;
@@ -82,10 +84,9 @@ public class LocationHandler {
                                         locationListener.onLocationChanged(latitude, longitude);
 
                                         String lastmsg = userLocationMsg;
-
-                                        locationListener.onLocationChanged(latitude, longitude);
                                         userLocationMsg = userLocationMsg + latitude + "," + longitude;
 
+                                        //Used if statement to stop duplicating the location in SMS by resetting the message
                                         if (!lastmsg.equals(userLocationMsg)) {
 
                                             Log.d("SMS", userLocationMsg);

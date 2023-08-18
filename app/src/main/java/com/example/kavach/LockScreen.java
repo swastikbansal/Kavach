@@ -51,7 +51,7 @@ public class LockScreen extends AppCompatActivity {
 
     }
 
-    //Funnction for unlocking Screen
+    //Function for unlocking Screen
     public void unlock(View view){
         String currentPassword = textView.getText().toString();
 
