@@ -37,7 +37,7 @@ public class LocationHandler {
         void onLocationChanged(Location location);
     }
 
-    String userLocationMsg = "I am in an Emergency Situation. I need Help.\nHere is my location :\nhttps://www.google.com/maps?q=";
+    String userLocationMsg = "I am in an Emergency Situation. I need Help.";
     private LocationRequest locationRequest;
     private Context context;
 
@@ -61,6 +61,9 @@ public class LocationHandler {
 
     // Function for getting Current Location
     public void getCurrentLocation() {
+
+        SmsHandler.sendSMS(context,userLocationMsg,Manifest.permission.SEND_SMS);
+
         // Checking for Location Permission
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
@@ -80,6 +83,8 @@ public class LocationHandler {
                                         int index = locationResult.getLocations().size() - 1;
                                         double latitude = locationResult.getLocations().get(index).getLatitude();
                                         double longitude = locationResult.getLocations().get(index).getLongitude();
+
+                                        userLocationMsg = "Here is my location :\nhttps://www.google.com/maps?q=";
 
                                         locationListener.onLocationChanged(latitude, longitude);
 
@@ -105,7 +110,6 @@ public class LocationHandler {
             }
         }
     }
-
 
 
     //Function for turning on GPS

@@ -243,7 +243,6 @@ public class MainActivity extends AppCompatActivity implements LocationHandler.L
     public void onLocationChanged(Location location) {
         double latitude = location.getLatitude();
         double longitude = location.getLongitude();
-
     }
 
 }
