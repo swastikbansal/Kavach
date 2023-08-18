@@ -23,7 +23,6 @@ import ai.picovoice.porcupine.PorcupineManager;
 import ai.picovoice.porcupine.PorcupineManagerCallback;
 
 
-
 public class WakeWordService extends Service {
 
     private PorcupineManager porcupineManager;
@@ -110,7 +109,6 @@ public class WakeWordService extends Service {
         }
 
     }
-
 
     private void stopWakeWordDetection() {
         if (porcupineManager != null) {

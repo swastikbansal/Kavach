@@ -48,9 +48,7 @@ public class Kavachwidget extends AppWidgetProvider {
     private Button VoiceRecognitionButton;
     private Button LockScreenButton;
     private static final int PERMISSION_REQUEST_CODE = 1;
-    private SmsHandler smsHandler;
 
-    private CameraHandler cameraHandler;
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
                                 int appWidgetId) {
 
@@ -72,7 +70,7 @@ public class Kavachwidget extends AppWidgetProvider {
             // Set up click intent for the widget's SOS button
             Intent intent = new Intent(context, Kavachwidget.class);
             intent.setAction("SOS_CLICKED");
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent,  PendingIntent.FLAG_UPDATE_CURRENT);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent,  PendingIntent.FLAG_IMMUTABLE);
             views.setOnClickPendingIntent(R.id.widgetSOSButton, pendingIntent);
 
             appWidgetManager.updateAppWidget(appWidgetId, views);
@@ -104,9 +102,6 @@ public class Kavachwidget extends AppWidgetProvider {
 
         // Request current location when SOS button is pressed
         locationHandler.getCurrentLocation();
-
-        cameraHandler = new CameraHandler(context, null); // Replace 'null' with your lifecycleOwner if needed
-        cameraHandler.capturePhoto(context);
 
         Toast.makeText(context, "Emergency SOS triggered!", Toast.LENGTH_SHORT).show();
     }
