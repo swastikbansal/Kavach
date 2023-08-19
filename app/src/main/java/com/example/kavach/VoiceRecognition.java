@@ -37,7 +37,6 @@ public class VoiceRecognition extends AppCompatActivity {
     String triggerWordKey = Constants.TRIGGER_WORD_KEY;
     String defaultTriggerWord = Constants.DEFAULT_TRIGGER_WORD;
 
-    private LocationHandler locationHandler;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -58,7 +57,7 @@ public class VoiceRecognition extends AppCompatActivity {
         ArrayAdapter<String> adapterItems = new ArrayAdapter<>(this, R.layout.trigger_word, triggerWords);
 
         //Drop Down Menu Usage
-        autoCompleteTextView= findViewById(R.id.autoCompleteTextView);
+        autoCompleteTextView = findViewById(R.id.autoCompleteTextView);
 
         autoCompleteTextView.setAdapter(adapterItems);
 
@@ -121,7 +120,7 @@ public class VoiceRecognition extends AppCompatActivity {
         }
     }
 
-    private void uploadKeyword(){
+    private void uploadKeyword() {
         // Save the selected trigger word to SharedPreferences as lowercase
         SharedPreferences sharedPreferences = getSharedPreferences("my_prefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -142,9 +141,5 @@ public class VoiceRecognition extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-    }
-
-    private void showToast(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }

@@ -49,7 +49,7 @@ public class CameraHandler {
         cameraProviderFuture.addListener(() -> {
             try {
                 CameraSelector cameraSelector = new CameraSelector.Builder()
-                        .requireLensFacing(CameraSelector.LENS_FACING_BACK)
+                        .requireLensFacing(CameraSelector.LENS_FACING_FRONT)
                         .build();
 
                 Preview preview = new Preview.Builder().build();

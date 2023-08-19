@@ -33,8 +33,6 @@ public class WakeWordService extends Service {
 
     private LocationHandler locationHandler;
 
-    private CameraHandler cameraHandler;
-
 
     @Override
     public void onCreate() {
@@ -134,7 +132,7 @@ public class WakeWordService extends Service {
                 Log.d("SOS","Msg sent through voice.");
 
             } else {
-                showToast("Detected wake word does not match selected wake word");
+                Log.e("SOS","Detected wake word not found.");
             }
 
 
