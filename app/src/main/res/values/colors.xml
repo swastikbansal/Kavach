@@ -8,6 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="statusBar_color">#282c34</color>
+    <color name="statusBar_color2">#393d44</color>
     <color name="spinnerBar_color">#33373e</color>
     <color name="srDescription">#b2b2b2</color>
     <color name="spinnerElements">#FF7300</color>

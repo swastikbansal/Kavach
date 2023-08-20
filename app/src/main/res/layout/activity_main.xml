@@ -17,8 +17,10 @@
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:background="@drawable/widget_button"
+        android:layout_height="480dp"
+        android:background="@drawable/nav_custom"
+        android:layout_marginTop="85dp"
+        android:layout_marginLeft="10dp"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_main"

@@ -2,7 +2,7 @@
 
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:drawable="@drawable/logo6" />
+    <item android:drawable="@drawable/buttonimg" />
     <item android:drawable="@drawable/ring_background" />
 
 </layer-list>
