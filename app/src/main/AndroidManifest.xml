@@ -23,6 +23,8 @@
     <!-- Location Permission -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- Call Permission -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- _______________________ Adding uses-feature tag for hardware _______________________ -->
     <uses-feature
@@ -71,7 +73,7 @@
             android:parentActivityName=".MainActivity"
             android:windowSoftInputMode="stateVisible|adjustPan" />
         <activity
-            android:name=".VoiceRecognition"
+            android:name=".SpeechRecognition"
             android:exported="false"
             android:label="Voice Recognition"
             android:parentActivityName=".MainActivity" />

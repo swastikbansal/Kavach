@@ -28,7 +28,6 @@
             android:layout_width="380dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/adamina"
-            android:text="@string/manual_details"
             android:textAlignment="gravity"
             android:textColor="#FFFFFF"
             android:textSize="17sp"

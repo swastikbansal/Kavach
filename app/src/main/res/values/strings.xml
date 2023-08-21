@@ -44,21 +44,6 @@
     <string name="aboutHead4">With a single press of a button, instantly send SOS messages to your designated emergency contacts. Your loved ones will be alerted of your distress and your live  location, ensuring swift assistance.</string>
     <string name="aboutHead1">Welcome to Kavach, your personal safety companion designed to provide you with peace of mind in any emergency situation. Our mission is to keep you safe and connected at all times.</string>
     <string name="manual">Manual</string>
-    <string name="manual_details">\n Fire : 101 \n
-    Ambulance : 102 \n
-    Road Accident Emergency Service : 1073 \n
-    Railway Accident Emergency Service : 1072 \n
-    Police : 100 or 112 \n
-    Disaster Management Services : 108 \n
-    National Emergency Number : 112 \n
-    Women’s Helpline : 1091 \n
-    Women’s Helpline (Domestic Abuse) : 181 \n
-    Children In Difficult Situation : 1098 \n
-    Senior Citizen Helpline : 14567 \n
-    Cyber Crime Helpline : 155620 \n
-    Kisan Call Centre : 18001801551 \n
-    Aids Helpline : 1097 \n
-    Air Ambulance 9540161344 </string>
 
 
     <string-array name="trigger_words">

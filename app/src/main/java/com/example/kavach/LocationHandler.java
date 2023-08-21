@@ -29,11 +29,8 @@ import com.google.android.gms.tasks.Task;
 
 public class LocationHandler {
 
-    //Making Custom interface for Location Handler
     public interface LocationListener {
         void onLocationChanged(double latitude, double longitude);
-
-        // Implement LocationListener interface method to get the current location
         void onLocationChanged(Location location);
     }
 
@@ -41,12 +38,7 @@ public class LocationHandler {
     private LocationRequest locationRequest;
     private Context context;
 
-    private CameraHandler cameraHandler;
-
     private LocationListener locationListener;
-
-    private double lastLatitude = 0.0;
-    private double lastLongitude = 0.0;
 
     // Constructor
     public LocationHandler(Context context, LocationListener listener) {
@@ -61,47 +53,20 @@ public class LocationHandler {
 
     // Function for getting Current Location
     public void getCurrentLocation() {
-
-        SmsHandler.sendSMS(context,userLocationMsg,Manifest.permission.SEND_SMS);
+        userLocationMsg = "I am in an Emergency Situation. I need Help.";
+        SmsHandler.sendSMS(context, userLocationMsg, Manifest.permission.SEND_SMS);
 
         // Checking for Location Permission
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                // Checking if GPS is enabled
                 if (isGPSEnabled()) {
-                    // Using the application context for Google Play Services API calls
-                    LocationServices.getFusedLocationProviderClient(context.getApplicationContext())
-                            .requestLocationUpdates(locationRequest, new LocationCallback() {
-                                @Override
-                                public void onLocationResult(@NonNull LocationResult locationResult) {
-                                    super.onLocationResult(locationResult);
-                                    LocationServices.getFusedLocationProviderClient(context.getApplicationContext())
-                                            .removeLocationUpdates(this);
-
-                                    // Getting Current Location
-                                    if (locationResult != null && locationResult.getLocations().size() > 0) {
-                                        int index = locationResult.getLocations().size() - 1;
-                                        double latitude = locationResult.getLocations().get(index).getLatitude();
-                                        double longitude = locationResult.getLocations().get(index).getLongitude();
-
-                                        userLocationMsg = "Here is my location :\nhttps://www.google.com/maps?q=";
-
-                                        locationListener.onLocationChanged(latitude, longitude);
-
-                                        String lastmsg = userLocationMsg;
-                                        userLocationMsg = userLocationMsg + latitude + "," + longitude;
-
-                                        //Used if statement to stop duplicating the location in SMS by resetting the message
-                                        if (!lastmsg.equals(userLocationMsg)) {
-
-                                            Log.d("SMS", userLocationMsg);
-                                            SmsHandler.sendSMS(context, userLocationMsg, Manifest.permission.SEND_SMS);
-
-                                            userLocationMsg = lastmsg;
-                                        }
-                                    }
-                                }
-                            }, Looper.getMainLooper());
+                    if (context instanceof Activity) {
+                        LocationServices.getFusedLocationProviderClient(context)
+                                .requestLocationUpdates(locationRequest, createLocationCallback(), Looper.getMainLooper());
+                    } else {
+                        LocationServices.getFusedLocationProviderClient(context.getApplicationContext())
+                                .requestLocationUpdates(locationRequest, createLocationCallback(), Looper.getMainLooper());
+                    }
                 } else {
                     turnOnGPS();
                 }
@@ -111,8 +76,35 @@ public class LocationHandler {
         }
     }
 
+    private LocationCallback createLocationCallback() {
+        return new LocationCallback() {
+            @Override
+            public void onLocationResult(@NonNull LocationResult locationResult) {
+                super.onLocationResult(locationResult);
+                LocationServices.getFusedLocationProviderClient(context.getApplicationContext())
+                        .removeLocationUpdates(this);
 
-    //Function for turning on GPS
+                if (locationResult != null && locationResult.getLocations().size() > 0) {
+                    int index = locationResult.getLocations().size() - 1;
+                    double latitude = locationResult.getLocations().get(index).getLatitude();
+                    double longitude = locationResult.getLocations().get(index).getLongitude();
+
+                    userLocationMsg = "Here is my location :\nhttps://www.google.com/maps?q=";
+                    locationListener.onLocationChanged(latitude, longitude);
+
+                    String lastmsg = userLocationMsg;
+                    userLocationMsg = userLocationMsg + latitude + "," + longitude;
+
+                    if (!lastmsg.equals(userLocationMsg)) {
+                        Log.d("SMS", userLocationMsg);
+                        SmsHandler.sendSMS(context, userLocationMsg, Manifest.permission.SEND_SMS);
+                        userLocationMsg = lastmsg;
+                    }
+                }
+            }
+        };
+    }
+
     private void turnOnGPS() {
         LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder()
                 .addLocationRequest(locationRequest);
@@ -130,13 +122,15 @@ public class LocationHandler {
                         case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
                             try {
                                 ResolvableApiException resolvableApiException = (ResolvableApiException) e;
-                                resolvableApiException.startResolutionForResult((Activity) context, 2);
+                                if (context instanceof Activity) {
+                                    resolvableApiException.startResolutionForResult((Activity) context, 2);
+                                }
                             } catch (IntentSender.SendIntentException ex) {
                                 ex.printStackTrace();
                             }
                             break;
                         case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
-                            //Device does not have location
+                            // Device does not have location
                             break;
                     }
                 }
@@ -144,7 +138,6 @@ public class LocationHandler {
         });
     }
 
-    //Function for getting current status
     private boolean isGPSEnabled() {
         LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
         return locationManager != null && locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);

@@ -89,6 +89,7 @@ public class MainActivity extends AppCompatActivity implements LocationHandler.L
                 Manifest.permission.ACCESS_FINE_LOCATION,
                 Manifest.permission.READ_EXTERNAL_STORAGE,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.CALL_PHONE,
         };
 
         // Checking if all permissions are granted
@@ -179,7 +180,7 @@ public class MainActivity extends AppCompatActivity implements LocationHandler.L
 
     //Voice Recognition Activity
     public void VoiceRecogntionActivity(View view){
-        Intent contactIntent = new Intent(this,VoiceRecognition.class);
+        Intent contactIntent = new Intent(this, SpeechRecognition.class);
         startActivity(contactIntent);
     }
 
