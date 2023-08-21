@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -80,8 +81,11 @@ public class SpeechRecognition extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (selectedTriggerWord != null) {
+                    Log.d("234567","antra");
                     uploadKeyword();
+                    setServiceEnabled(true);
                     startWakeWordService();
+                    Log.d("234567","antra");
                 } else {
                     showToast("Please select a trigger word before enabling.");
                 }
@@ -133,6 +137,7 @@ public class SpeechRecognition extends AppCompatActivity {
             startButton.setEnabled(false);
             stopButton.setEnabled(true);
             isWakeWordServiceRunning = true;
+            Log.d("1234567890","vidit");
         }
     }
 
@@ -158,6 +163,13 @@ public class SpeechRecognition extends AppCompatActivity {
         startButton.setEnabled(true);
         stopButton.setEnabled(false);
         isWakeWordServiceRunning = false;
+    }
+
+    private void setServiceEnabled(boolean isEnabled) {
+        SharedPreferences sharedPreferences = getSharedPreferences("my_prefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean(Constants.SERVICE_ENABLED_KEY, isEnabled);
+        editor.apply();
     }
 
 

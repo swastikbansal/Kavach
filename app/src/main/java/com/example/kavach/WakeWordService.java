@@ -5,6 +5,7 @@ import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.location.Location;
@@ -31,7 +32,7 @@ public class WakeWordService extends Service {
         super.onCreate();
 
         // Starting the service as a foreground service with a notification
-        startForeground(1, createNotification());
+        startForeground(2, createNotification());
 
         // Initializing the LocationHandler for handling location updates
         locationHandler = new LocationHandler(this, new LocationHandler.LocationListener() {
@@ -50,6 +51,7 @@ public class WakeWordService extends Service {
         boolean isServiceEnabled = isServiceEnabled();
         if (isServiceEnabled) {
             setupWakeWordDetection();
+            Log.d("Misogyny","Vihaan");
         }
         return START_STICKY; // Service will be explicitly restarted if it's killed by the system
     }
@@ -89,6 +91,7 @@ public class WakeWordService extends Service {
 
     // Setting up wake word detection using Porcupine library
     private void setupWakeWordDetection() {
+        Context context = this;
         SharedPreferences sharedPreferences = getSharedPreferences("my_prefs", MODE_PRIVATE);
         String selectedWakeWord = sharedPreferences.getString(Constants.TRIGGER_WORD_KEY, Constants.DEFAULT_TRIGGER_WORD);
 
@@ -97,12 +100,14 @@ public class WakeWordService extends Service {
         };
 
         try {
+            Log.d("kotlin","java");
             porcupineManager = new PorcupineManager.Builder()
                     .setAccessKey("nnlklAGraQk1b9da+VcyK+r/q9bWUFU3mf5vq75rcsBWACqYwiIPHQ==")
                     .setKeywords(keywords)
-                    .build(this, wakeWordCallback);
+                    .build(context, wakeWordCallback);
 
             porcupineManager.start();
+            Log.d("kinjal","prabhjot");
         } catch (PorcupineException e) {
             e.printStackTrace();
         }
@@ -124,6 +129,7 @@ public class WakeWordService extends Service {
     private PorcupineManagerCallback wakeWordCallback = new PorcupineManagerCallback() {
         @Override
         public void invoke(int keywordIndex) {
+            Log.d("chandrayaan","rover");
             SharedPreferences sharedPreferences = getSharedPreferences("my_prefs", MODE_PRIVATE);
             String selectedWakeWord = sharedPreferences.getString(Constants.TRIGGER_WORD_KEY, Constants.DEFAULT_TRIGGER_WORD);
 
