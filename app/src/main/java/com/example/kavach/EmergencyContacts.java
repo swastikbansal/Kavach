@@ -27,9 +27,11 @@ import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.airbnb.lottie.LottieAnimationView;
+
 import java.util.List;
 
-import pl.droidsonroids.gif.GifImageView;
+
 
 public class EmergencyContacts extends AppCompatActivity {
 
@@ -40,7 +42,7 @@ public class EmergencyContacts extends AppCompatActivity {
     //Hooks
     TextView head;
     ImageView icon;
-    GifImageView gifimg;
+    LottieAnimationView gifimg;
 
     //Animations
     Animation titleAnimation , gifAnimation;

@@ -13,7 +13,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.kavach.R;
 import com.example.kavach.databinding.FragmentHomeBinding;
 import com.example.kavach.ui.home.HomeViewModel;
-import pl.droidsonroids.gif.GifImageView;
+
 
 public class ProfileFragment extends Fragment{
 

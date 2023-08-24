@@ -11,17 +11,17 @@
         android:id="@+id/btn_select_contacts"
         android:layout_width="250dp"
         android:layout_height="60dp"
-        android:layout_marginTop="450dp"
+        android:layout_marginTop="480dp"
         android:background="@drawable/custom_button"
         android:drawableLeft="@drawable/baseline_person_add_alt_24"
-        android:paddingStart="20dp"
         android:onClick="onSelectContactsClick"
+        android:paddingStart="20dp"
         android:text="Select Contacts"
         android:textAllCaps="false"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/recycler_view"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5" />
@@ -56,19 +56,21 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.088" />
 
-    <pl.droidsonroids.gif.GifImageView
+    <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/gifImageView"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_marginTop="240dp"
-        android:layout_marginBottom="12dp"
-        android:src="@drawable/contacts1"
-        app:layout_constraintBottom_toTopOf="@+id/btn_select_contacts"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="70dp"
+        android:elevation="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_select_contacts"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.784" />
+        app:layout_constraintVertical_bias="0.346"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/animation_emrgencyoncontacts" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"

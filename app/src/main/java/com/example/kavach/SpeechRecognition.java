@@ -14,13 +14,15 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import pl.droidsonroids.gif.GifImageView;
+
+import com.airbnb.lottie.LottieAnimationView;
+
 
 public class SpeechRecognition extends AppCompatActivity {
 
     // UI components
     AutoCompleteTextView autoCompleteTextView;
-    GifImageView voice;
+    LottieAnimationView voice;
     Button startButton;
     Button stopButton;
 
