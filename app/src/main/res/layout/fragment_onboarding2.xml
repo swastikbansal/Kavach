@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/statusBar_color"
     android:orientation="vertical">
 
     <com.airbnb.lottie.LottieAnimationView
@@ -16,7 +17,9 @@
         app:lottie_loop="true" />
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="360dp"
+        android:paddingLeft="40dp"
+        android:textColor="@color/white"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
         android:text="@string/tutorial_2"

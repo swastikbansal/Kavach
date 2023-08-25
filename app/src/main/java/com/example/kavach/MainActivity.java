@@ -90,6 +90,8 @@ public class MainActivity extends AppCompatActivity implements LocationHandler.L
                 Manifest.permission.READ_EXTERNAL_STORAGE,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 Manifest.permission.CALL_PHONE,
+                Manifest.permission.RECEIVE_SMS,
+                Manifest.permission.READ_SMS,
         };
 
         // Checking if all permissions are granted
@@ -219,6 +221,7 @@ public class MainActivity extends AppCompatActivity implements LocationHandler.L
                     .create().show();
         }
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
