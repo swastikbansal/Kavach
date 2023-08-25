@@ -72,7 +72,7 @@
         <item>Terminator</item>
     </string-array>
 
-<!--    App widget strings.-->
+    <!--    App widget strings.-->
     <string name="appwidget_text">Kavach</string>
     <string name="configure">Configure</string>
     <string name="add_widget">Add widget</string>

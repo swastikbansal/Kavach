@@ -1,10 +1,13 @@
 package com.example.kavach;
 
+import static android.content.Intent.*;
+
 import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
@@ -39,6 +42,8 @@ public class MainActivity extends AppCompatActivity implements LocationHandler.L
 
     private CameraHandler cameraHandler;
 
+    private Intent intent;
+
     @RequiresApi(api = Build.VERSION_CODES.TIRAMISU)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +63,14 @@ public class MainActivity extends AppCompatActivity implements LocationHandler.L
         binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Uri gmmIntentUri = Uri.parse("geo:latitude,longitude?q=police+station");
+                Intent mapIntent = new Intent(ACTION_VIEW, gmmIntentUri);
+                mapIntent.setPackage("com.google.android.apps.maps");
+                if (mapIntent.resolveActivity(getPackageManager()) != null) {
+                    startActivity(mapIntent);
+                } else {
+                    Toast.makeText(MainActivity.this, "Please install Google Maps", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         DrawerLayout drawer = binding.drawerLayout;
@@ -182,14 +193,14 @@ public class MainActivity extends AppCompatActivity implements LocationHandler.L
 
     //Voice Recognition Activity
     public void VoiceRecogntionActivity(View view){
-        Intent contactIntent = new Intent(this, SpeechRecognition.class);
-        startActivity(contactIntent);
+        Intent speechIntent = new Intent(this, SpeechRecognition.class);
+        startActivity(speechIntent);
     }
 
     //Lock Screen Activity
     public void LockScreenActivity(View view){
-        Intent contactIntent = new Intent(this,LockScreen.class);
-        startActivity(contactIntent);
+        Intent lockIntent = new Intent(this,LockScreen.class);
+        startActivity(lockIntent);
     }
 
     //This Function will be executed when the button is pressed to send the SOS to selected emergency contacts
