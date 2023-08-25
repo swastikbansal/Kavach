@@ -56,7 +56,7 @@ public class ContactDatabaseHelper extends SQLiteOpenHelper {
     public List<ContactInfo> getAllContacts() {
         List<ContactInfo> contacts = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_CONTACTS, null, null, null, null, null, null);
+                Cursor cursor = db.query(TABLE_CONTACTS, null, null, null, null, null, null);
         if (cursor != null && cursor.moveToFirst()) {
             do {
                 @SuppressLint("Range") int id = cursor.getInt(cursor.getColumnIndex(COLUMN_ID));
