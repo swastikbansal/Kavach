@@ -16,6 +16,15 @@
     <string name="menu_about">About</string>
     <string name="menu_logout">Log Out</string>
     <string name="menu_manual">Manual</string>
+    <string name="tutorial_1">Kavach ensures peace of mind in emergency situations by alerting your loved ones by sending SOS Message.</string>
+    <string name="tutorial_2">Kavach offers an dedicated button on its home screen to send sos message to your selected emergency contacts.</string>
+    <string name="tutorial_3">Emergency contacts can be added by clicking on "Add Emergency Contacts" button given on the home screen of our app. The selected contacts would be sent an SOS Message when triggered.</string>
+    <string name="tutorial_4">Kavach offers an dedicated button on its home screen to send sos message to your selected emergency contacts.</string>
+    <string name="tutorial_5">Kavach offers an dedicated button on its home screen to send sos message to your selected emergency contacts.</string>
+    <string name="tutorial_6">Kavach offers an dedicated button on its home screen to send sos message to your selected emergency contacts.</string>
+    <string name="tutorial_7">Kavach offers an dedicated button on its home screen to send sos message to your selected emergency contacts.</string>
+    <string name="tutorial_8">Kavach offers an dedicated button on its home screen to send sos message to your selected emergency contacts.</string>
+    <string name="tutorial_9">Kavach offers an dedicated button on its home screen to send sos message to your selected emergency contacts.</string>
 
     <string name="sos_image">SOS Image</string>
     <string name="emergency_contacts">Add Emergency Contacts</string>
@@ -68,5 +77,6 @@
     <string name="configure">Configure</string>
     <string name="add_widget">Add widget</string>
     <string name="app_widget_description">Tap the widget icon to send SOS.</string>
+
 
 </resources>
