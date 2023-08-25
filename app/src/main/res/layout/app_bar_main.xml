@@ -22,7 +22,7 @@
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="@dimen/fab_margin"
         android:layout_marginBottom="16dp"
-        app:srcCompat="@android:drawable/ic_dialog_email"
+        app:srcCompat="@drawable/baseline_local_police_24"
         android:contentDescription="@string/todo" />
 
     <androidx.appcompat.widget.Toolbar
