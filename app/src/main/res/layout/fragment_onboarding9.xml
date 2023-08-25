@@ -8,10 +8,10 @@
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottieAnimationView"
         android:layout_width="match_parent"
-        android:layout_height="520dp"
-        app:lottie_rawRes="@raw/animation_kavachwidget"
+        android:layout_height="480dp"
+        app:lottie_rawRes="@raw/animation_manual"
         app:lottie_autoPlay="true"
-        android:paddingLeft="20dp"
+        android:paddingLeft="30dp"
         android:paddingTop="100dp"
         app:lottie_loop="true" />
 
@@ -22,18 +22,19 @@
         android:textSize="18sp"
         android:textAllCaps="false"
         android:layout_height="wrap_content"
-        android:text="@string/tutorial_15"
+        android:text="@string/tutorial_18"
+        android:textStyle="bold"
         android:textAlignment="center" />
 
     <TextView
         android:layout_width="360dp"
         android:paddingLeft="40dp"
-        android:textSize="14sp"
-        android:paddingTop="20dp"
         android:textColor="@color/white"
+        android:textSize="14sp"
         android:layout_height="wrap_content"
+        android:paddingTop="20dp"
         android:textAllCaps="false"
-        android:text="@string/tutorial_1"
+        android:text="@string/tutorial_9"
         android:textAlignment="center" />
 
 </LinearLayout>

@@ -3,13 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/statusBar_color"
     android:orientation="vertical">
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottieAnimationView"
-        android:layout_width="400dp"
-        android:layout_height="400dp"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
         app:lottie_rawRes="@raw/animation_peaceofmind"
         app:lottie_autoPlay="true"
         android:paddingLeft="40dp"
@@ -20,6 +19,18 @@
         android:layout_width="360dp"
         android:paddingLeft="40dp"
         android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textAllCaps="false"
+        android:layout_height="wrap_content"
+        android:text="@string/tutorial_10"
+        android:textAlignment="center" />
+
+    <TextView
+        android:layout_width="360dp"
+        android:paddingLeft="40dp"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:paddingTop="40dp"
         android:textAllCaps="false"
         android:layout_height="wrap_content"
         android:text="@string/tutorial_1"

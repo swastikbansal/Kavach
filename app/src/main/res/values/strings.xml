@@ -1,4 +1,6 @@
 <resources>
+
+<!--    Kavach default strings.-->
     <string name="app_name">Kavach</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -7,6 +9,7 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+<!--    Navigation bar strings.-->
     <string name="menu_profile">Profile</string>
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
@@ -16,16 +19,29 @@
     <string name="menu_about">About</string>
     <string name="menu_logout">Log Out</string>
     <string name="menu_manual">Manual</string>
-    <string name="tutorial_1">Kavach ensures peace of mind in emergency situations by alerting your loved ones by sending SOS Message.</string>
-    <string name="tutorial_2">Kavach offers an dedicated button on its home screen to send sos message to your selected emergency contacts.</string>
-    <string name="tutorial_3">Emergency contacts can be added by clicking on "Add Emergency Contacts" button given on the home screen of our app. The selected contacts would be sent an SOS Message when triggered.</string>
-    <string name="tutorial_4">Kavach offers speech recognition that triggers SOS Message when a selected trigger word is said. This feature can be enabled by selecting the trigger word from drop down menu and tapping enable button.</string>
-    <string name="tutorial_5">Kavach also captures photo from the front and back camera when SOS button is triggered and sends it to the selected contacts via SMS.</string>
-    <string name="tutorial_6">You can also add a widget on the home screen of your mobile which acts as a button to send SOS. Thus it makes it even faster and convinient to send SOS swiftly..</string>
-    <string name="tutorial_7">Kavach send your precise live location with the SMS to ensure quick assistance .</string>
-    <string name="tutorial_8">Kavach offers an dedicated button on its home screen to send sos message to your selected emergency contacts.</string>
-    <string name="tutorial_9">Kavach offers an dedicated button on its home screen to send sos message to your selected emergency contacts.</string>
 
+<!--    Tutorial fragment strings.-->
+    <string name="tutorial_1">Kavach ensures peace of mind during emergencies by instantly alerting your loved ones with an SOS message..</string>
+    <string name="tutorial_2">Activate the dedicated SOS button on the home screen of Kavach to swiftly send emergency messages to your chosen contacts.</string>
+    <string name="tutorial_3">Easily add emergency contacts by tapping the "Add Emergency Contacts" button on the home screen. These contacts will receive SOS messages when activated..</string>
+    <string name="tutorial_4">Kavach features speech recognition that responds to a trigger word. Select your trigger word from the drop-down menu, tap enable, and experience voice-activated SOS messaging.</string>
+    <string name="tutorial_5">When you trigger the SOS button, Kavach captures photos using both front and back cameras. These photos are sent via SMS to your chosen contacts, providing them with visual context.</string>
+    <string name="tutorial_6">Add a convenient SOS widget to your mobile home screen. This widget functions as an immediate SOS button, ensuring a rapid response in critical situations.</string>
+    <string name="tutorial_7">Kavach shares your accurate live location via SMS to facilitate quick assistance, enabling your contacts to locate you swiftly.</string>
+    <string name="tutorial_8">Enhance your safety by adding essential personal details to the profile section of Kavach, ensuring responders have the information they need.</string>
+    <string name="tutorial_9">Explore Kavach emergency numbers feature for instant access to crucial helpline numbers during times of distress.</string>
+    <string name="tutorial_10">Kavach: Your Safety Companion</string>
+    <string name="tutorial_11">Quick SOS Activation</string>
+    <string name="tutorial_12">Adding Emergency Contacts</string>
+    <string name="tutorial_13">Voice-Activated SOS</string>
+    <string name="tutorial_14">Visual SOS Alerts</string>
+    <string name="tutorial_15">Home Screen Widget</string>
+    <string name="tutorial_16">Precise Live Location Sharing</string>
+    <string name="tutorial_17">Personalized Profile</string>
+    <string name="tutorial_18">Access to Emergency Helpline Numbers</string>
+
+
+<!--    Home screen strings.-->
     <string name="sos_image">SOS Image</string>
     <string name="emergency_contacts">Add Emergency Contacts</string>
     <string name="speech_recognition">Speech Recognition</string>
@@ -35,10 +51,14 @@
     <string name="todo">TODO</string>
     <string name="switch_on">ON</string>
     <string name="switch_off">OFF</string>
+
+<!--    Speech recognition window strings.-->
     <string name="DropDown_Hint">Select Trigger Word</string>
     <string name="vrHeading">Detects a trigger word and sends SOS Message</string>
     <string name="vrDescription">Easily trigger an SOS message by setting a trigger word. Once detected, your app will automatically send an SOS message to selected contacts with your live location, even when the app is running in the background or the phone is locked</string>
-    <string name="vrFooter">Stay safe 24/7 with this powerful feature</string>
+    <string name="vrFooter">Stay safe 24/7 with this powerful feature</string>]
+
+<!--    About fragment strings.-->
     <string name="aboutHead">About Kavach</string>
     <string name="aboutHead2">Key Features :</string>
     <string name="aboutHead3">1) Quick SOS Messages :</string>
@@ -54,7 +74,7 @@
     <string name="aboutHead1">Welcome to Kavach, your personal safety companion designed to provide you with peace of mind in any emergency situation. Our mission is to keep you safe and connected at all times.</string>
     <string name="manual">Manual</string>
 
-
+<!--Speech recognition dropdown menu strings.-->
     <string-array name="trigger_words">
         <item>Alexa</item>
         <item>Americano</item>
@@ -77,6 +97,5 @@
     <string name="configure">Configure</string>
     <string name="add_widget">Add widget</string>
     <string name="app_widget_description">Tap the widget icon to send SOS.</string>
-
 
 </resources>

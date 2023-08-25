@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 public class OnboardingPagerAdapter extends FragmentPagerAdapter {
 
-    private static final int NUM_PAGES = 7; // Number of onboarding screens
+    private static final int NUM_PAGES = 9; // Number of onboarding screens
 
     public OnboardingPagerAdapter(FragmentManager fm) {
         super(fm);
@@ -29,6 +29,10 @@ public class OnboardingPagerAdapter extends FragmentPagerAdapter {
                 return new OnboardingFragment6();
             case 6:
                 return new OnboardingFragment7();
+            case 7:
+                return new OnboardingFragment8();
+            case 8:
+                return new OnboardingFragment9();
 
 
             default:
