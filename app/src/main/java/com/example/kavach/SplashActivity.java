@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 public class SplashActivity extends AppCompatActivity {
     //This File handle the Intro Screen Animation of our application
-
+    //Test
     //Variables
     Animation topAnim, bottomAnim;
     ImageView image;
