@@ -20,7 +20,7 @@
         android:paddingLeft="40dp"
         android:textColor="@color/white"
         android:textSize="18sp"
-        android:paddingTop="120dp"
+        android:paddingTop="100dp"
         android:textAllCaps="false"
         android:layout_height="wrap_content"
         android:text="@string/tutorial_17"

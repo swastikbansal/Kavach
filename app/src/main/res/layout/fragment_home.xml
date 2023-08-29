@@ -50,7 +50,7 @@
         android:layout_height="70dp"
         android:textAllCaps="false"
         android:textSize="16sp"
-        android:onClick="VoiceRecogntionActivity"
+        android:onClick="VoiceRecognitionActivity"
         android:background="@drawable/custom_button"
         android:drawableRight="@drawable/baseline_keyboard_double_arrow_right_24"
         android:paddingStart="20dp"

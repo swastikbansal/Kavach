@@ -8,7 +8,7 @@
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottieAnimationView"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="460dp"
         app:lottie_rawRes="@raw/animation_cameranimcapture"
         app:lottie_autoPlay="true"
         android:paddingLeft="40dp"
@@ -30,7 +30,7 @@
         android:paddingLeft="40dp"
         android:textSize="14sp"
         android:textColor="@color/white"
-        android:paddingTop="30dp"
+        android:paddingTop="20dp"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
         android:text="@string/tutorial_5"

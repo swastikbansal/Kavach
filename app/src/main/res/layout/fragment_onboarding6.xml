@@ -8,7 +8,7 @@
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottieAnimationView"
         android:layout_width="match_parent"
-        android:layout_height="520dp"
+        android:layout_height="480dp"
         app:lottie_rawRes="@raw/animation_kavachwidget"
         app:lottie_autoPlay="true"
         android:paddingLeft="20dp"

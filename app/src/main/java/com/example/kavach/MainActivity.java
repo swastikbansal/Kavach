@@ -28,21 +28,16 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.kavach.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.snackbar.Snackbar;
+
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements LocationHandler.LocationListener {
-
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
-
     private static final int PERMISSION_REQUEST_CODE = 1;
-
     private CameraHandler cameraHandler;
-
-    private Intent intent;
 
     @RequiresApi(api = Build.VERSION_CODES.TIRAMISU)
     @Override
@@ -51,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements LocationHandler.L
 
         Toast.makeText(this, "App is Still Work in Progress.", Toast.LENGTH_SHORT).show();
 
-        dailogBoxEmptyContacts();
+        dialogBoxEmptyContacts();
 
         cameraHandler = new CameraHandler(this,this);
 
@@ -192,7 +187,7 @@ public class MainActivity extends AppCompatActivity implements LocationHandler.L
     }
 
     //Voice Recognition Activity
-    public void VoiceRecogntionActivity(View view){
+    public void VoiceRecognitionActivity(View view){
         Intent speechIntent = new Intent(this, SpeechRecognition.class);
         startActivity(speechIntent);
     }
@@ -205,7 +200,7 @@ public class MainActivity extends AppCompatActivity implements LocationHandler.L
 
     //This Function will be executed when the button is pressed to send the SOS to selected emergency contacts
     public void SOS(View view){
-        dailogBoxEmptyContacts();
+        dialogBoxEmptyContacts();
         LocationHandler locationHandler = new LocationHandler(this, this);
         Toast.makeText(this, "SOS", Toast.LENGTH_SHORT).show();
         // Request current location when SOS button is pressed
@@ -215,8 +210,8 @@ public class MainActivity extends AppCompatActivity implements LocationHandler.L
     }
 
 
-    //Function for popping up Dialog box if Emergency COntacts are not added
-    public void dailogBoxEmptyContacts(){
+    //Function for popping up Dialog box if Emergency Contacts are not added
+    public void dialogBoxEmptyContacts(){
         //If user has no contacts added
         ContactDatabaseHelper dbHelper = new ContactDatabaseHelper(MainActivity.this);
         List<ContactInfo> allContacts = dbHelper.getAllContacts();

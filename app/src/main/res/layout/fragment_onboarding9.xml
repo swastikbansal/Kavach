@@ -8,7 +8,7 @@
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottieAnimationView"
         android:layout_width="match_parent"
-        android:layout_height="480dp"
+        android:layout_height="460dp"
         app:lottie_rawRes="@raw/animation_manual"
         app:lottie_autoPlay="true"
         android:paddingLeft="30dp"
